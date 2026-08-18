@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<feed xmlns:opensearch="http://a9.com/-/spec/opensearch/1.1/" xmlns:arxiv="http://arxiv.org/schemas/atom" xmlns="http://www.w3.org/2005/Atom">
+  <id>https://arxiv.org/api/vyAhHBOKYkIophy9mi/Cqt196y8</id>
+  <title>arXiv Query: search_query=cat:astro-ph.EP&amp;id_list=&amp;start=0&amp;max_results=6</title>
+  <updated>2026-08-18T18:47:32Z</updated>
+  <link href="https://arxiv.org/api/query?search_query=cat:astro-ph.EP&amp;start=0&amp;max_results=6&amp;id_list=" type="application/atom+xml"/>
+  <opensearch:itemsPerPage>6</opensearch:itemsPerPage>
+  <opensearch:totalResults>35737</opensearch:totalResults>
+  <opensearch:startIndex>0</opensearch:startIndex>
+  <entry>
+    <id>http://arxiv.org/abs/2608.16816v1</id>
+    <title>Eclipse Timing of the Eccentric Planet HD 80606b with JWST: Constraints on a Second Planet and other Dynamical Effects</title>
+    <updated>2026-08-17T17:05:22Z</updated>
+    <link href="https://arxiv.org/abs/2608.16816v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.16816v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>A variety of effects can perturb the orbital properties of single planets in close orbits around their host stars. HD80606 b is a highly eccentric ($ε$=0.93) exoplanet orbiting its host G5V star, HD80606. HD80606 b became a compelling target for exoplanet research after (Laughlin et al 2009) discovered that the 4.16 MJup planet transits and is eclipsed by HD80606, thereby enabling photometric and spectroscopic observations to yield a wealth of information about the object. The exquisite precision of recent JWST eclipse timing offers an opportunity to investigate whether the orbit of HD80606 b is modified due to a variety of mechanisms, including General Relativity, tidal torques, or the presence of a second perturbing planet. We have used over 25 years of radial velocity data plus eclipse and transit observations to place limits on the precession of HD80606 b's orbit and to assess which of these effects, if any, are observable. The new models are consistent with constant values of period, eccentricity and the argument of periastron, $ω$, with a limit on $\dotω$ at the level of the predicted GR drift. The PRV and timing data limit the mass and location of a second planet external to HD80606b.
+  Timing offsets between JWST eclipses relative to the Pearson et al (2022) predictions are attributed to the poor constraints on $\sqrtε (\cos\ ω, \sin\ ω)$ with only the single eclipse measurement available (Spitzer 2009) in that analysis and to an over-weighting of the eclipse timing in that earlier analysis.</summary>
+    <category term="astro-ph.EP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-17T17:05:22Z</published>
+    <arxiv:primary_category term="astro-ph.EP"/>
+    <author>
+      <name>Charles Beichman</name>
+    </author>
+    <author>
+      <name>Billy Quarles</name>
+    </author>
+    <author>
+      <name>B. J. Fulton</name>
+    </author>
+    <author>
+      <name>Nikole Lewis</name>
+    </author>
+    <author>
+      <name>Ryan Challener</name>
+    </author>
+    <author>
+      <name>Julien de Wit</name>
+    </author>
+    <author>
+      <name>Malena Rice</name>
+    </author>
+    <author>
+      <name>Julie Inglis</name>
+    </author>
+    <author>
+      <name>Tiffany Kataria</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.16558v1</id>
+    <title>From Earth Meteors to Mars: Predicting Where to See the First Martian Meteors</title>
+    <updated>2026-08-17T13:26:11Z</updated>
+    <link href="https://arxiv.org/abs/2608.16558v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.16558v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Predictions of optical meteors at Mars have largely relied on classical single-body ablation models, despite high-resolution terrestrial observations showing that mm-sized meteoroids frequently fragment. This study quantifies how fragmentation alters the predicted brightness and peak-luminosity altitudes of sporadic mm-sized meteoroids in the Martian atmosphere and evaluates the single-body approximation as a reference baseline. Physical properties were inferred for 144 sporadic meteoroids observed on Earth using dynamic nested sampling with the erosion-fragmentation model. The resulting best-fit meteoroids were then re-simulated under Martian atmospheric conditions to generate predicted light curves. Because the physical trigger of fragmentation onset remains uncertain, three hypotheses were tested based on atmospheric mass density, dynamic pressure, and total accumulated heat. The results were also compared with predictions from a single-body ablation model. The data-driven simulations predict peak absolute magnitudes of $M_{\rm peak}\sim$ 2 - 7 for Martian meteors spanning diameters of 0.4 - 10 mm and entry speeds of 10 - 56 km/s. We find most events are luminous between $\sim$ 55 and 110 km heights. Relative to the single-body ablation baseline, the fragmentation-based predictions are brighter by $\sim$ 0.8 mag at peak brightness and concentrate luminosity within a narrower vertical range ($\sim$ 17 km instead of 36 km). The modelling accounting for fragmentation also produce shorter luminous trails ($\sim$ 20 km instead of 45 km). The resulting altitude-brightness maps provide observation-ready guidance for future Mars missions, while the fragmentation-based framework supports the interpretation of meteoroid-related ionospheric metal layers and improvements to Mars meteoroid-environment models.</summary>
+    <category term="astro-ph.EP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-17T13:26:11Z</published>
+    <arxiv:comment>Accepted for publication in Advances in Space Research</arxiv:comment>
+    <arxiv:primary_category term="astro-ph.EP"/>
+    <author>
+      <name>Maximilian Vovk</name>
+    </author>
+    <author>
+      <name>Peter G. Brown</name>
+    </author>
+    <author>
+      <name>Denis Vida</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.16301v1</id>
+    <title>Characterizing Stellar Flares in Ariel Targets: Activity Analysis and Transit Contamination</title>
+    <updated>2026-08-17T09:13:52Z</updated>
+    <link href="https://arxiv.org/abs/2608.16301v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.16301v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Stellar flares are sudden releases of magnetic energy that can distort exoplanet transit photometry and transmission spectroscopy, biasing planet radius estimates, transit timings, and atmospheric characterization. Understanding flare activity in Ariel targets is therefore essential to identify stars where flares may compromise observations and to characterize the radiation environment affecting atmospheric escape and photochemistry. We analyzed 290 Ariel target stars using TESS light curves. Flares were identified via iterative Gaussian process detrending, and their energy distributions were modeled with two-segment power laws. We performed injection-recovery tests by adding synthetic flares to detrended light curves and running the full pipeline to quantify completeness and detection biases. We detected 15,857 flares across 1,638 TESS sectors, with 2-86 events per sector. We defined a normalized flare index GF.01 to compare activity across stellar luminosities. Near 3% of the sample exhibits enhanced flare activity (GF.01 &gt; 1). AU Mic and HD 28109 show a high likelihood of flare contamination during transit observations. GF.01 correlates negatively with stellar bolometric luminosity, indicating higher relative flare output in lower-luminosity stars. AU Mic is an extreme case: four of five observed transits of AU Mic b are affected by flares, consistent with statistical expectations. We validate the framework by comparing predicted flare-contamination probabilities with observed flare occurrences in a representative subset of transits, finding agreement within uncertainties. These results confirm that energetic flares can significantly impact transit observations and provide quantitative guidance for Ariel target selection and analysis strategies.</summary>
+    <category term="astro-ph.SR" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="astro-ph.EP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-17T09:13:52Z</published>
+    <arxiv:comment>Article accepted by RASTI with official acceptance date 16/08/2026</arxiv:comment>
+    <arxiv:primary_category term="astro-ph.SR"/>
+    <author>
+      <name>G. Galletta</name>
+    </author>
+    <author>
+      <name>S. Colombo</name>
+    </author>
+    <author>
+      <name>G. Micela</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.16215v1</id>
+    <title>Optical-NIR Multi-band Photometric Analysis and Characterization of Giant Exoplanets with CPI-C</title>
+    <updated>2026-08-17T07:48:26Z</updated>
+    <link href="https://arxiv.org/abs/2608.16215v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.16215v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We present a multi-band photometric approach to characterize giant exoplanets, which represents one of the anticipated core scientific outcomes of Cool Planet Imaging Coronagraph (CPI-C). CPI-C operates with two observational channels covering visible and near-infrared wavelengths, each equipped with four broadband filters. The planet--star flux ratio integrated over each filter bandpass is calculated for photometric analysis. For cool planets observed in the visible bands, the data are primarily used to fit the overall spectral shape and methane-induced modulation, providing sensitivity to metallicity- and cloud-dependent spectral variations while constraining the reflected-light spectral shape and the combined scaling involving planet radius, orbital separation, and orbital phase. In the near-infrared bands, which probe thermal emission, the data help to better constrain fundamental planetary parameters including the effective temperature, radius, surface gravity and mass. For a synthetic giant planet with measurable reflected-light and thermal-emission components, the combined VIS4+NIR4 data provide tighter same-target constraints than either filter set alone, especially for the planet radius and cloud sedimentation parameter. Our simulations incorporate realistic instrument throughput, detector noise, and residual speckle noise. The results demonstrate that the eight-band design spanning visible to near-infrared wavelengths supports reflected-light diagnostics, thermal-emission characterization, and joint optical--NIR analysis of giant exoplanets within CPI-C science observations.</summary>
+    <category term="astro-ph.EP" scheme="http://arxiv.org/schemas/atom"/>
+    <category term="astro-ph.IM" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-17T07:48:26Z</published>
+    <arxiv:comment>33 pages, 16 figures, 7 tables; accepted for publication in The Astronomical Journal</arxiv:comment>
+    <arxiv:primary_category term="astro-ph.EP"/>
+    <author>
+      <name>Yiming Zhu</name>
+    </author>
+    <author>
+      <name>Gang Zhao</name>
+    </author>
+    <author>
+      <name>Xi Zhang</name>
+    </author>
+    <author>
+      <name>Gang Wang</name>
+    </author>
+    <author>
+      <name>Bingli Niu</name>
+    </author>
+    <author>
+      <name>Zhonghua Lv</name>
+    </author>
+    <author>
+      <name>Jiangpei Dou</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.16204v1</id>
+    <title>The dust-rich, gas-depleted protosolar disk as the birthplace of chondrules</title>
+    <updated>2026-08-17T07:36:18Z</updated>
+    <link href="https://arxiv.org/abs/2608.16204v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.16204v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>Chondrules are the primary components of primitive meteorites known as chondrites, and understanding their formation and accumulation is essential for elucidating the history of planet formation in the Solar System. Although a variety of chondrule formation mechanisms have been proposed, it remains challenging to satisfy the key constraints on chondrule abundance, formation timing, and mineralogical and chemical characteristics within a single model. In particular, the planetesimal bow-shock model, once considered one of the leading candidates, now faces a fundamental difficulty: Jupiter's formation likely depleted gas in the protosolar disk, potentially lowering the gas density below that required for efficient chondrule formation by planetesimal bow shocks. Here we propose an alternative mechanism that can occur in a gas-depleted environment: heavy bombardment of eccentric planetesimals by debris dust. After Jupiter formed in the protosolar disk, the region interior to its orbit became gas-depleted, leading to the formation of a geometrically thin debris-dust layer. When planetesimals enter the dust layer at high speed, large quantities of molten silicate droplets are produced. These droplets cool and solidify into chondrules and are reincorporated into the dust layer. Using analytical calculations, we find that our model can potentially explain the abundance, formation timing, and mineralogical and chemical characteristics of chondrules. This study links the formation of Jupiter and the accompanying evolution of the protosolar disk to the origin of terrestrial planets, asteroids, and meteorites, thereby offering a new framework for the formation of the Solar System.</summary>
+    <category term="astro-ph.EP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-17T07:36:18Z</published>
+    <arxiv:primary_category term="astro-ph.EP"/>
+    <author>
+      <name>Sota Arakawa</name>
+    </author>
+    <author>
+      <name>Hidekazu Tanaka</name>
+    </author>
+    <author>
+      <name>Toshihiko Kadono</name>
+    </author>
+    <author>
+      <name>Takayuki Ushikubo</name>
+    </author>
+    <author>
+      <name>Makiko Nagasawa</name>
+    </author>
+    <author>
+      <name>Hiroshi Kobayashi</name>
+    </author>
+  </entry>
+  <entry>
+    <id>http://arxiv.org/abs/2608.16078v1</id>
+    <title>Stability Mapping of the New Uranian Moon S/2025 U1 with Updated Masses for Cordelia, Ophelia, and Cressida</title>
+    <updated>2026-08-17T04:17:05Z</updated>
+    <link href="https://arxiv.org/abs/2608.16078v1" rel="alternate" type="text/html"/>
+    <link href="https://arxiv.org/pdf/2608.16078v1" rel="related" type="application/pdf" title="pdf"/>
+    <summary>We investigate the dynamics of Uranus's inner satellite system considering three recent updates: the inclusion of the new moon S/2025~U1, revised mass estimates for Cordelia, Ophelia, and Cressida, and updated zonal harmonic coefficients (J$_2$, J$_4$, and J$_6$). Using numerical integrations, mean-motion resonance analysis, and Frequency Map Analysis (FMA), we explore their impact on orbital stability. For the first time, we analyze the dynamics of the newly discovered moon S/2025~U1 and find that it follows a stable orbit, exhibiting smooth variations in its orbital elements over 250,000~years. Depending on the adopted radius, the gravitational influence of S/2025~U1 on the surrounding region is more compatible with a body of approximately 5-7 km radius, producing diffusion maps associated with a regular orbital evolution. Furthermore, the case $R = 7$ km shows a reduction in the diffusion of neighboring satellites, suggesting a possible local stabilizing effect on the system's orbital evolution. We also identified inner and outer regions of low diffusion around its orbit, suggesting that the dynamical environment is compatible with survival of coorbital particles or additional small satellites. In contrast, very high radius values, particularly $R = 20$ km, tend to increase diffusion among neighboring satellites, making this scenario less compatible with a dynamically stable orbital configuration. We further explore the survival of hypothetical satellites near S/2025~U1. Our results show that bodies with masses up to $3\times$ that of S/2025~U1 can remain stable in both the interior (between S/2025~U1 and Ophelia) and the exterior (between S/2025~U1 and Bianca) of its orbit. Finally, Cressida, Desdemona, Juliet, and Portia are most sensitive to updated parameters. Most resonances circulate, while Belinda-Perdita 44:43 confines the system with reduced libration amplitude.</summary>
+    <category term="astro-ph.EP" scheme="http://arxiv.org/schemas/atom"/>
+    <published>2026-08-17T04:17:05Z</published>
+    <arxiv:comment>18 pages, 15 figures, and 6 tables. Accepted for publication in Section 10 (Planets, planetary systems, and small bodies) of Astronomy &amp; Astrophysics (A&amp;A)</arxiv:comment>
+    <arxiv:primary_category term="astro-ph.EP"/>
+    <author>
+      <name>J. Xavier</name>
+    </author>
+    <author>
+      <name>A. Amarante</name>
+    </author>
+    <author>
+      <name>S. Giuliatti Winter</name>
+    </author>
+    <author>
+      <name>A. Ferreira</name>
+    </author>
+  </entry>
+</feed>

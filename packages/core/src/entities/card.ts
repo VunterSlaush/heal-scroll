@@ -15,4 +15,10 @@ export interface Card {
   publishedAt?: string;
   /** Normalized-title hash used for cross-source dedupe. */
   hash: string;
+  /** Set when the card belongs to a multi-card series (PLAN §2c). */
+  seriesId?: string;
+  /** 1-based position within the series. */
+  seriesIndex?: number;
+  /** Total cards in the series (3–4 max). */
+  seriesCount?: number;
 }

@@ -1,3 +1,10 @@
 export * as schema from './schema';
 export { SqliteCardRepo, seedTopics } from './sqlite-card-repo';
 export type { Database } from './sqlite-card-repo';
+export { SqliteSettingsRepo } from './sqlite-settings-repo';
+export { SqliteTopicRepo } from './sqlite-topic-repo';
+export { SqliteTopicSourceRepo, stateFor } from './sqlite-topic-source-repo';
+export { SqliteSessionRepo } from './sqlite-session-repo';
+export { SqliteRecallRepo } from './sqlite-recall-repo';
+export { SqliteCollectionRepo } from './sqlite-collection-repo';
+export { SqliteInsightsRepo } from './sqlite-insights-repo';

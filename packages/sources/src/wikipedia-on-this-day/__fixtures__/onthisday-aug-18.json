@@ -1,0 +1,1038 @@
+{
+ "events": [
+  {
+   "text": "One hundred activists, officials, and other concerned citizens in Iceland hold a funeral for Okjökull glacier, which has completely melted after having once covered six square miles (15.5 km2).",
+   "pages": [
+    {
+     "type": "standard",
+     "title": "Iceland",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Iceland</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q189",
+     "titles": {
+      "canonical": "Iceland",
+      "normalized": "Iceland",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Iceland</span></span>"
+     },
+     "pageid": 14531,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Iceland.svg/330px-Flag_of_Iceland.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 238
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Iceland.svg/1280px-Flag_of_Iceland.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 1250,
+      "height": 900
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1369330935",
+     "tid": "faa6a03a-97be-11f1-9021-9abb142dd19f",
+     "timestamp": "2026-08-14T09:03:13Z",
+     "description": "Island country in the Atlantic Ocean",
+     "description_source": "local",
+     "coordinates": {
+      "lat": 65,
+      "lon": -18
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Iceland",
+       "revisions": "https://en.wikipedia.org/wiki/Iceland?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Iceland?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Iceland"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Iceland",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Iceland",
+       "edit": "https://en.wikipedia.org/wiki/Iceland?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Iceland"
+      }
+     },
+     "extract": "Iceland is a Nordic island country between the Arctic Ocean and the North Atlantic Ocean, located on the Mid-Atlantic Ridge between Europe and North America. It is culturally and politically linked with Europe and is the region's westernmost and most sparsely populated country. Its capital and largest city is Reykjavík, which is home to about 35% of the country's roughly 395,000 residents. The official language of the country is Icelandic. Iceland is on a rift between tectonic plates, and its geologic activity includes geysers and frequent volcanic eruptions. The interior consists of a volcanic plateau with sand and lava fields, mountains and glaciers, and many glacial rivers flow to the sea through the lowlands. Iceland is warmed by the Gulf Stream and has a temperate climate, despite being at a latitude just south of the Arctic Circle. Its latitude and marine influence keep summers chilly, and most of its islands have a polar climate.",
+     "extract_html": "<p><b>Iceland</b> is a Nordic island country between the Arctic Ocean and the North Atlantic Ocean, located on the Mid-Atlantic Ridge between Europe and North America. It is culturally and politically linked with Europe and is the region's westernmost and most sparsely populated country. Its capital and largest city is Reykjavík, which is home to about 35% of the country's roughly 395,000 residents. The official language of the country is Icelandic. Iceland is on a rift between tectonic plates, and its geologic activity includes geysers and frequent volcanic eruptions. The interior consists of a volcanic plateau with sand and lava fields, mountains and glaciers, and many glacial rivers flow to the sea through the lowlands. Iceland is warmed by the Gulf Stream and has a temperate climate, despite being at a latitude just south of the Arctic Circle. Its latitude and marine influence keep summers chilly, and most of its islands have a polar climate.</p>",
+     "normalizedtitle": "Iceland"
+    },
+    {
+     "type": "standard",
+     "title": "Okjökull",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Okjökull</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q65725817",
+     "titles": {
+      "canonical": "Okjökull",
+      "normalized": "Okjökull",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Okjökull</span></span>"
+     },
+     "pageid": 61355693,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Ok_glacier_2003.jpg/330px-Ok_glacier_2003.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 196
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/7/7a/Ok_glacier_2003.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 1984,
+      "height": 1180
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1342205151",
+     "tid": "17d785c8-1a4d-11f1-b17e-7f221e10186b",
+     "timestamp": "2026-03-07T17:43:04Z",
+     "description": "Former glacier in western Iceland",
+     "description_source": "local",
+     "coordinates": {
+      "lat": 64.598,
+      "lon": -20.881
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Okj%C3%B6kull",
+       "revisions": "https://en.wikipedia.org/wiki/Okj%C3%B6kull?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Okj%C3%B6kull?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Okj%C3%B6kull"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Okj%C3%B6kull",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Okj%C3%B6kull",
+       "edit": "https://en.wikipedia.org/wiki/Okj%C3%B6kull?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Okj%C3%B6kull"
+      }
+     },
+     "extract": "Okjökull was a glacier in western Iceland on top of the shield volcano Ok.",
+     "extract_html": "<p><b>Okjökull</b> was a glacier in western Iceland on top of the shield volcano Ok.</p>",
+     "normalizedtitle": "Okjökull"
+    }
+   ],
+   "year": 2019
+  },
+  {
+   "text": "The Turku terror attack occurs in Finland when a knifeman kills two and injures eight.",
+   "pages": [
+    {
+     "type": "standard",
+     "title": "2017_Turku_attack",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">2017 Turku attack</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q37150759",
+     "titles": {
+      "canonical": "2017_Turku_attack",
+      "normalized": "2017 Turku attack",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">2017 Turku attack</span></span>"
+     },
+     "pageid": 54950592,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/en/thumb/2/2e/2017_Turku_stabbing_news_photo_of_the_year.jpg/330px-2017_Turku_stabbing_news_photo_of_the_year.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 219
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/en/2/2e/2017_Turku_stabbing_news_photo_of_the_year.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 387,
+      "height": 257
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1366701510",
+     "tid": "c94b9783-8b6f-11f1-9010-71af42c1ceca",
+     "timestamp": "2026-07-29T17:06:06Z",
+     "description": "Terrorist attack in Turku, Finland",
+     "description_source": "local",
+     "coordinates": {
+      "lat": 60.45194444,
+      "lon": 22.26638889
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/2017_Turku_attack",
+       "revisions": "https://en.wikipedia.org/wiki/2017_Turku_attack?action=history",
+       "edit": "https://en.wikipedia.org/wiki/2017_Turku_attack?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:2017_Turku_attack"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/2017_Turku_attack",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/2017_Turku_attack",
+       "edit": "https://en.wikipedia.org/wiki/2017_Turku_attack?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:2017_Turku_attack"
+      }
+     },
+     "extract": "On 18 August 2017, a mass stabbing took place in Turku, Finland. Two women were killed and eight others were injured before the perpetrator, 22-year-old Abderrahman Bouanane, was detained. Boaunane, a Moroccan rejected asylum seeker, had been using the alias Abderrahman Mechkah, which was later discovered to be a false identity. In June 2018, Bouanane was found guilty of two counts of murder with terrorist intent and eight counts of attempted murder with terrorist intent. He was sentenced to life imprisonment. It was the first Islamist terrorist act committed with jihadist intent in Finland.",
+     "extract_html": "<p>On 18 August 2017, a mass stabbing took place in Turku, Finland. Two women were killed and eight others were injured before the perpetrator, 22-year-old Abderrahman Bouanane, was detained. Boaunane, a Moroccan rejected asylum seeker, had been using the alias Abderrahman Mechkah, which was later discovered to be a false identity. In June 2018, Bouanane was found guilty of two counts of murder with terrorist intent and eight counts of attempted murder with terrorist intent. He was sentenced to life imprisonment. It was the first Islamist terrorist act committed with jihadist intent in Finland.</p>",
+     "normalizedtitle": "2017 Turku attack"
+    }
+   ],
+   "year": 2017
+  },
+  {
+   "text": "A terrorist attack on Israel's Highway 12 near the Egyptian border kills 16 and injures 40.",
+   "pages": [
+    {
+     "type": "standard",
+     "title": "2011_southern_Israel_cross-border_attacks",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">2011 southern Israel cross-border attacks</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q2363420",
+     "titles": {
+      "canonical": "2011_southern_Israel_cross-border_attacks",
+      "normalized": "2011 southern Israel cross-border attacks",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">2011 southern Israel cross-border attacks</span></span>"
+     },
+     "pageid": 32786931,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8e/Terror_Strikes_Israeli_Civilians_in_Southern_Israel.jpg/330px-Terror_Strikes_Israeli_Civilians_in_Southern_Israel.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 219
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/8/8e/Terror_Strikes_Israeli_Civilians_in_Southern_Israel.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 1024,
+      "height": 681
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1369171651",
+     "tid": "d9787cf7-96f2-11f1-919f-7ea38bbdf38c",
+     "timestamp": "2026-08-13T08:42:00Z",
+     "description": "Series of cross-border attacks",
+     "description_source": "local",
+     "coordinates": {
+      "lat": 29.58583333,
+      "lon": 34.88138889
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/2011_southern_Israel_cross-border_attacks",
+       "revisions": "https://en.wikipedia.org/wiki/2011_southern_Israel_cross-border_attacks?action=history",
+       "edit": "https://en.wikipedia.org/wiki/2011_southern_Israel_cross-border_attacks?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:2011_southern_Israel_cross-border_attacks"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/2011_southern_Israel_cross-border_attacks",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/2011_southern_Israel_cross-border_attacks",
+       "edit": "https://en.wikipedia.org/wiki/2011_southern_Israel_cross-border_attacks?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:2011_southern_Israel_cross-border_attacks"
+      }
+     },
+     "extract": "On August 18, 2011, a series of cross-border attacks with parallel attacks and mutual cover was carried out in southern Israel on Highway 12 near the Egyptian border by a squad of presumably twelve militants in four groups. The attacks occurred after Israel's interior security service Shin Bet had warned of an attack by militants in the region and Israeli troops had been stationed in the area. The militants first opened fire at an Egged No. 392 bus as it was traveling on Highway 12 in the Negev near Eilat. Several minutes later, a bomb was detonated next to an Israeli army patrol along Israel's border with Egypt. In a third attack, an anti-tank missile hit a private vehicle, killing four civilians. Eight Israelis – six civilians, one Yamam special unit police sniper and one Golani Brigade soldier—were killed in the multiple-stage attack. The Israel Defense Forces reported eight attackers killed, and Egyptian security forces reported killing another two.",
+     "extract_html": "<p>On August 18, 2011, a series of cross-border attacks with parallel attacks and mutual cover was carried out in southern Israel on Highway 12 near the Egyptian border by a squad of presumably twelve militants in four groups. The attacks occurred after Israel's interior security service Shin Bet had warned of an attack by militants in the region and Israeli troops had been stationed in the area. The militants first opened fire at an Egged No. 392 bus as it was traveling on Highway 12 in the Negev near Eilat. Several minutes later, a bomb was detonated next to an Israeli army patrol along Israel's border with Egypt. In a third attack, an anti-tank missile hit a private vehicle, killing four civilians. Eight Israelis – six civilians, one Yamam special unit police sniper and one Golani Brigade soldier—were killed in the multiple-stage attack. The Israel Defense Forces reported eight attackers killed, and Egyptian security forces reported killing another two.</p>",
+     "normalizedtitle": "2011 southern Israel cross-border attacks"
+    },
+    {
+     "type": "standard",
+     "title": "Highway_12_(Israel)",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Highway 12 (Israel)</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q2560595",
+     "titles": {
+      "canonical": "Highway_12_(Israel)",
+      "normalized": "Highway 12 (Israel)",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Highway 12 (Israel)</span></span>"
+     },
+     "pageid": 15323774,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/3e/Eilat-from-hwy-12-49.jpg/330px-Eilat-from-hwy-12-49.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 227
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/3e/Eilat-from-hwy-12-49.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 2592,
+      "height": 1781
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1230261535",
+     "tid": "caf01935-2ff5-11ef-bb21-771bc9102663",
+     "timestamp": "2024-06-21T17:43:39Z",
+     "description": "Highway in Israel",
+     "description_source": "local",
+     "coordinates": {
+      "lat": 29.91083333,
+      "lon": 34.87583333
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Highway_12_(Israel)",
+       "revisions": "https://en.wikipedia.org/wiki/Highway_12_(Israel)?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Highway_12_(Israel)?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Highway_12_(Israel)"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Highway_12_(Israel)",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Highway_12_(Israel)",
+       "edit": "https://en.wikipedia.org/wiki/Highway_12_(Israel)?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Highway_12_(Israel)"
+      }
+     },
+     "extract": "Highway 12 is a single carriageway road in the South District of Israel. It surrounds the mountains of Eilat from the north and west, and it connects Eilat to Highway 10 and Highway 40, which lead toward central Israel. Highway 10 continues north toward the Gaza Strip, whereas Highway 40 proceeds to Beersheba via Mizpe Ramon.",
+     "extract_html": "<p><b>Highway 12</b> is a single carriageway road in the South District of Israel. It surrounds the mountains of Eilat from the north and west, and it connects Eilat to Highway 10 and Highway 40, which lead toward central Israel. Highway 10 continues north toward the Gaza Strip, whereas Highway 40 proceeds to Beersheba via Mizpe Ramon.</p>",
+     "normalizedtitle": "Highway 12 (Israel)"
+    }
+   ],
+   "year": 2011
+  },
+  {
+   "text": "The President of Pakistan, Pervez Musharraf, resigns under threat of impeachment.",
+   "pages": [
+    {
+     "type": "standard",
+     "title": "Pervez_Musharraf",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Pervez Musharraf</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q40495",
+     "titles": {
+      "canonical": "Pervez_Musharraf",
+      "normalized": "Pervez Musharraf",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Pervez Musharraf</span></span>"
+     },
+     "pageid": 24260,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c6/Pervez_Musharraf_2004_%28cropped%29.jpg/330px-Pervez_Musharraf_2004_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 439
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/c/c6/Pervez_Musharraf_2004_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 623,
+      "height": 829
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1370019483",
+     "tid": "edbfdefa-9b27-11f1-a33b-91c4385d21ec",
+     "timestamp": "2026-08-18T17:12:02Z",
+     "description": "President of Pakistan from 2001 to 2008",
+     "description_source": "local",
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Pervez_Musharraf",
+       "revisions": "https://en.wikipedia.org/wiki/Pervez_Musharraf?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Pervez_Musharraf?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Pervez_Musharraf"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Pervez_Musharraf",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Pervez_Musharraf",
+       "edit": "https://en.wikipedia.org/wiki/Pervez_Musharraf?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Pervez_Musharraf"
+      }
+     },
+     "extract": "Pervez Musharraf was a Pakistani politician and military officer who served as the tenth president of Pakistan from 2001 to 2008. He overthrew Nawaz Sharif's government in the 1999 coup d'état and proclaimed himself the chief executive of Pakistan, under martial law.",
+     "extract_html": "<p><b>Pervez Musharraf</b> was a Pakistani politician and military officer who served as the tenth president of Pakistan from 2001 to 2008. He overthrew Nawaz Sharif's government in the 1999 coup d'état and proclaimed himself the chief executive of Pakistan, under martial law.</p>",
+     "normalizedtitle": "Pervez Musharraf"
+    },
+    {
+     "type": "standard",
+     "title": "Effort_to_impeach_Pervez_Musharraf",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Effort to impeach Pervez Musharraf</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q6926780",
+     "titles": {
+      "canonical": "Effort_to_impeach_Pervez_Musharraf",
+      "normalized": "Effort to impeach Pervez Musharraf",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Effort to impeach Pervez Musharraf</span></span>"
+     },
+     "pageid": 18756936,
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1334126123",
+     "tid": "d5a0f11b-f6f5-11f0-ae1d-6db1c0362e32",
+     "timestamp": "2026-01-21T18:20:16Z",
+     "description": "2008 Pakistani presidential impeachment attempt",
+     "description_source": "local",
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Effort_to_impeach_Pervez_Musharraf",
+       "revisions": "https://en.wikipedia.org/wiki/Effort_to_impeach_Pervez_Musharraf?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Effort_to_impeach_Pervez_Musharraf?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Effort_to_impeach_Pervez_Musharraf"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Effort_to_impeach_Pervez_Musharraf",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Effort_to_impeach_Pervez_Musharraf",
+       "edit": "https://en.wikipedia.org/wiki/Effort_to_impeach_Pervez_Musharraf?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Effort_to_impeach_Pervez_Musharraf"
+      }
+     },
+     "extract": "The effort to impeach Pervez Musharraf was an August 2008 attempt by opposition parties comprising the Pakistan Peoples Party (PPP), Pakistan Muslim League (N) (PML-N), Awami National Party (ANP), and Jamiat Ulema-e-Islam to force Pakistan's President Pervez Musharraf out of office. On August 18, Musharraf announced his resignation.",
+     "extract_html": "<p>The <b>effort to impeach Pervez Musharraf</b> was an August 2008 attempt by opposition parties comprising the Pakistan Peoples Party (PPP), Pakistan Muslim League (N) (PML-N), Awami National Party (ANP), and Jamiat Ulema-e-Islam to force Pakistan's President Pervez Musharraf out of office. On August 18, Musharraf announced his resignation.</p>",
+     "normalizedtitle": "Effort to impeach Pervez Musharraf"
+    }
+   ],
+   "year": 2008
+  },
+  {
+   "text": "War of Afghanistan: The Uzbin Valley ambush occurs.",
+   "pages": [
+    {
+     "type": "standard",
+     "title": "Uzbin_Valley_ambush",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Uzbin Valley ambush</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q267418",
+     "titles": {
+      "canonical": "Uzbin_Valley_ambush",
+      "normalized": "Uzbin Valley ambush",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Uzbin Valley ambush</span></span>"
+     },
+     "pageid": 18964879,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f7/Uzbin9b.png/330px-Uzbin9b.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 332
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f7/Uzbin9b.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 1664,
+      "height": 1673
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1368868956",
+     "tid": "a324ecdf-9594-11f1-9cdd-5230d0abfbaf",
+     "timestamp": "2026-08-11T14:55:05Z",
+     "description": "2008 battle during the War in Afghanistan",
+     "description_source": "local",
+     "coordinates": {
+      "lat": 34.66191389,
+      "lon": 69.84914167
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Uzbin_Valley_ambush",
+       "revisions": "https://en.wikipedia.org/wiki/Uzbin_Valley_ambush?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Uzbin_Valley_ambush?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Uzbin_Valley_ambush"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Uzbin_Valley_ambush",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Uzbin_Valley_ambush",
+       "edit": "https://en.wikipedia.org/wiki/Uzbin_Valley_ambush?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Uzbin_Valley_ambush"
+      }
+     },
+     "extract": "French International Security Assistance Force (ISAF) troops were ambushed by Afghan Taliban insurgents, with heavy casualties, in the Uzbin Valley outside the village of Spēṟ Kunday in the Surobi District of Kabul province in eastern Afghanistan on 18 August 2008.",
+     "extract_html": "<p>French International Security Assistance Force (ISAF) troops were ambushed by Afghan Taliban insurgents, with heavy casualties, in the Uzbin Valley outside the village of Spēṟ Kunday in the Surobi District of Kabul province in eastern Afghanistan on 18 August 2008.</p>",
+     "normalizedtitle": "Uzbin Valley ambush"
+    }
+   ],
+   "year": 2008
+  },
+  {
+   "text": "A massive power blackout hits the Indonesian island of Java; affecting almost 100 million people, it is one of the largest and most widespread power outages in history.",
+   "pages": [
+    {
+     "type": "standard",
+     "title": "2005_Java–Bali_blackout",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">2005 Java–Bali blackout</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q4604451",
+     "titles": {
+      "canonical": "2005_Java–Bali_blackout",
+      "normalized": "2005 Java–Bali blackout",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">2005 Java–Bali blackout</span></span>"
+     },
+     "pageid": 2482714,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/2005_Java%E2%80%93Bali_blackout.png/330px-2005_Java%E2%80%93Bali_blackout.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 124
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/8/89/2005_Java%E2%80%93Bali_blackout.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 2560,
+      "height": 963
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1364445163",
+     "tid": "4cf790b6-812d-11f1-a5af-a488c868b39c",
+     "timestamp": "2026-07-16T15:44:59Z",
+     "description": "2005 power outage across Java and Bali, Indonesia",
+     "description_source": "local",
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/2005_Java%E2%80%93Bali_blackout",
+       "revisions": "https://en.wikipedia.org/wiki/2005_Java%E2%80%93Bali_blackout?action=history",
+       "edit": "https://en.wikipedia.org/wiki/2005_Java%E2%80%93Bali_blackout?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:2005_Java%E2%80%93Bali_blackout"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/2005_Java%E2%80%93Bali_blackout",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/2005_Java%E2%80%93Bali_blackout",
+       "edit": "https://en.wikipedia.org/wiki/2005_Java%E2%80%93Bali_blackout?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:2005_Java%E2%80%93Bali_blackout"
+      }
+     },
+     "extract": "The 2005 Java–Bali Blackout was a power outage across Java and Bali on 18 August 2005, affecting some 100 million people.",
+     "extract_html": "<p>The <b>2005 Java–Bali Blackout</b> was a power outage across Java and Bali on 18 August 2005, affecting some 100 million people.</p>",
+     "normalizedtitle": "2005 Java–Bali blackout"
+    },
+    {
+     "type": "standard",
+     "title": "Indonesia",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Indonesia</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q252",
+     "titles": {
+      "canonical": "Indonesia",
+      "normalized": "Indonesia",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Indonesia</span></span>"
+     },
+     "pageid": 14579,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Indonesia.svg/330px-Flag_of_Indonesia.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 220
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Flag_of_Indonesia.svg/960px-Flag_of_Indonesia.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 900,
+      "height": 600
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1369956402",
+     "tid": "9db42f9e-9acd-11f1-8a8f-489630b0c15a",
+     "timestamp": "2026-08-18T06:25:33Z",
+     "description": "Country in Southeast Asia and Oceania",
+     "description_source": "local",
+     "coordinates": {
+      "lat": -5,
+      "lon": 120
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Indonesia",
+       "revisions": "https://en.wikipedia.org/wiki/Indonesia?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Indonesia?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Indonesia"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Indonesia",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Indonesia",
+       "edit": "https://en.wikipedia.org/wiki/Indonesia?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Indonesia"
+      }
+     },
+     "extract": "Indonesia, officially the Republic of Indonesia, is a country in Southeast Asia and Oceania, between the Indian and Pacific oceans. Comprising about 17,000 islands, including Sumatra, Java, Sulawesi, and parts of Borneo and New Guinea, Indonesia is the world's largest archipelagic state and the 14th-largest country by area, at 1,904,569 square kilometres. Indonesia has significant areas of wilderness that support one of the world's highest levels of biodiversity. It shares land borders with Papua New Guinea, Timor-Leste, and Malaysia, as well as maritime borders with seven other countries, including Australia, Singapore, and the Philippines.",
+     "extract_html": "<p><b>Indonesia</b>, officially the <b>Republic of Indonesia</b>, is a country in Southeast Asia and Oceania, between the Indian and Pacific oceans. Comprising about 17,000 islands, including Sumatra, Java, Sulawesi, and parts of Borneo and New Guinea, Indonesia is the world's largest archipelagic state and the 14th-largest country by area, at 1,904,569 square kilometres. Indonesia has significant areas of wilderness that support one of the world's highest levels of biodiversity. It shares land borders with Papua New Guinea, Timor-Leste, and Malaysia, as well as maritime borders with seven other countries, including Australia, Singapore, and the Philippines.</p>",
+     "normalizedtitle": "Indonesia"
+    },
+    {
+     "type": "standard",
+     "title": "Java",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Java</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q3757",
+     "titles": {
+      "canonical": "Java",
+      "normalized": "Java",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Java</span></span>"
+     },
+     "pageid": 69336,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/43/Java_Topography.png/330px-Java_Topography.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 208
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/43/Java_Topography.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 2688,
+      "height": 1693
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1369634566",
+     "tid": "475cb7f7-992e-11f1-b65c-eb253c5afccd",
+     "timestamp": "2026-08-16T04:52:27Z",
+     "description": "Island and region in Indonesia",
+     "description_source": "local",
+     "coordinates": {
+      "lat": -7.49166667,
+      "lon": 110.00444444
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Java",
+       "revisions": "https://en.wikipedia.org/wiki/Java?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Java?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Java"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Java",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Java",
+       "edit": "https://en.wikipedia.org/wiki/Java?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Java"
+      }
+     },
+     "extract": "Java is one of the Greater Sunda Islands in the South East Asian country of Indonesia. It is bordered by the Indian Ocean to the south and the Java Sea to the north. With a population of 158.08 million people in mid 2025, projected to have risen to 159.2 million by mid 2026, Java is the world's most populous island, home to approximately 56% of the Indonesian population while constituting only 7% of its land area. Indonesia's capital city, Jakarta, is on Java's northwestern coast.",
+     "extract_html": "<p><b>Java</b> is one of the Greater Sunda Islands in the South East Asian country of Indonesia. It is bordered by the Indian Ocean to the south and the Java Sea to the north. With a population of 158.08 million people in mid 2025, projected to have risen to 159.2 million by mid 2026, Java is the world's most populous island, home to approximately 56% of the Indonesian population while constituting only 7% of its land area. Indonesia's capital city, Jakarta, is on Java's northwestern coast.</p>",
+     "normalizedtitle": "Java"
+    },
+    {
+     "type": "standard",
+     "title": "List_of_major_power_outages",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">List of major power outages</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q1529899",
+     "titles": {
+      "canonical": "List_of_major_power_outages",
+      "normalized": "List of major power outages",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">List of major power outages</span></span>"
+     },
+     "pageid": 361266,
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1367519840",
+     "tid": "4735e4aa-8f52-11f1-add0-9d1142e324a6",
+     "timestamp": "2026-08-03T15:44:57Z",
+     "description": "",
+     "description_source": "local",
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/List_of_major_power_outages",
+       "revisions": "https://en.wikipedia.org/wiki/List_of_major_power_outages?action=history",
+       "edit": "https://en.wikipedia.org/wiki/List_of_major_power_outages?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:List_of_major_power_outages"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/List_of_major_power_outages",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/List_of_major_power_outages",
+       "edit": "https://en.wikipedia.org/wiki/List_of_major_power_outages?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:List_of_major_power_outages"
+      }
+     },
+     "extract": "This is a list of notable wide-scale power outages. To be included, the power outage must conform to all of the following criteria:The outage must not be planned by the service provider.\nThe outage must affect at least 1,000 people.\nThe outage must last at least one hour.\nThere must be at least 1,000,000 person-hours of disruption.",
+     "extract_html": "<p>This is a <b>list of notable wide-scale power outages</b>. To be included, the power outage must conform to <em>all</em> of the following criteria:</p><ul><li>The outage must not be planned by the service provider.</li>\n<li>The outage must affect at least 1,000 people.</li>\n<li>The outage must last at least one hour.</li>\n<li>There must be at least 1,000,000 person-hours of disruption.</li></ul>",
+     "normalizedtitle": "List of major power outages"
+    }
+   ],
+   "year": 2005
+  },
+  {
+   "text": "One-year-old Zachary Turner is murdered in Newfoundland by his mother, who was awarded custody despite facing trial for the murder of Zachary's father. The case was documented in the film Dear Zachary and led to reform of Canada's bail laws.",
+   "pages": [
+    {
+     "type": "standard",
+     "title": "Murders_of_Andrew_Bagby_and_Zachary_Turner",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Murders of Andrew Bagby and Zachary Turner</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q6938106",
+     "titles": {
+      "canonical": "Murders_of_Andrew_Bagby_and_Zachary_Turner",
+      "normalized": "Murders of Andrew Bagby and Zachary Turner",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Murders of Andrew Bagby and Zachary Turner</span></span>"
+     },
+     "pageid": 37745960,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/en/e/e9/ZacharyTurner.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 329,
+      "height": 302
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/en/e/e9/ZacharyTurner.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 329,
+      "height": 302
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1368731853",
+     "tid": "e3cd2a88-94f4-11f1-9a3c-39957860fc28",
+     "timestamp": "2026-08-10T19:51:34Z",
+     "description": "2001 murder and 2003 child murder",
+     "description_source": "local",
+     "coordinates": {
+      "lat": 47.513769,
+      "lon": -52.995733
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Murders_of_Andrew_Bagby_and_Zachary_Turner",
+       "revisions": "https://en.wikipedia.org/wiki/Murders_of_Andrew_Bagby_and_Zachary_Turner?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Murders_of_Andrew_Bagby_and_Zachary_Turner?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Murders_of_Andrew_Bagby_and_Zachary_Turner"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Murders_of_Andrew_Bagby_and_Zachary_Turner",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Murders_of_Andrew_Bagby_and_Zachary_Turner",
+       "edit": "https://en.wikipedia.org/wiki/Murders_of_Andrew_Bagby_and_Zachary_Turner?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Murders_of_Andrew_Bagby_and_Zachary_Turner"
+      }
+     },
+     "extract": "Zachary Andrew Turner was a Canadian child from St. John's, Newfoundland and Labrador, who was killed by his mother, Shirley Jane Turner, in a murder–suicide. At the time, Shirley had been released on bail and awarded custody of the infant, even though she was in the process of being extradited to the United States to stand trial for the murder of Zachary's father, Andrew Bagby. The case led to a critical overview of Newfoundland's legal and child welfare systems as well as Canada's bail laws.",
+     "extract_html": "<p><b>Zachary Andrew Turner</b> was a Canadian child from St. John's, Newfoundland and Labrador, who was killed by his mother, Shirley Jane Turner, in a murder–suicide. At the time, Shirley had been released on bail and awarded custody of the infant, even though she was in the process of being extradited to the United States to stand trial for the murder of Zachary's father, <b>Andrew Bagby</b>. The case led to a critical overview of Newfoundland's legal and child welfare systems as well as Canada's bail laws.</p>",
+     "normalizedtitle": "Murders of Andrew Bagby and Zachary Turner"
+    },
+    {
+     "type": "standard",
+     "title": "Newfoundland_and_Labrador",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Newfoundland and Labrador</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q2003",
+     "titles": {
+      "canonical": "Newfoundland_and_Labrador",
+      "normalized": "Newfoundland and Labrador",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Newfoundland and Labrador</span></span>"
+     },
+     "pageid": 21980,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Flag_of_Newfoundland_and_Labrador.svg/330px-Flag_of_Newfoundland_and_Labrador.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 165
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/dd/Flag_of_Newfoundland_and_Labrador.svg/1280px-Flag_of_Newfoundland_and_Labrador.svg.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 1200,
+      "height": 600
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1368673451",
+     "tid": "eb6ddd07-94b6-11f1-b7f5-ae111d979219",
+     "timestamp": "2026-08-10T12:27:58Z",
+     "description": "Province of Canada",
+     "description_source": "local",
+     "coordinates": {
+      "lat": 53.23,
+      "lon": -59.99916667
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Newfoundland_and_Labrador",
+       "revisions": "https://en.wikipedia.org/wiki/Newfoundland_and_Labrador?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Newfoundland_and_Labrador?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Newfoundland_and_Labrador"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Newfoundland_and_Labrador",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Newfoundland_and_Labrador",
+       "edit": "https://en.wikipedia.org/wiki/Newfoundland_and_Labrador?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Newfoundland_and_Labrador"
+      }
+     },
+     "extract": "Newfoundland and Labrador is the easternmost province of Canada, in the country's Atlantic region. It comprises the island of Newfoundland and the continental region of Labrador, with an area of 405,212 km2 (156,453 sq mi) and a population of 547,910 in 2026. Newfoundland with its neighbouring islands has 94% of the province's population, with more than half in the Avalon Peninsula. Labrador has a land border with the province of Quebec and a short border with Nunavut on Killiniq Island. The French overseas collectivity of Saint Pierre and Miquelon lies about 20 km (12 mi) west of the Burin Peninsula.",
+     "extract_html": "<p><b>Newfoundland and Labrador</b> is the easternmost province of Canada, in the country's Atlantic region. It comprises the island of Newfoundland and the continental region of Labrador, with an area of 405,212 km<sup>2</sup> (156,453 sq mi) and a population of 547,910 in 2026. Newfoundland with its neighbouring islands has 94% of the province's population, with more than half in the Avalon Peninsula. Labrador has a land border with the province of Quebec and a short border with Nunavut on Killiniq Island. The French overseas collectivity of Saint Pierre and Miquelon lies about 20 km (12 mi) west of the Burin Peninsula.</p>",
+     "normalizedtitle": "Newfoundland and Labrador"
+    },
+    {
+     "type": "standard",
+     "title": "Dear_Zachary:_A_Letter_to_a_Son_About_His_Father",
+     "displaytitle": "<i>Dear Zachary: A Letter to a Son About His Father</i>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q5246948",
+     "titles": {
+      "canonical": "Dear_Zachary:_A_Letter_to_a_Son_About_His_Father",
+      "normalized": "Dear Zachary: A Letter to a Son About His Father",
+      "display": "<i>Dear Zachary: A Letter to a Son About His Father</i>"
+     },
+     "pageid": 15815398,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/en/f/f5/DearZacharyTheatricalPoster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 272,
+      "height": 365
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/en/f/f5/DearZacharyTheatricalPoster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 272,
+      "height": 365
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1364897176",
+     "tid": "fc4a8d90-8324-11f1-b3ca-f8e065685cbf",
+     "timestamp": "2026-07-19T03:50:30Z",
+     "description": "2008 American documentary film",
+     "description_source": "local",
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Dear_Zachary%3A_A_Letter_to_a_Son_About_His_Father",
+       "revisions": "https://en.wikipedia.org/wiki/Dear_Zachary%3A_A_Letter_to_a_Son_About_His_Father?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Dear_Zachary%3A_A_Letter_to_a_Son_About_His_Father?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Dear_Zachary%3A_A_Letter_to_a_Son_About_His_Father"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Dear_Zachary%3A_A_Letter_to_a_Son_About_His_Father",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Dear_Zachary%3A_A_Letter_to_a_Son_About_His_Father",
+       "edit": "https://en.wikipedia.org/wiki/Dear_Zachary%3A_A_Letter_to_a_Son_About_His_Father?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Dear_Zachary%3A_A_Letter_to_a_Son_About_His_Father"
+      }
+     },
+     "extract": "Dear Zachary: A Letter to a Son About His Father is a 2008 American documentary film written, produced, directed, edited, shot and scored by Kurt Kuenne. It is about Kuenne's close friend Andrew Bagby, who was murdered after ending a relationship with a woman named Shirley Jane Turner. Turner was arrested as a suspect, and, shortly thereafter, announced she was pregnant with Bagby's child, a boy she named Zachary Turner.",
+     "extract_html": "<p><i><b>Dear Zachary: A Letter to a Son About His Father</b></i> is a 2008 American documentary film written, produced, directed, edited, shot and scored by Kurt Kuenne. It is about Kuenne's close friend Andrew Bagby, who was murdered after ending a relationship with a woman named Shirley Jane Turner. Turner was arrested as a suspect, and, shortly thereafter, announced she was pregnant with Bagby's child, a boy she named Zachary Turner.</p>",
+     "normalizedtitle": "Dear Zachary: A Letter to a Son About His Father"
+    }
+   ],
+   "year": 2003
+  },
+  {
+   "text": "American International Airways Flight 808 crashes at Leeward Point Field at Guantanamo Bay Naval Base in Guantánamo Bay, Cuba, injuring the three crew members.",
+   "pages": [
+    {
+     "type": "standard",
+     "title": "American_International_Airways_Flight_808",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">American International Airways Flight 808</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q56308427",
+     "titles": {
+      "canonical": "American_International_Airways_Flight_808",
+      "normalized": "American International Airways Flight 808",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">American International Airways Flight 808</span></span>"
+     },
+     "pageid": 59817761,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Wreckage_of_N814CK.jpg/330px-Wreckage_of_N814CK.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 189
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/4/44/Wreckage_of_N814CK.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 1000,
+      "height": 573
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1363569368",
+     "tid": "595f9085-7cc6-11f1-ac4d-03b3fe82b450",
+     "timestamp": "2026-07-11T01:17:57Z",
+     "description": "1993 aviation accident in Cuba",
+     "description_source": "local",
+     "coordinates": {
+      "lat": 19.90694444,
+      "lon": -75.22222222
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/American_International_Airways_Flight_808",
+       "revisions": "https://en.wikipedia.org/wiki/American_International_Airways_Flight_808?action=history",
+       "edit": "https://en.wikipedia.org/wiki/American_International_Airways_Flight_808?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:American_International_Airways_Flight_808"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/American_International_Airways_Flight_808",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/American_International_Airways_Flight_808",
+       "edit": "https://en.wikipedia.org/wiki/American_International_Airways_Flight_808?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:American_International_Airways_Flight_808"
+      }
+     },
+     "extract": "American International Airways Flight 808 was a cargo flight operated by an American International Airways Douglas DC-8 that crashed on 18 August 1993, while attempting to land at Leeward Point Field at the Guantanamo Bay Naval Base in Cuba. All three crew members on board survived with serious injuries.",
+     "extract_html": "<p><b>American International Airways Flight 808</b> was a cargo flight operated by an American International Airways Douglas DC-8 that crashed on 18 August 1993, while attempting to land at Leeward Point Field at the Guantanamo Bay Naval Base in Cuba. All three crew members on board survived with serious injuries.</p>",
+     "normalizedtitle": "American International Airways Flight 808"
+    },
+    {
+     "type": "standard",
+     "title": "Leeward_Point_Field",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Leeward Point Field</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q6516582",
+     "titles": {
+      "canonical": "Leeward_Point_Field",
+      "normalized": "Leeward Point Field",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Leeward Point Field</span></span>"
+     },
+     "pageid": 27548020,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e8/US_Navy_100506-N-8241M-317_An_aerial_view_of_the_Leeward_Airfield_at_Naval_Station_Guantanamo_Bay%2C_Cuba.jpg/330px-US_Navy_100506-N-8241M-317_An_aerial_view_of_the_Leeward_Airfield_at_Naval_Station_Guantanamo_Bay%2C_Cuba.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 236
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/e/e8/US_Navy_100506-N-8241M-317_An_aerial_view_of_the_Leeward_Airfield_at_Naval_Station_Guantanamo_Bay%2C_Cuba.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 2100,
+      "height": 1500
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1363053221",
+     "tid": "3456ede4-7a3a-11f1-85e3-fc1ec0f3ecdc",
+     "timestamp": "2026-07-07T19:29:43Z",
+     "description": "Airport in Guantánamo Bay, Cuba",
+     "description_source": "local",
+     "coordinates": {
+      "lat": 19.90638889,
+      "lon": -75.20694444
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Leeward_Point_Field",
+       "revisions": "https://en.wikipedia.org/wiki/Leeward_Point_Field?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Leeward_Point_Field?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Leeward_Point_Field"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Leeward_Point_Field",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Leeward_Point_Field",
+       "edit": "https://en.wikipedia.org/wiki/Leeward_Point_Field?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Leeward_Point_Field"
+      }
+     },
+     "extract": "Leeward Point Field, also known as Leeward Airfield, is a U.S. military airfield located at Naval Station Guantanamo Bay in Guantánamo Bay, Cuba. On August 18th 1993, a DC-8 freighter crashed in Leeward Point field. All 3 crew members survived.",
+     "extract_html": "<p><b>Leeward Point Field</b>, also known as <b>Leeward Airfield</b>, is a U.S. military airfield located at Naval Station Guantanamo Bay in Guantánamo Bay, Cuba. On August 18th 1993, a DC-8 freighter crashed in Leeward Point field. All 3 crew members survived.</p>",
+     "normalizedtitle": "Leeward Point Field"
+    },
+    {
+     "type": "standard",
+     "title": "Guantanamo_Bay_Naval_Base",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Guantanamo Bay Naval Base</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q762570",
+     "titles": {
+      "canonical": "Guantanamo_Bay_Naval_Base",
+      "normalized": "Guantanamo Bay Naval Base",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Guantanamo Bay Naval Base</span></span>"
+     },
+     "pageid": 13037,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/US_Navy_100506-N-8241M-191_An_aerial_view_of_Bulkeley_Hall_at_Naval_Station_Guantanamo_Bay%2C_Cuba._Bulkeley_Hall_is_the_naval_station_headquarters_and_administration_building.jpg/330px-thumbnail.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 236
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/d1/US_Navy_100506-N-8241M-191_An_aerial_view_of_Bulkeley_Hall_at_Naval_Station_Guantanamo_Bay%2C_Cuba._Bulkeley_Hall_is_the_naval_station_headquarters_and_administration_building.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 2100,
+      "height": 1500
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1364988968",
+     "tid": "3f931039-839a-11f1-8ff5-543ef18dd417",
+     "timestamp": "2026-07-19T17:49:54Z",
+     "description": "Military base of the United States Navy",
+     "description_source": "local",
+     "coordinates": {
+      "lat": 19.9175,
+      "lon": -75.16
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Guantanamo_Bay_Naval_Base",
+       "revisions": "https://en.wikipedia.org/wiki/Guantanamo_Bay_Naval_Base?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Guantanamo_Bay_Naval_Base?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Guantanamo_Bay_Naval_Base"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Guantanamo_Bay_Naval_Base",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Guantanamo_Bay_Naval_Base",
+       "edit": "https://en.wikipedia.org/wiki/Guantanamo_Bay_Naval_Base?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Guantanamo_Bay_Naval_Base"
+      }
+     },
+     "extract": "Guantanamo Bay Naval Base, officially known as Naval Station Guantanamo Bay or NSGB, is a United States military base located on 45 square miles (117 km2) of land and water on the shore of Guantánamo Bay at the southeastern end of Cuba. It has been de facto extraterritoriality of the U.S. since 1903 as a coaling station and naval base. It is the oldest overseas American naval base. Since 1974, the U.S. has paid the Cuban government an annual sum equivalent to $4,085 in 1934 dollars to lease the bay. The lease was previously $2,000 per year until 1934, when it was set to match the value of gold in dollars.",
+     "extract_html": "<p><b>Guantanamo Bay Naval Base</b>, officially known as <b>Naval Station Guantanamo Bay</b> or <b>NSGB</b>, is a United States military base located on 45 square miles (117 km<sup>2</sup>) of land and water on the shore of Guantánamo Bay at the southeastern end of Cuba. It has been de facto extraterritoriality of the U.S. since 1903 as a coaling station and naval base. It is the oldest overseas American naval base. Since 1974, the U.S. has paid the Cuban government an annual sum equivalent to $4,085 in 1934 dollars to lease the bay. The lease was previously $2,000 per year until 1934, when it was set to match the value of gold in dollars.</p>",
+     "normalizedtitle": "Guantanamo Bay Naval Base"
+    },
+    {
+     "type": "standard",
+     "title": "Guantánamo_Bay",
+     "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Guantánamo Bay</span></span>",
+     "namespace": {
+      "id": 0,
+      "text": ""
+     },
+     "wikibase_item": "Q208035",
+     "titles": {
+      "canonical": "Guantánamo_Bay",
+      "normalized": "Guantánamo Bay",
+      "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Guantánamo Bay</span></span>"
+     },
+     "pageid": 4278615,
+     "thumbnail": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Guantanamo_bay_satellite_image.jpg/330px-Guantanamo_bay_satellite_image.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+      "width": 330,
+      "height": 248
+     },
+     "originalimage": {
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/04/Guantanamo_bay_satellite_image.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+      "width": 1153,
+      "height": 865
+     },
+     "lang": "en",
+     "dir": "ltr",
+     "revision": "1368213429",
+     "tid": "dcf1ab25-928f-11f1-b28b-4aad882f44ad",
+     "timestamp": "2026-08-07T18:43:21Z",
+     "description": "Bay in Guantánamo Province, Cuba",
+     "description_source": "local",
+     "coordinates": {
+      "lat": 19.99752,
+      "lon": -75.142021
+     },
+     "content_urls": {
+      "desktop": {
+       "page": "https://en.wikipedia.org/wiki/Guant%C3%A1namo_Bay",
+       "revisions": "https://en.wikipedia.org/wiki/Guant%C3%A1namo_Bay?action=history",
+       "edit": "https://en.wikipedia.org/wiki/Guant%C3%A1namo_Bay?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Guant%C3%A1namo_Bay"
+      },
+      "mobile": {
+       "page": "https://en.wikipedia.org/wiki/Guant%C3%A1namo_Bay",
+       "revisions": "https://en.wikipedia.org/wiki/Special:History/Guant%C3%A1namo_Bay",
+       "edit": "https://en.wikipedia.org/wiki/Guant%C3%A1namo_Bay?action=edit",
+       "talk": "https://en.wikipedia.org/wiki/Talk:Guant%C3%A1namo_Bay"
+      }
+     },
+     "extract": "Guantánamo Bay is a bay in Guantánamo Province at the southeastern end of Cuba. It is the largest harbor on the south side of the island and it is surrounded by steep hills which create an enclave that is cut off from its immediate hinterland.",
+     "extract_html": "<p><b>Guantánamo Bay</b> is a bay in Guantánamo Province at the southeastern end of Cuba. It is the largest harbor on the south side of the island and it is surrounded by steep hills which create an enclave that is cut off from its immediate hinterland.</p>",
+     "normalizedtitle": "Guantánamo Bay"
+    }
+   ],
+   "year": 1993
+  }
+ ]
+}
