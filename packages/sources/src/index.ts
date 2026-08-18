@@ -15,3 +15,4 @@ export {
   WIKIPEDIA_OTD_CONFIG,
 } from './wikipedia-on-this-day/wikipedia-on-this-day.adapter';
 export { rssAdapter, CURATED_FEEDS, RSS_CONFIG } from './rss/rss.adapter';
+export { createTwitterAdapter, TWITTER_CONFIG } from './twitter/twitter.adapter';

@@ -3,8 +3,9 @@
 Anti-doomscroll feed app: a finite, topic-driven feed of short cards, fetched and
 stored entirely on device (Expo / React Native, SQLite, no backend, no LLM).
 Full product/architecture plan: **PLAN.md**. Current state: Milestones 1–5 —
-sessions with lock/cooldown, 7 source adapters, ranking + votes, buffer/tier
-refill with source health, series, recall cards, badges, stats, collections, export.
+full-screen paged sessions with lock/cooldown, 8 source adapters, 12 topics
+(incl. health & finance waves), ranking + votes, buffer/tier refill with source
+health, series, recall cards, badges, stats, collections, export.
 
 ## Layout
 

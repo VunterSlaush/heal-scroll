@@ -5,11 +5,12 @@ import { Pressable, StyleSheet, Text, View } from 'react-native';
 
 interface RecallCardProps {
   card: Card;
+  topInset?: number;
   onAnswer: (card: Card, remembered: boolean) => void;
 }
 
 /** The one quiz-like interaction (PLAN §2d): body hidden until answered. */
-export function RecallCard({ card, onAnswer }: RecallCardProps) {
+export function RecallCard({ card, topInset = 0, onAnswer }: RecallCardProps) {
   const [answered, setAnswered] = useState<'remembered' | 'again' | null>(null);
 
   const answer = (remembered: boolean) => {
@@ -19,7 +20,7 @@ export function RecallCard({ card, onAnswer }: RecallCardProps) {
   };
 
   return (
-    <View style={styles.card}>
+    <View style={[styles.slide, { paddingTop: topInset + 24 }]}>
       <Text style={styles.prompt}>Do you remember?</Text>
       {card.imageUrl ? (
         <Image source={{ uri: card.imageUrl }} style={styles.image} contentFit="cover" />
@@ -47,27 +48,20 @@ export function RecallCard({ card, onAnswer }: RecallCardProps) {
 }
 
 const styles = StyleSheet.create({
-  card: {
-    backgroundColor: '#f0ede4',
-    borderRadius: 16,
-    marginHorizontal: 16,
-    marginVertical: 8,
-    padding: 16,
-    gap: 10,
-  },
-  prompt: { fontSize: 13, fontWeight: '700', color: '#8a6d1a', textTransform: 'uppercase' },
-  image: { width: '100%', height: 140, borderRadius: 12, backgroundColor: '#eee' },
-  title: { fontSize: 18, fontWeight: '600', color: '#1a1a1a' },
-  body: { fontSize: 15, lineHeight: 22, color: '#333' },
-  feedback: { fontSize: 13, color: '#666', fontStyle: 'italic' },
-  buttons: { flexDirection: 'row', gap: 12, marginTop: 4 },
+  slide: { flex: 1, backgroundColor: '#f0ede4', paddingHorizontal: 28, gap: 16 },
+  prompt: { fontSize: 14, fontWeight: '700', color: '#8a6d1a', textTransform: 'uppercase' },
+  image: { width: '100%', height: 220, borderRadius: 16, backgroundColor: '#e5e0d2' },
+  title: { fontSize: 26, fontWeight: '700', color: '#1a1a1a', lineHeight: 32 },
+  body: { fontSize: 17, lineHeight: 26, color: '#333' },
+  feedback: { fontSize: 14, color: '#666', fontStyle: 'italic' },
+  buttons: { gap: 12, marginTop: 12 },
   button: {
-    paddingHorizontal: 16,
-    paddingVertical: 10,
+    paddingVertical: 14,
     borderRadius: 999,
     backgroundColor: '#1a1a1a',
+    alignItems: 'center',
   },
-  buttonLabel: { color: '#fff', fontWeight: '600', fontSize: 13 },
+  buttonLabel: { color: '#fff', fontWeight: '600', fontSize: 15 },
   buttonSecondary: { backgroundColor: 'transparent', borderWidth: 1, borderColor: '#1a1a1a' },
-  buttonSecondaryLabel: { color: '#1a1a1a', fontWeight: '600', fontSize: 13 },
+  buttonSecondaryLabel: { color: '#1a1a1a', fontWeight: '600', fontSize: 15 },
 });

@@ -15,6 +15,7 @@ deterministic transformers: raw API payload → `Card[]`. No LLM, no storage.
 | `nasa-apod` | `nasa-apod/nasa-apod.adapter.ts` | space | factory takes an API key (DEMO_KEY default); image card first |
 | `wikipedia-otd` | `wikipedia-on-this-day/…` | history | evergreen, chronological, idempotent per date |
 | `rss` | `rss/rss.adapter.ts` | tech, ai | curated feed list; heading/paragraph splitter |
+| `twitter` | `twitter/twitter.adapter.ts` | economics, markets, finance, health, nutrition, longevity, mindfulness | X API v2 recent search; needs a paid Basic-tier bearer token (`createTwitterAdapter(token)`), inactive without one |
 
 Utils: `stripHtml`, `truncateAtSentence`, `canonicalUrl`, `hashTitle`,
 `extractFirstImage`, `makeSeriesCards`.

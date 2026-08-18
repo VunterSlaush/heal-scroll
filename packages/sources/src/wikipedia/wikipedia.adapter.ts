@@ -10,7 +10,20 @@ export const WIKIPEDIA_CONFIG: SourceConfig = {
   rateLimitPerMinute: 30,
   ttlHours: 24 * 7,
   quality: 0.8,
-  topicIds: ['space', 'science', 'tech', 'ai', 'history'],
+  topicIds: [
+    'space',
+    'science',
+    'tech',
+    'ai',
+    'history',
+    'economics',
+    'markets',
+    'finance',
+    'health',
+    'nutrition',
+    'longevity',
+    'mindfulness',
+  ],
 };
 
 /** topicId → category used with generator=categorymembers. */
@@ -20,6 +33,13 @@ const TOPIC_CATEGORIES: Record<string, string> = {
   tech: 'Category:Technology',
   ai: 'Category:Artificial intelligence',
   history: 'Category:History',
+  economics: 'Category:Economics',
+  markets: 'Category:Financial markets',
+  finance: 'Category:Personal finance',
+  health: 'Category:Medicine',
+  nutrition: 'Category:Nutrition',
+  longevity: 'Category:Ageing',
+  mindfulness: 'Category:Mindfulness',
 };
 
 const API_URL = 'https://en.wikipedia.org/w/api.php';

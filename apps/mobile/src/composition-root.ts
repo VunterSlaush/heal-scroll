@@ -25,6 +25,7 @@ import {
 import {
   arxivAdapter,
   createNasaApodAdapter,
+  createTwitterAdapter,
   hackerNewsAdapter,
   lobstersAdapter,
   rssAdapter,
@@ -35,13 +36,20 @@ import { Image } from 'expo-image';
 import { drizzle } from 'drizzle-orm/expo-sqlite';
 import { openDatabaseSync } from 'expo-sqlite';
 
-/** v1 topics (PLAN §3). */
-export const V1_TOPICS: Topic[] = [
+/** v1 topics plus the health & finance waves (PLAN §3 v1.2). */
+export const TOPICS: Topic[] = [
   { id: 'space', name: 'Space & astronomy' },
   { id: 'science', name: 'Science & nature' },
   { id: 'tech', name: 'Tech & programming' },
   { id: 'ai', name: 'AI & machine learning' },
   { id: 'history', name: 'History' },
+  { id: 'economics', name: 'Economics & business' },
+  { id: 'markets', name: 'Markets & macro' },
+  { id: 'finance', name: 'Personal finance & investing' },
+  { id: 'health', name: 'Health & medicine' },
+  { id: 'nutrition', name: 'Nutrition & food science' },
+  { id: 'longevity', name: 'Longevity & sleep' },
+  { id: 'mindfulness', name: 'Mental health & mindfulness' },
 ];
 
 const sqlite = openDatabaseSync('heal-scroll.db');
@@ -58,7 +66,12 @@ export const insightsRepo = new SqliteInsightsRepo(db);
 
 export const clock: Clock = () => new Date();
 
-/** Set EXPO_PUBLIC_NASA_API_KEY in .env to lift DEMO_KEY's rate limit. */
+/**
+ * Set EXPO_PUBLIC_NASA_API_KEY in .env to lift DEMO_KEY's rate limit.
+ * X (Twitter) needs a paid Basic-tier token in EXPO_PUBLIC_X_BEARER_TOKEN;
+ * without one the adapter is left out entirely.
+ */
+const twitterToken = process.env.EXPO_PUBLIC_X_BEARER_TOKEN;
 export const sources: SourcePort[] = [
   wikipediaAdapter,
   arxivAdapter,
@@ -67,6 +80,7 @@ export const sources: SourcePort[] = [
   createNasaApodAdapter(process.env.EXPO_PUBLIC_NASA_API_KEY ?? 'DEMO_KEY'),
   wikipediaOnThisDayAdapter,
   rssAdapter,
+  ...(twitterToken ? [createTwitterAdapter(twitterToken)] : []),
 ];
 
 export const sourceNames: Record<string, string> = Object.fromEntries(
@@ -107,7 +121,7 @@ export const buildSessionDeps: BuildSessionDeps = {
 };
 
 export async function seedInitialData(): Promise<void> {
-  await topicRepo.upsertTopics(V1_TOPICS);
+  await topicRepo.upsertTopics(TOPICS);
 }
 
 let refillInFlight: Promise<void> | undefined;

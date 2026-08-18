@@ -1,0 +1,43 @@
+{
+  "__note": "Authored to the documented X API v2 GET /2/tweets/search/recent response schema (recording a real response requires a paid Basic-tier bearer token).",
+  "data": [
+    {
+      "id": "1957501234567890123",
+      "text": "Index funds beat 88% of active managers over the last 15 years. The boring strategy keeps winning. https://t.co/abc123XYZ",
+      "author_id": "44196001",
+      "created_at": "2026-08-17T14:05:00.000Z",
+      "attachments": { "media_keys": ["3_1957501234567890001"] },
+      "public_metrics": { "retweet_count": 210, "like_count": 1834 }
+    },
+    {
+      "id": "1957498765432109876",
+      "text": "A good emergency fund is 3-6 months of expenses. Not investments. Cash you can reach tomorrow morning.",
+      "author_id": "90210002",
+      "created_at": "2026-08-17T12:40:00.000Z",
+      "public_metrics": { "retweet_count": 95, "like_count": 967 }
+    },
+    {
+      "id": "1957490000000000001",
+      "text": "https://t.co/onlyalink",
+      "author_id": "90210002",
+      "created_at": "2026-08-17T11:00:00.000Z"
+    },
+    {
+      "id": "1957480000000000002",
+      "text": "Tweet from an author missing in includes, should be skipped.",
+      "author_id": "99999999"
+    }
+  ],
+  "includes": {
+    "users": [
+      { "id": "44196001", "name": "Sensible Finance", "username": "sensiblefin" },
+      { "id": "90210002", "name": "Plain Money", "username": "plainmoney" }
+    ],
+    "media": [
+      {
+        "media_key": "3_1957501234567890001",
+        "url": "https://pbs.twimg.com/media/example-chart.jpg"
+      }
+    ]
+  }
+}
