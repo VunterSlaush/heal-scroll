@@ -1,8 +1,8 @@
 import { truncateAtSentence } from '../utils/truncate-at-sentence';
 
-const SERIES_THRESHOLD_CHARS = 600;
-const LEAD_CHARS = 300;
-const REST_CHARS = 480;
+const SERIES_THRESHOLD_CHARS = 1100;
+const LEAD_CHARS = 600;
+const REST_CHARS = 1000;
 
 /**
  * arXiv splitter (PLAN §2c): short abstracts stay one card; long ones become

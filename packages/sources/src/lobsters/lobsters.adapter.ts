@@ -33,7 +33,7 @@ export function storiesToCards(stories: LobstersStory[], topicId: string): Card[
     if (!target) return [];
     const description = story.description ? stripHtml(story.description) : '';
     const body = description
-      ? truncateAtSentence(description, 480)
+      ? truncateAtSentence(description, 1000)
       : [
           `${story.score ?? 0} points and ${story.comment_count ?? 0} comments on Lobsters.`,
           story.tags?.length ? `Tagged ${story.tags.join(', ')}.` : '',

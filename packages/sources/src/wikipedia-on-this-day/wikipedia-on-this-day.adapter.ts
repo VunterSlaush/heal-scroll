@@ -44,12 +44,22 @@ export function eventsToCards(response: OtdResponse, topicId: string, monthDay: 
     const page = event.pages?.[0];
     const pageTitle = page?.titles?.normalized ?? page?.title;
     const pageUrl = page?.content_urls?.desktop?.page;
+    // The event line alone is one sentence — the linked article's extract
+    // gives the card enough context to fill a screen.
+    const hasImage = Boolean(page?.thumbnail?.source);
+    const budget = hasImage ? 650 : 1000;
+    let body = truncateAtSentence(event.text.replace(/\s+/g, ' ').trim(), 300);
+    const extract = page?.extract?.replace(/\s+/g, ' ').trim();
+    if (extract) {
+      const remaining = budget - body.length - 2;
+      if (remaining > 120) body = `${body}\n\n${truncateAtSentence(extract, remaining)}`;
+    }
     const card: Card = {
       id: `wikipedia-otd:${monthDay}:${event.year}:${hashTitle(event.text)}`,
       topicId,
       sourceId: 'wikipedia-otd',
       title: pageTitle ? `${event.year}: ${pageTitle}` : `On this day, ${event.year}`,
-      body: truncateAtSentence(event.text.replace(/\s+/g, ' ').trim(), 480),
+      body,
       sourceName: 'Wikipedia',
       sourceUrl: canonicalUrl(pageUrl ?? 'https://en.wikipedia.org/wiki/Main_Page'),
       // Evergreen on purpose: an anniversary is not "news", so no publishedAt.

@@ -96,7 +96,7 @@ export function featuredToCards(
     if (!title || !article.extract || !pageUrl) return [];
     const topicId = topicForCategories(categoriesByTitle.get(title) ?? []);
     if (!topicId) return [];
-    const body = truncateAtSentence(stripHtml(article.extract), 480);
+    const body = truncateAtSentence(stripHtml(article.extract), article.thumbnail?.source ? 650 : 1000);
     if (body.length < 80) return [];
     const card: Card = {
       id: `wikipedia-featured:${dateKey}:${hashTitle(title)}`,

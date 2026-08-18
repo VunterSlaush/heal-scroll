@@ -33,7 +33,7 @@ describe('wikipedia adapter — pagesToCards (search-based pool)', () => {
     for (const card of cards) {
       expect(card.body).not.toMatch(/<[^>]+>/);
       expect(card.body.length).toBeGreaterThanOrEqual(120);
-      expect(card.body.length).toBeLessThanOrEqual(481);
+      expect(card.body.length).toBeLessThanOrEqual(1001);
       expect(card.body).toMatch(/[.!?…]$/);
     }
   });

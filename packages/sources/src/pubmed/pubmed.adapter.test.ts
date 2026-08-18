@@ -34,7 +34,7 @@ describe('pubmed adapter', () => {
     for (const card of cards) {
       expect(card.sourceId).toBe('pubmed');
       expect(card.sourceUrl).toMatch(/^https:\/\/pubmed\.ncbi\.nlm\.nih\.gov\/\d+\/$/);
-      expect(card.body.length).toBeLessThanOrEqual(481);
+      expect(card.body.length).toBeLessThanOrEqual(1001);
     }
     expect(new Set(cards.map((c) => c.hash)).size).toBe(cards.length);
   });

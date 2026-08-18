@@ -1,5 +1,4 @@
 import type { Card } from '@heal-scroll/core';
-import { isSubstantialCard } from '@heal-scroll/core';
 import { createFeedAdapter, type FeedSpec } from '../rss/rss.adapter';
 
 /**
@@ -30,10 +29,13 @@ export const MEDIUM_FEEDS: FeedSpec[] = [
 
 const BOILERPLATE = /\s*Continue reading on .*?»\s*\.?$/;
 
+/** Teasers must earn the screen with a real subtitle — a cover image alone is not enough. */
+const MIN_TEASER_CHARS = 120;
+
 export function cleanMediumCards(cards: Card[]): Card[] {
   return cards
     .map((card) => ({ ...card, body: card.body.replace(BOILERPLATE, '').trim() }))
-    .filter(isSubstantialCard);
+    .filter((card) => card.body.length >= MIN_TEASER_CHARS);
 }
 
 export const mediumAdapter = createFeedAdapter({

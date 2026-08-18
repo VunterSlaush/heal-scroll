@@ -70,7 +70,7 @@ export function postsToCards(listing: RedditListing, topicId: string): Card[] {
   return posts.flatMap((post) => {
     if (!post.title || !post.permalink || post.over_18 || post.stickied || post.spoiler) return [];
     const imageUrl = imageOf(post);
-    const selftext = post.selftext ? truncateAtSentence(stripHtml(post.selftext), 480) : '';
+    const selftext = post.selftext ? truncateAtSentence(stripHtml(post.selftext), 1000) : '';
     const body =
       selftext ||
       `${(post.ups ?? 0).toLocaleString('en-US')} upvotes and ${post.num_comments ?? 0} comments in r/${post.subreddit ?? ''}.`;

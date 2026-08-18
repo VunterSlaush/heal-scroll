@@ -86,7 +86,7 @@ export function tweetsToCards(response: TwitterResponse, topicId: string): Card[
       topicId,
       sourceId: 'twitter',
       title: `${author.name} (@${author.username})`,
-      body: truncateAtSentence(text, 480),
+      body: truncateAtSentence(text, 1000),
       sourceName: 'X',
       sourceUrl: `https://x.com/${author.username}/status/${tweet.id}`,
       hash: hashTitle(`${author.username} ${text.slice(0, 80)}`),

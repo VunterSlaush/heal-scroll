@@ -46,7 +46,7 @@ export function hitsToCards(response: HnResponse, topicId: string): Card[] {
     const targetUrl = hit.url ?? discussionUrl;
     // Deterministic body: Ask/Show HN text when present, else the discussion stats.
     const body = hit.story_text
-      ? truncateAtSentence(stripHtml(hit.story_text), 480)
+      ? truncateAtSentence(stripHtml(hit.story_text), 1000)
       : [
           `${hit.points ?? 0} points and ${hit.num_comments ?? 0} comments on Hacker News.`,
           hit.url ? `Article from ${domainOf(hit.url) ?? 'the web'}.` : '',

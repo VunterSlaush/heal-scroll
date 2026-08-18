@@ -31,7 +31,7 @@ export function itemsToCards(response: NasaImagesResponse, topicId: string): Car
     const data = item.data?.[0];
     const imageUrl = item.links?.find((l) => l.href)?.href;
     if (!data?.nasa_id || !data.title || !data.description || !imageUrl) return [];
-    const body = truncateAtSentence(stripHtml(data.description), 480);
+    const body = truncateAtSentence(stripHtml(data.description), 650);
     if (body.length < 40) return [];
     const card: Card = {
       id: `nasa-images:${data.nasa_id}`,

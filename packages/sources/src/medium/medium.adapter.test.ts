@@ -1,6 +1,5 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { isSubstantialCard } from '@heal-scroll/core';
 import { describe, expect, it } from 'vitest';
 import { feedItemsToCards, parseFeed } from '../rss/rss.adapter';
 import { cleanMediumCards, MEDIUM_FEEDS, mediumAdapter } from './medium.adapter';
@@ -22,16 +21,16 @@ describe('medium adapter', () => {
     const raw = feedItemsToCards(items, 'space', feedTitle ?? 'Medium', 'medium');
     const cards = cleanMediumCards(raw);
 
-    // The fixture holds 10 items; survivors either have a real subtitle
-    // (>=140 chars) or a figure image carrying a shorter teaser.
+    // The fixture holds 10 items; only the 4 with a real subtitle
+    // (>=120 chars) survive — a cover image alone no longer qualifies.
     expect(raw).toHaveLength(10);
-    expect(cards).toHaveLength(6);
+    expect(cards).toHaveLength(4);
     for (const card of cards) {
       expect(card.id).toMatch(/^medium:/);
       expect(card.sourceId).toBe('medium');
       expect(card.body).not.toMatch(/Continue reading/);
       expect(card.body).not.toMatch(/<[^>]+>/);
-      expect(isSubstantialCard(card)).toBe(true);
+      expect(card.body.length).toBeGreaterThanOrEqual(120);
     }
   });
 });

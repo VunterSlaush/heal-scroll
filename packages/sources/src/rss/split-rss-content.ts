@@ -1,10 +1,10 @@
 import { stripHtml } from '../utils/strip-html';
 import { truncateAtSentence } from '../utils/truncate-at-sentence';
 
-const CARD_CHARS = 480;
-const SINGLE_CARD_THRESHOLD = 700;
+const CARD_CHARS = 900;
+const SINGLE_CARD_THRESHOLD = 1000;
 const MIN_SECTION_CHARS = 80;
-const CLUSTER_MIN_WORDS = 60;
+const CLUSTER_MIN_WORDS = 120;
 const MAX_PARTS = 4;
 
 /**

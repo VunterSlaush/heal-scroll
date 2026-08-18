@@ -57,6 +57,6 @@ describe('splitAbstract', () => {
     const parts = splitAbstract(long);
     expect(parts).toHaveLength(2);
     expect(parts[0]).toMatch(/\.$/);
-    expect(parts[0]!.length).toBeLessThanOrEqual(300);
+    expect(parts[0]!.length).toBeLessThanOrEqual(600);
   });
 });

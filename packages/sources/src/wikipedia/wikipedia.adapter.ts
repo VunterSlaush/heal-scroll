@@ -1,4 +1,5 @@
 import type { Card, SourceConfig, SourcePort, Topic } from '@heal-scroll/core';
+import { bodyBudget } from '../utils/body-budgets';
 import { canonicalUrl } from '../utils/canonical-url';
 import { hashTitle } from '../utils/hash-title';
 import { stripHtml } from '../utils/strip-html';
@@ -46,7 +47,6 @@ const TOPIC_SEARCHES: Record<string, string> = {
   mindfulness: 'meditation psychology mental health',
 };
 
-const MAX_BODY_CHARS = 480; // ≈ 2–4 sentences
 const SEARCH_BATCH = 20;
 
 // Curation gates: obscure stubs and list/meta pages don't make interesting cards.
@@ -82,7 +82,7 @@ export function pagesToCards(response: WikipediaResponse, topicId: string): Card
   const pages = response.query?.pages ?? [];
   const cards = pages.flatMap((page) => {
     if (!page.extract || BORING_TITLE.test(page.title)) return [];
-    const body = truncateAtSentence(stripHtml(page.extract), MAX_BODY_CHARS);
+    const body = truncateAtSentence(stripHtml(page.extract), bodyBudget(Boolean(page.thumbnail?.source)));
     if (body.length < MIN_BODY_CHARS) return [];
     const totalViews = page.pageviews
       ? Object.values(page.pageviews).reduce((sum: number, v) => sum + (v ?? 0), 0)
