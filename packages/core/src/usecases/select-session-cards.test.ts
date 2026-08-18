@@ -16,9 +16,33 @@ function series(baseId: string, count: number, overrides: Partial<Card> = {}): C
 }
 
 describe('selectSessionCards', () => {
-  it('caps a single source at 2 units per session', () => {
+  it('caps a source at 2 units when other sources can fill the session', () => {
+    const cards = [
+      ...['a1', 'a2', 'a3', 'a4'].map((id) => makeCard(id, { sourceId: 'busy' })),
+      ...['b1', 'b2'].map((id) => makeCard(id, { sourceId: 'other', topicId: 'history' })),
+    ];
+    const picked = selectSessionCards(cards, { n: 4, preferShortCards: false });
+    expect(picked).toHaveLength(4);
+    expect(picked.filter((c) => c.sourceId === 'busy')).toHaveLength(2);
+  });
+
+  it('relaxes the source cap rather than shortening the session (regression)', () => {
+    // Pool dominated by two sources across four topics: the old hard cap
+    // stopped the session at 4 cards (2 per source) — exactly minTopics.
+    const cards = Array.from({ length: 12 }, (_, i) =>
+      makeCard(`c${String(i).padStart(2, '0')}`, {
+        sourceId: i % 2 === 0 ? 'wikipedia' : 'reddit',
+        topicId: ['space', 'history', 'finance', 'health'][i % 4]!,
+      }),
+    );
+    const picked = selectSessionCards(cards, { n: 7, preferShortCards: false, minTopics: 4 });
+    expect(picked).toHaveLength(7);
+    expect(new Set(picked.map((c) => c.topicId)).size).toBeGreaterThanOrEqual(4);
+  });
+
+  it('fills entirely from one source when nothing else exists', () => {
     const cards = ['a', 'b', 'c', 'd'].map((id) => makeCard(id, { sourceId: 'one' }));
-    expect(selectSessionCards(cards, { n: 4, preferShortCards: false })).toHaveLength(2);
+    expect(selectSessionCards(cards, { n: 4, preferShortCards: false })).toHaveLength(4);
   });
 
   it('avoids two consecutive cards from the same topic when possible', () => {

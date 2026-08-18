@@ -51,24 +51,35 @@ function toUnits(ranked: Card[], preferShortCards: boolean): Unit[] {
   return units;
 }
 
+interface Constraints {
+  topicAdjacency: boolean;
+  sourceCap: boolean;
+}
+
 /**
- * Greedy selection with the PLAN §2 diversity rules: max 2 units per source,
- * no two consecutive units from the same topic (relaxed in a second pass when
- * the pool is too thin), and a series never splits across the lock boundary.
+ * Greedy selection with the PLAN §2 diversity rules — max 2 units per source,
+ * no two consecutive units from the same topic, a series never splits across
+ * the lock boundary — applied as SOFT constraints: each pass relaxes one rule,
+ * because a full session matters more than perfect diversity (PLAN §2b:
+ * never show an empty/short session). Only the series-split rule is hard.
  */
 export function selectSessionCards(ranked: Card[], opts: SelectOptions): Card[] {
   if (opts.n <= 0) return [];
   const units = toUnits(ranked, opts.preferShortCards);
   const picked: Unit[] = [];
+  const taken = new Set<Unit>();
   const sourceCounts = new Map<string, number>();
   let remaining = opts.n;
 
-  const tryTake = (unit: Unit, enforceTopicAdjacency: boolean): boolean => {
+  const tryTake = (unit: Unit, constraints: Constraints): boolean => {
     if (unit.cards.length > remaining) return false;
-    if ((sourceCounts.get(unit.sourceId) ?? 0) >= MAX_UNITS_PER_SOURCE) return false;
+    if (constraints.sourceCap && (sourceCounts.get(unit.sourceId) ?? 0) >= MAX_UNITS_PER_SOURCE) {
+      return false;
+    }
     const previous = picked[picked.length - 1];
-    if (enforceTopicAdjacency && previous && previous.topicId === unit.topicId) return false;
+    if (constraints.topicAdjacency && previous && previous.topicId === unit.topicId) return false;
     picked.push(unit);
+    taken.add(unit);
     sourceCounts.set(unit.sourceId, (sourceCounts.get(unit.sourceId) ?? 0) + 1);
     remaining -= unit.cards.length;
     return true;
@@ -76,28 +87,29 @@ export function selectSessionCards(ranked: Card[], opts: SelectOptions): Card[] 
 
   // Coverage pass: the best unit of each not-yet-seen topic, until the
   // session spans minTopics distinct topics (or the pool runs out of them).
-  const taken = new Set<Unit>();
   if (opts.minTopics && opts.minTopics > 1) {
     const coveredTopics = new Set<string>();
     for (const unit of units) {
       if (coveredTopics.size >= opts.minTopics || remaining <= 0) break;
       if (coveredTopics.has(unit.topicId)) continue;
-      if (tryTake(unit, true)) {
-        taken.add(unit);
+      if (tryTake(unit, { topicAdjacency: true, sourceCap: true })) {
         coveredTopics.add(unit.topicId);
       }
     }
   }
 
-  const leftover: Unit[] = [];
-  for (const unit of units) {
-    if (remaining <= 0) break;
-    if (taken.has(unit)) continue;
-    if (!tryTake(unit, true)) leftover.push(unit);
-  }
-  for (const unit of leftover) {
-    if (remaining <= 0) break;
-    tryTake(unit, false);
+  const passes: Constraints[] = [
+    { topicAdjacency: true, sourceCap: true },
+    { topicAdjacency: false, sourceCap: true },
+    // Last resort: a session of n cards from one source beats a short session.
+    { topicAdjacency: false, sourceCap: false },
+  ];
+  for (const constraints of passes) {
+    for (const unit of units) {
+      if (remaining <= 0) break;
+      if (taken.has(unit)) continue;
+      tryTake(unit, constraints);
+    }
   }
 
   return picked.flatMap((unit) => unit.cards);
