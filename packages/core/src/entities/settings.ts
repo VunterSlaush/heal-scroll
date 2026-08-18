@@ -9,6 +9,8 @@ export interface Settings {
   disciplineStatEnabled: boolean;
 }
 
+export const SESSION_SIZE_LIMITS = { min: 5, max: 30 } as const;
+
 export const DEFAULT_SETTINGS: Settings = {
   itemsPerSession: 7,
   cooldownMinutes: 10,

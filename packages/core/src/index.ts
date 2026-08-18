@@ -2,7 +2,7 @@ export type { Card } from './entities/card';
 export type { Topic } from './entities/topic';
 export type { Source, SourceConfig } from './entities/source';
 export type { Settings } from './entities/settings';
-export { DEFAULT_SETTINGS } from './entities/settings';
+export { DEFAULT_SETTINGS, SESSION_SIZE_LIMITS } from './entities/settings';
 export type { SessionItem, SessionRecord, SessionSummary } from './entities/session';
 export type { TopicSourceState } from './entities/topic-source';
 export { isHealthy, MAX_CONSECUTIVE_FAILURES } from './entities/topic-source';

@@ -1,5 +1,5 @@
 import type { Settings, SettingsRepo } from '@heal-scroll/core';
-import { DEFAULT_SETTINGS } from '@heal-scroll/core';
+import { DEFAULT_SETTINGS, SESSION_SIZE_LIMITS } from '@heal-scroll/core';
 import { eq } from 'drizzle-orm';
 import { settings } from './schema';
 import type { Database } from './sqlite-card-repo';
@@ -12,8 +12,15 @@ export class SqliteSettingsRepo implements SettingsRepo {
 
   async getSettings(): Promise<Settings> {
     const raw = await this.getValue(SETTINGS_KEY);
-    if (!raw) return { ...DEFAULT_SETTINGS };
-    return { ...DEFAULT_SETTINGS, ...(JSON.parse(raw) as Partial<Settings>) };
+    const settings = raw
+      ? { ...DEFAULT_SETTINGS, ...(JSON.parse(raw) as Partial<Settings>) }
+      : { ...DEFAULT_SETTINGS };
+    // Values stored before the slider existed may be out of its range.
+    settings.itemsPerSession = Math.min(
+      SESSION_SIZE_LIMITS.max,
+      Math.max(SESSION_SIZE_LIMITS.min, settings.itemsPerSession),
+    );
+    return settings;
   }
 
   async saveSettings(patch: Partial<Settings>): Promise<void> {

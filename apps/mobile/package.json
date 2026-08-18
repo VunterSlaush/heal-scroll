@@ -6,6 +6,7 @@
     "@heal-scroll/core": "workspace:*",
     "@heal-scroll/data": "workspace:*",
     "@heal-scroll/sources": "workspace:*",
+    "@react-native-community/slider": "5.2.0",
     "@shopify/flash-list": "2.0.2",
     "drizzle-orm": "^0.44.0",
     "expo": "~57.0.14",

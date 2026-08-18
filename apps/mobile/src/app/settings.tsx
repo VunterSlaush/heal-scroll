@@ -1,9 +1,10 @@
+import Slider from '@react-native-community/slider';
 import type { Settings, TopicSourceState, TopicWithState } from '@heal-scroll/core';
+import { SESSION_SIZE_LIMITS } from '@heal-scroll/core';
 import { useCallback, useEffect, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
 import { settingsRepo, sources, topicRepo, topicSourceRepo } from '@/composition-root';
 
-const SESSION_SIZES = [3, 5, 7, 10, 15];
 const COOLDOWNS = [5, 10, 15, 20, 30, 60];
 const LANGUAGES: { code: string; label: string }[] = [
   { code: 'en', label: 'English' },
@@ -19,6 +20,7 @@ export default function SettingsScreen() {
   const [topics, setTopics] = useState<TopicWithState[]>([]);
   const [sourceStates, setSourceStates] = useState<TopicSourceState[]>([]);
   const [expandedTopic, setExpandedTopic] = useState<string | null>(null);
+  const [sessionSizePreview, setSessionSizePreview] = useState<number | null>(null);
 
   const load = useCallback(async () => {
     const [settingsData, topicList] = await Promise.all([
@@ -60,17 +62,22 @@ export default function SettingsScreen() {
       <Text style={styles.heading}>Session</Text>
       <View style={styles.row}>
         <Text style={styles.rowLabel}>Cards per session</Text>
-        <View style={styles.chips}>
-          {SESSION_SIZES.map((n) => (
-            <Pressable
-              key={n}
-              style={[styles.chip, settings.itemsPerSession === n && styles.chipActive]}
-              onPress={() => void update({ itemsPerSession: n })}
-            >
-              <Text style={[styles.chipLabel, settings.itemsPerSession === n && styles.chipLabelActive]}>{n}</Text>
-            </Pressable>
-          ))}
-        </View>
+        <Text style={styles.sliderValue}>{sessionSizePreview ?? settings.itemsPerSession}</Text>
+        <Slider
+          style={styles.slider}
+          minimumValue={SESSION_SIZE_LIMITS.min}
+          maximumValue={SESSION_SIZE_LIMITS.max}
+          step={1}
+          value={settings.itemsPerSession}
+          minimumTrackTintColor="#1a1a1a"
+          maximumTrackTintColor="#d4d4d4"
+          thumbTintColor="#1a1a1a"
+          onValueChange={(value) => setSessionSizePreview(Math.round(value))}
+          onSlidingComplete={(value) => {
+            setSessionSizePreview(null);
+            void update({ itemsPerSession: Math.round(value) });
+          }}
+        />
       </View>
       <View style={styles.row}>
         <Text style={styles.rowLabel}>Cooldown (minutes)</Text>
@@ -174,6 +181,8 @@ const styles = StyleSheet.create({
   topicLabelWrap: { flexDirection: 'row', alignItems: 'center', gap: 10, flexShrink: 1 },
   expandHint: { fontSize: 12, color: '#999' },
   chips: { flexDirection: 'row', gap: 6, flexWrap: 'wrap' },
+  slider: { width: '100%', height: 36 },
+  sliderValue: { fontSize: 15, fontWeight: '700', color: '#1a1a1a', fontVariant: ['tabular-nums'] },
   chip: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999, borderWidth: 1, borderColor: '#ccc' },
   chipActive: { backgroundColor: '#1a1a1a', borderColor: '#1a1a1a' },
   chipLabel: { fontSize: 13, color: '#333' },
