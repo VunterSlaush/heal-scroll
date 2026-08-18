@@ -17,6 +17,7 @@ export {
 export { rssAdapter, createFeedAdapter, CURATED_FEEDS } from './rss/rss.adapter';
 export type { FeedSpec } from './rss/rss.adapter';
 export { newsAdapter, NEWS_FEEDS } from './news/news.adapter';
+export { mediumAdapter, MEDIUM_FEEDS } from './medium/medium.adapter';
 export { pubmedAdapter, PUBMED_CONFIG } from './pubmed/pubmed.adapter';
 export { createTwitterAdapter, TOPIC_ACCOUNTS, TWITTER_CONFIG } from './twitter/twitter.adapter';
 export { createRedditAdapter, TOPIC_SUBREDDITS, REDDIT_CONFIG } from './reddit/reddit.adapter';

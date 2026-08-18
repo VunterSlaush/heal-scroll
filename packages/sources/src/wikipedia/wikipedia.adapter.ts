@@ -48,7 +48,7 @@ const MAX_PAGES_PER_REQUEST = 20; // exlimit ceiling for extracts
 
 // Curation gates: obscure stubs and list/meta pages don't make interesting cards.
 const MIN_BODY_CHARS = 120;
-const MIN_MONTHLY_VIEWS = 150;
+const MIN_MONTHLY_VIEWS = 500;
 const BORING_TITLE = /^(List|Lists|Index|Outline|Glossary|Timeline) of |\(disambiguation\)$/;
 
 interface WikipediaPage {
@@ -71,10 +71,13 @@ function popularityFromViews(totalViews: number): number {
   return Math.min(1, Math.log10(totalViews + 1) / 6);
 }
 
-/** Pure transform: recorded API payload → cards. This is what the fixture test covers. */
+/**
+ * Pure transform: recorded API payload → cards, most-viewed first so callers
+ * slicing to a limit keep the popular stuff. This is what the fixture test covers.
+ */
 export function pagesToCards(response: WikipediaResponse, topicId: string): Card[] {
   const pages = response.query?.pages ?? [];
-  return pages.flatMap((page) => {
+  const cards = pages.flatMap((page) => {
     if (!page.extract || BORING_TITLE.test(page.title)) return [];
     const body = truncateAtSentence(stripHtml(page.extract), MAX_BODY_CHARS);
     if (body.length < MIN_BODY_CHARS) return [];
@@ -97,9 +100,10 @@ export function pagesToCards(response: WikipediaResponse, topicId: string): Card
     if (page.touched) card.publishedAt = page.touched;
     return [card];
   });
+  return cards.sort((a, b) => (b.popularity ?? 0.5) - (a.popularity ?? 0.5));
 }
 
-function buildQuery(category: string, limit: number): string {
+function buildQuery(category: string): string {
   const params: Record<string, string> = {
     action: 'query',
     format: 'json',
@@ -107,7 +111,8 @@ function buildQuery(category: string, limit: number): string {
     generator: 'categorymembers',
     gcmtitle: category,
     gcmtype: 'page',
-    gcmlimit: String(Math.min(Math.max(limit, 1), MAX_PAGES_PER_REQUEST)),
+    // Always fetch a full batch so the popularity sort has a real pool to cut from.
+    gcmlimit: String(MAX_PAGES_PER_REQUEST),
     prop: 'extracts|pageimages|info|pageviews',
     exintro: '1',
     exlimit: 'max',
@@ -171,7 +176,7 @@ export function createWikipediaAdapter(
       const resolved = await resolveCategory(topic.id, await getLanguage());
       if (!resolved) return [];
       const apiUrl = `https://${resolved.lang}.wikipedia.org/w/api.php`;
-      const response = await fetch(`${apiUrl}?${buildQuery(resolved.category, limit)}`, {
+      const response = await fetch(`${apiUrl}?${buildQuery(resolved.category)}`, {
         headers: HEADERS,
       });
       if (!response.ok) {

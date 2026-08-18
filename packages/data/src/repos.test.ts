@@ -42,7 +42,6 @@ describe('SqliteSettingsRepo', () => {
       itemsPerSession: 7,
       cooldownMinutes: 10,
       language: 'en',
-      minTopicsPerSession: 4,
       preferShortCards: false,
       disciplineStatEnabled: false,
     });

@@ -22,8 +22,8 @@ const MIN_FRESHNESS = 0.05;
 const RECENT_SOURCE_PENALTY = 0.05;
 /** Cards with an image make better full-screen slides. */
 const IMAGE_BOOST = 1.15;
-/** popularity 0 → ×0.6, neutral 0.5 → ×1.0, popularity 1 → ×1.4. */
-const INTEREST_SPREAD = 0.8;
+/** popularity 0 → ×0.4, neutral 0.5 → ×1.0, popularity 1 → ×1.6. */
+const INTEREST_SPREAD = 1.2;
 
 /** Exponential decay by age; undated (evergreen) content gets a fixed mid value. */
 export function freshnessDecay(publishedAt: string | undefined, now: Date): number {

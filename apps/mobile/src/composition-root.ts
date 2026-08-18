@@ -31,6 +31,7 @@ import {
   createWikipediaOnThisDayAdapter,
   hackerNewsAdapter,
   lobstersAdapter,
+  mediumAdapter,
   newsAdapter,
   pubmedAdapter,
   rssAdapter,
@@ -98,6 +99,7 @@ export const sources: SourcePort[] = [
   createWikipediaOnThisDayAdapter(getContentLanguage),
   rssAdapter,
   newsAdapter,
+  mediumAdapter,
   pubmedAdapter,
   // Public JSON without credentials (may be bot-gated on some networks —
   // source health auto-disables it there); OAuth when credentials are set.

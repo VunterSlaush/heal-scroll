@@ -117,13 +117,15 @@ export function feedItemsToCards(
   });
 }
 
-/** Builds a SourcePort over a curated feed list; used for blogs and for news. */
+/** Builds a SourcePort over a curated feed list; used for blogs, news and Medium. */
 export function createFeedAdapter(options: {
   id: string;
   name: string;
   quality: number;
   feeds: FeedSpec[];
   ttlHours?: number;
+  /** Optional source-specific cleanup applied to each feed's cards. */
+  postProcess?: (cards: Card[]) => Card[];
 }): SourcePort {
   const config: SourceConfig = {
     userAgent: USER_AGENT,
@@ -146,7 +148,8 @@ export function createFeedAdapter(options: {
           const response = await fetch(feed.url, { headers: { 'User-Agent': USER_AGENT } });
           if (!response.ok) throw new Error(`${options.id}: HTTP ${response.status} for ${feed.url}`);
           const { feedTitle, items } = parseFeed(await response.text());
-          return feedItemsToCards(items.slice(0, perFeed), topic.id, feedTitle ?? feed.name, options.id);
+          const cards = feedItemsToCards(items.slice(0, perFeed), topic.id, feedTitle ?? feed.name, options.id);
+          return options.postProcess ? options.postProcess(cards) : cards;
         }),
       );
       const cards = results.flatMap((r) => (r.status === 'fulfilled' ? r.value : []));

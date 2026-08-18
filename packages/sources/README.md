@@ -16,6 +16,7 @@ deterministic transformers: raw API payload → `Card[]`. No LLM, no storage.
 | `wikipedia-otd` | `wikipedia-on-this-day/…` | history | evergreen, chronological, idempotent per date |
 | `rss` | `rss/rss.adapter.ts` | tech, ai | curated blog feeds via `createFeedAdapter`; heading/paragraph splitter |
 | `news` | `news/news.adapter.ts` | economics, markets, finance, health, nutrition, mindfulness, science, space, tech, ai | BBC + NPR section RSS through the same feed factory |
+| `medium` | `medium/medium.adapter.ts` | 11 topics (tag feeds) | teaser cards only — Medium RSS stopped carrying full articles; boilerplate stripped, thin teasers dropped |
 | `pubmed` | `pubmed/pubmed.adapter.ts` | science, health, nutrition, longevity, mindfulness | E-utilities (esearch JSON + efetch XML), review articles only; abstracts split like arXiv |
 | `reddit` | `reddit/reddit.adapter.ts` | all 12 topics | curated subreddits; public JSON (bot-gated on some networks — source health absorbs it) or OAuth via `createRedditAdapter({clientId, clientSecret})` |
 | `twitter` | `twitter/twitter.adapter.ts` | all 12 topics | curated accounts per topic (`TOPIC_ACCOUNTS`) via X API v2 search; needs a paid Basic-tier bearer token, inactive without one |

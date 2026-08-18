@@ -7,14 +7,14 @@ const response = fixture as WikipediaResponse;
 describe('wikipedia adapter — pagesToCards', () => {
   const cards = pagesToCards(response, 'space');
 
-  it('keeps only pages that pass the curation gates (views, body length)', () => {
-    // Fixture has 8 pages; the low-traffic stubs (GGSE-4: 19 views/30d,
-    // Dynamical dimensional reduction: 48, Crucids: 58, BOTSAT-1: 142) drop out.
-    expect(cards.map((c) => c.title).sort()).toEqual([
-      'Astranis',
-      'Cycler',
-      'Human presence in space',
-      'Space',
+  it('keeps only well-read pages and returns them most-viewed first', () => {
+    // Fixture has 8 pages; everything under 500 views/30d drops out
+    // (GGSE-4: 19, Dynamical dimensional reduction: 48, Crucids: 58,
+    // BOTSAT-1: 142, Cycler: 327).
+    expect(cards.map((c) => c.title)).toEqual([
+      'Space', // 13099 views
+      'Human presence in space', // 1413
+      'Astranis', // 1172
     ]);
   });
 
