@@ -8,7 +8,11 @@ deterministic transformers: raw API payload → `Card[]`. No LLM, no storage.
 
 | sourceId | file | topics | notes |
 | --- | --- | --- | --- |
-| `wikipedia` | `wikipedia/wikipedia.adapter.ts` | all 12 topics | category extracts + pageview curation; language-aware via `createWikipediaAdapter(getLanguage)` (langlink-resolved categories, English fallback) |
+| `wikipedia` | `wikipedia/wikipedia.adapter.ts` | all 12 topics | full-text search relevance x pageview sort (500+ views/month), language-aware with English fallback |
+| `wikipedia-featured` | `wikipedia-featured/…` | all 12 topics | daily TFA + most-read, topic-mapped via categories (celebrity noise dropped); cached per day |
+| `guardian` | `guardian/guardian.adapter.ts` | all 12 topics | Open Platform, FULL article bodies -> series; free key via EXPO_PUBLIC_GUARDIAN_API_KEY ('test' key default) |
+| `devto` | `devto/devto.adapter.ts` | tech, ai | keyless, week's top posts by reactions |
+| `nasa-images` | `nasa-images/nasa-images.adapter.ts` | space | keyless archive, image-first cards, day-rotated search terms |
 | `arxiv` | `arxiv/arxiv.adapter.ts` | space, science, ai | Atom feed; long abstracts → 2-card series |
 | `hn` | `hacker-news/hacker-news.adapter.ts` | tech, ai | Algolia API, one request per fetch |
 | `lobsters` | `lobsters/lobsters.adapter.ts` | tech | hottest.json |

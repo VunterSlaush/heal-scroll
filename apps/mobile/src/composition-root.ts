@@ -25,11 +25,15 @@ import {
 import {
   arxivAdapter,
   createNasaApodAdapter,
+  createGuardianAdapter,
   createRedditAdapter,
   createTwitterAdapter,
   createWikipediaAdapter,
+  createWikipediaFeaturedAdapter,
   createWikipediaOnThisDayAdapter,
+  devtoAdapter,
   hackerNewsAdapter,
+  nasaImagesAdapter,
   lobstersAdapter,
   mediumAdapter,
   newsAdapter,
@@ -92,6 +96,10 @@ const redditClientId = process.env.EXPO_PUBLIC_REDDIT_CLIENT_ID;
 const redditClientSecret = process.env.EXPO_PUBLIC_REDDIT_CLIENT_SECRET;
 export const sources: SourcePort[] = [
   wikipediaAdapter,
+  createWikipediaFeaturedAdapter(getContentLanguage),
+  createGuardianAdapter(process.env.EXPO_PUBLIC_GUARDIAN_API_KEY ?? 'test'),
+  devtoAdapter,
+  nasaImagesAdapter,
   arxivAdapter,
   hackerNewsAdapter,
   lobstersAdapter,

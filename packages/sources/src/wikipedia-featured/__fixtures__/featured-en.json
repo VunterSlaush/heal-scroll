@@ -1,0 +1,928 @@
+{
+ "tfa": {
+  "type": "standard",
+  "title": "Siege_of_Brest_(1342)",
+  "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Siege of Brest (1342)</span></span>",
+  "namespace": {
+   "id": 0,
+   "text": ""
+  },
+  "wikibase_item": "Q2265575",
+  "titles": {
+   "canonical": "Siege_of_Brest_(1342)",
+   "normalized": "Siege of Brest (1342)",
+   "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Siege of Brest (1342)</span></span>"
+  },
+  "pageid": 8291176,
+  "lang": "en",
+  "dir": "ltr",
+  "revision": "1370040977",
+  "tid": "9c7019dc-9b40-11f1-af70-5e8177a36bf8",
+  "timestamp": "2026-08-18T20:08:43Z",
+  "description": "Breton Civil War siege",
+  "description_source": "local",
+  "coordinates": {
+   "lat": 48.39,
+   "lon": -4.49
+  },
+  "content_urls": {
+   "desktop": {
+    "page": "https://en.wikipedia.org/wiki/Siege_of_Brest_(1342)",
+    "revisions": "https://en.wikipedia.org/wiki/Siege_of_Brest_(1342)?action=history",
+    "edit": "https://en.wikipedia.org/wiki/Siege_of_Brest_(1342)?action=edit",
+    "talk": "https://en.wikipedia.org/wiki/Talk:Siege_of_Brest_(1342)"
+   },
+   "mobile": {
+    "page": "https://en.wikipedia.org/wiki/Siege_of_Brest_(1342)",
+    "revisions": "https://en.wikipedia.org/wiki/Special:History/Siege_of_Brest_(1342)",
+    "edit": "https://en.wikipedia.org/wiki/Siege_of_Brest_(1342)?action=edit",
+    "talk": "https://en.wikipedia.org/wiki/Talk:Siege_of_Brest_(1342)"
+   }
+  },
+  "extract": "The siege of Brest took place in 1342 during the Breton Civil War. When John III, the duke of Brittany, died childless in 1341 the title was contested by Charles of Blois and John of Montfort. Charles was the nephew of the French king, Philip VI, who supported him with a large army. Charles invaded Brittany, making good progress and taking John prisoner. John's wife, Joanna of Flanders, took up the Montfortist cause and fought on. As France and England had been fighting the Hundred Years' War since 1337 Joanna appealed to Edward III, the English king, for military assistance, which was promised.",
+  "extract_html": "<p>The <b>siege of Brest</b> took place in 1342 during the Breton Civil War. When John III, the duke of Brittany, died childless in 1341 the title was contested by Charles of Blois and John of Montfort. Charles was the nephew of the French king, Philip VI, who supported him with a large army. Charles invaded Brittany, making good progress and taking John prisoner. John's wife, Joanna of Flanders, took up the Montfortist cause and fought on. As France and England had been fighting the Hundred Years' War since 1337 Joanna appealed to Edward III, the English king, for military assistance, which was promised.</p>",
+  "normalizedtitle": "Siege of Brest (1342)"
+ },
+ "mostread": {
+  "articles": [
+   {
+    "views": 10392637,
+    "rank": 1,
+    "view_history": [
+     {
+      "date": "2026-08-13Z",
+      "views": 5359
+     },
+     {
+      "date": "2026-08-14Z",
+      "views": 5182
+     },
+     {
+      "date": "2026-08-15Z",
+      "views": 5497
+     },
+     {
+      "date": "2026-08-16Z",
+      "views": 7144
+     },
+     {
+      "date": "2026-08-17Z",
+      "views": 10392637
+     }
+    ],
+    "type": "standard",
+    "title": "Hayden_Panettiere",
+    "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Hayden Panettiere</span></span>",
+    "namespace": {
+     "id": 0,
+     "text": ""
+    },
+    "wikibase_item": "Q171571",
+    "titles": {
+     "canonical": "Hayden_Panettiere",
+     "normalized": "Hayden Panettiere",
+     "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Hayden Panettiere</span></span>"
+    },
+    "pageid": 509997,
+    "thumbnail": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Hayden_Panettiere_2009_%28Straighten_Crop%29.jpg/330px-Hayden_Panettiere_2009_%28Straighten_Crop%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+     "width": 330,
+     "height": 429
+    },
+    "originalimage": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/0/04/Hayden_Panettiere_2009_%28Straighten_Crop%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 505,
+     "height": 657
+    },
+    "lang": "en",
+    "dir": "ltr",
+    "revision": "1370055828",
+    "tid": "7ef67c94-9b4f-11f1-8460-77ea13e03aa7",
+    "timestamp": "2026-08-18T21:55:16Z",
+    "description": "American actress and singer (1989–2026)",
+    "description_source": "local",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Hayden_Panettiere",
+      "revisions": "https://en.wikipedia.org/wiki/Hayden_Panettiere?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Hayden_Panettiere?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Hayden_Panettiere"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Hayden_Panettiere",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Hayden_Panettiere",
+      "edit": "https://en.wikipedia.org/wiki/Hayden_Panettiere?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Hayden_Panettiere"
+     }
+    },
+    "extract": "Hayden Lesley Panettiere was an American actress and singer. She starred as Claire Bennet on the NBC superhero series Heroes (2006–2010), Kirby Reed in the slasher horror franchise Scream (2011–2023), and Juliette Barnes in the ABC/CMT musical drama series Nashville (2012–2018). She received two nominations for acting in Nashville for a Golden Globe Award for Best Supporting Actress – Series, Miniseries or Television Film.",
+    "extract_html": "<p><b>Hayden Lesley Panettiere</b> was an American actress and singer. She starred as Claire Bennet on the NBC superhero series <i>Heroes</i> (2006–2010), Kirby Reed in the slasher horror franchise <i>Scream</i> (2011–2023), and Juliette Barnes in the ABC/CMT musical drama series <i>Nashville</i> (2012–2018). She received two nominations for acting in <i>Nashville</i> for a Golden Globe Award for Best Supporting Actress – Series, Miniseries or Television Film.</p>",
+    "normalizedtitle": "Hayden Panettiere"
+   },
+   {
+    "views": 1581846,
+    "rank": 3,
+    "view_history": [
+     {
+      "date": "2026-08-13Z",
+      "views": 1998
+     },
+     {
+      "date": "2026-08-14Z",
+      "views": 1944
+     },
+     {
+      "date": "2026-08-15Z",
+      "views": 2045
+     },
+     {
+      "date": "2026-08-16Z",
+      "views": 2319
+     },
+     {
+      "date": "2026-08-17Z",
+      "views": 1581846
+     }
+    ],
+    "type": "standard",
+    "title": "Wladimir_Klitschko",
+    "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Wladimir Klitschko</span></span>",
+    "namespace": {
+     "id": 0,
+     "text": ""
+    },
+    "wikibase_item": "Q18797",
+    "titles": {
+     "canonical": "Wladimir_Klitschko",
+     "normalized": "Wladimir Klitschko",
+     "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Wladimir Klitschko</span></span>"
+    },
+    "pageid": 379216,
+    "thumbnail": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/cd/Volodymyr_Klychko_%28Vladimir_Klitschko%29_of_Ukraine_at_the_59th_Munich_Security_Conference_in_Munich_on_17_February_2023_-_%28cropped%29.jpg/330px-Volodymyr_Klychko_%28Vladimir_Klitschko%29_of_Ukraine_at_the_59th_Munich_Security_Conference_in_Munich_on_17_February_2023_-_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+     "width": 330,
+     "height": 440
+    },
+    "originalimage": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Volodymyr_Klychko_%28Vladimir_Klitschko%29_of_Ukraine_at_the_59th_Munich_Security_Conference_in_Munich_on_17_February_2023_-_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 1464,
+     "height": 1953
+    },
+    "lang": "en",
+    "dir": "ltr",
+    "revision": "1369991472",
+    "tid": "bf310ba0-9b05-11f1-b666-f24763834e37",
+    "timestamp": "2026-08-18T13:07:21Z",
+    "description": "Ukrainian boxer (born 1976)",
+    "description_source": "local",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Wladimir_Klitschko",
+      "revisions": "https://en.wikipedia.org/wiki/Wladimir_Klitschko?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Wladimir_Klitschko?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Wladimir_Klitschko"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Wladimir_Klitschko",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Wladimir_Klitschko",
+      "edit": "https://en.wikipedia.org/wiki/Wladimir_Klitschko?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Wladimir_Klitschko"
+     }
+    },
+    "extract": "Volodymyr Klitschko is a Ukrainian former professional boxer who competed from 1996 to 2017. He held multiple heavyweight world championships between 2000 and 2015, including unified titles between 2008 and 2015. During this time he also held the International Boxing Organization (IBO) and Ring magazine titles.",
+    "extract_html": "<p><b>Volodymyr Klitschko</b> is a Ukrainian former professional boxer who competed from 1996 to 2017. He held multiple heavyweight world championships between 2000 and 2015, including unified titles between 2008 and 2015. During this time he also held the International Boxing Organization (IBO) and <i>Ring</i> magazine titles.</p>",
+    "normalizedtitle": "Wladimir Klitschko"
+   },
+   {
+    "views": 1177515,
+    "rank": 4,
+    "view_history": [
+     {
+      "date": "2026-08-13Z",
+      "views": 676
+     },
+     {
+      "date": "2026-08-14Z",
+      "views": 647
+     },
+     {
+      "date": "2026-08-15Z",
+      "views": 729
+     },
+     {
+      "date": "2026-08-16Z",
+      "views": 907
+     },
+     {
+      "date": "2026-08-17Z",
+      "views": 1177515
+     }
+    ],
+    "type": "standard",
+    "title": "Jansen_Panettiere",
+    "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Jansen Panettiere</span></span>",
+    "namespace": {
+     "id": 0,
+     "text": ""
+    },
+    "wikibase_item": "Q2550990",
+    "titles": {
+     "canonical": "Jansen_Panettiere",
+     "normalized": "Jansen Panettiere",
+     "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Jansen Panettiere</span></span>"
+    },
+    "pageid": 5493491,
+    "thumbnail": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Jansen_Panettiere.jpg/330px-Jansen_Panettiere.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+     "width": 330,
+     "height": 409
+    },
+    "originalimage": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/b/bf/Jansen_Panettiere.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 1136,
+     "height": 1408
+    },
+    "lang": "en",
+    "dir": "ltr",
+    "revision": "1369946544",
+    "tid": "5c1c874c-9abf-11f1-9fd1-3e9ba31609e1",
+    "timestamp": "2026-08-18T04:43:30Z",
+    "description": "American actor (1994–2023)",
+    "description_source": "local",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Jansen_Panettiere",
+      "revisions": "https://en.wikipedia.org/wiki/Jansen_Panettiere?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Jansen_Panettiere?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Jansen_Panettiere"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Jansen_Panettiere",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Jansen_Panettiere",
+      "edit": "https://en.wikipedia.org/wiki/Jansen_Panettiere?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Jansen_Panettiere"
+     }
+    },
+    "extract": "Jansen Rane Panettiere was an American actor, known for his roles in films The Secrets of Jonathan Sperry, The Perfect Game, The Martial Arts Kid, and How High 2. He had also provided the voice roles of Periwinkle in the sixth and final season of the Nick Jr. children's live-action/animated TV series Blue's Clues, young Stripes in Racing Stripes, young Rodney Copperbottom in Robots, Truman X in the Nickelodeon animated TV series The X's, and Shovelmouth Boy in Ice Age: The Meltdown.",
+    "extract_html": "<p><b>Jansen Rane Panettiere</b> was an American actor, known for his roles in films <i>The Secrets of Jonathan Sperry</i>, <i>The Perfect Game</i>, <i>The Martial Arts Kid</i>, and <i>How High 2</i>. He had also provided the voice roles of Periwinkle in the sixth and final season of the Nick Jr. children's live-action/animated TV series <i>Blue's Clues</i>, young Stripes in <i>Racing Stripes</i>, young Rodney Copperbottom in <i>Robots</i>, Truman X in the Nickelodeon animated TV series <i>The X's</i>, and Shovelmouth Boy in <i>Ice Age: The Meltdown</i>.</p>",
+    "normalizedtitle": "Jansen Panettiere"
+   },
+   {
+    "views": 297488,
+    "rank": 8,
+    "view_history": [
+     {
+      "date": "2026-08-13Z",
+      "views": 5091
+     },
+     {
+      "date": "2026-08-14Z",
+      "views": 4576
+     },
+     {
+      "date": "2026-08-15Z",
+      "views": 5007
+     },
+     {
+      "date": "2026-08-16Z",
+      "views": 5606
+     },
+     {
+      "date": "2026-08-17Z",
+      "views": 297488
+     }
+    ],
+    "type": "standard",
+    "title": "Michelle_Trachtenberg",
+    "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Michelle Trachtenberg</span></span>",
+    "namespace": {
+     "id": 0,
+     "text": ""
+    },
+    "wikibase_item": "Q229528",
+    "titles": {
+     "canonical": "Michelle_Trachtenberg",
+     "normalized": "Michelle Trachtenberg",
+     "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Michelle Trachtenberg</span></span>"
+    },
+    "pageid": 256004,
+    "thumbnail": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/08/Michelle_Trachtenberg_%2843904360470%29.jpg/330px-Michelle_Trachtenberg_%2843904360470%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+     "width": 330,
+     "height": 495
+    },
+    "originalimage": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/0/08/Michelle_Trachtenberg_%2843904360470%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 1204,
+     "height": 1806
+    },
+    "lang": "en",
+    "dir": "ltr",
+    "revision": "1369963511",
+    "tid": "bc1f287f-9ad7-11f1-aa29-c851bf66cf97",
+    "timestamp": "2026-08-18T07:37:59Z",
+    "description": "American actress (1985–2025)",
+    "description_source": "local",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Michelle_Trachtenberg",
+      "revisions": "https://en.wikipedia.org/wiki/Michelle_Trachtenberg?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Michelle_Trachtenberg?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Michelle_Trachtenberg"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Michelle_Trachtenberg",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Michelle_Trachtenberg",
+      "edit": "https://en.wikipedia.org/wiki/Michelle_Trachtenberg?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Michelle_Trachtenberg"
+     }
+    },
+    "extract": "Michelle Christine Trachtenberg was an American actress. After beginning her career in commercials at age three, she made her television debut in her first credited role on the Nickelodeon series The Adventures of Pete & Pete (1994–1996) and her feature film debut in the 1996 comedy Harriet the Spy. As a child actress, Trachtenberg starred in several Nickelodeon productions. In 1997, she won a Young Artist Award for her performance in CBS' sitcom Meego. She also played Penny Brown in Disney's 1999 superhero comedy film Inspector Gadget.",
+    "extract_html": "<p><b>Michelle Christine Trachtenberg</b> was an American actress. After beginning her career in commercials at age three, she made her television debut in her first credited role on the Nickelodeon series <i>The Adventures of Pete &amp; Pete</i> (1994–1996) and her feature film debut in the 1996 comedy <i>Harriet the Spy</i>. As a child actress, Trachtenberg starred in several Nickelodeon productions. In 1997, she won a Young Artist Award for her performance in CBS' sitcom <i>Meego</i>. She also played Penny Brown in Disney's 1999 superhero comedy film <i>Inspector Gadget</i>.</p>",
+    "normalizedtitle": "Michelle Trachtenberg"
+   },
+   {
+    "views": 260426,
+    "rank": 9,
+    "view_history": [
+     {
+      "date": "2026-08-13Z",
+      "views": 230600
+     },
+     {
+      "date": "2026-08-14Z",
+      "views": 220914
+     },
+     {
+      "date": "2026-08-15Z",
+      "views": 262700
+     },
+     {
+      "date": "2026-08-16Z",
+      "views": 325876
+     },
+     {
+      "date": "2026-08-17Z",
+      "views": 260426
+     }
+    ],
+    "type": "standard",
+    "title": "Spider-Man:_Brand_New_Day",
+    "displaytitle": "<i>Spider-Man: Brand New Day</i>",
+    "namespace": {
+     "id": 0,
+     "text": ""
+    },
+    "wikibase_item": "Q113244935",
+    "titles": {
+     "canonical": "Spider-Man:_Brand_New_Day",
+     "normalized": "Spider-Man: Brand New Day",
+     "display": "<i>Spider-Man: Brand New Day</i>"
+    },
+    "pageid": 65419000,
+    "thumbnail": {
+     "source": "https://upload.wikimedia.org/wikipedia/en/9/9a/Spider-Man_Brand_New_Day_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 258,
+     "height": 387
+    },
+    "originalimage": {
+     "source": "https://upload.wikimedia.org/wikipedia/en/9/9a/Spider-Man_Brand_New_Day_poster.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 258,
+     "height": 387
+    },
+    "lang": "en",
+    "dir": "ltr",
+    "revision": "1370025849",
+    "tid": "aab538c1-9b2e-11f1-a287-f87224c0f00e",
+    "timestamp": "2026-08-18T18:00:16Z",
+    "description": "2026 Marvel Studios film",
+    "description_source": "local",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Spider-Man%3A_Brand_New_Day",
+      "revisions": "https://en.wikipedia.org/wiki/Spider-Man%3A_Brand_New_Day?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Spider-Man%3A_Brand_New_Day?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Spider-Man%3A_Brand_New_Day"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Spider-Man%3A_Brand_New_Day",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Spider-Man%3A_Brand_New_Day",
+      "edit": "https://en.wikipedia.org/wiki/Spider-Man%3A_Brand_New_Day?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Spider-Man%3A_Brand_New_Day"
+     }
+    },
+    "extract": "Spider-Man: Brand New Day is a 2026 American superhero film based on the Marvel Comics character Spider-Man. Produced by Columbia Pictures, Marvel Studios, and Pascal Pictures, and distributed by Sony Pictures Releasing, it is the 38th film in the Marvel Cinematic Universe (MCU) and the fourth film in the MCU Spider-Man film series following Spider-Man: No Way Home (2021). The film was directed by Destin Daniel Cretton, written by Chris McKenna and Erik Sommers, and stars Tom Holland as Peter Parker / Spider-Man alongside Zendaya, Sadie Sink, Jacob Batalon, Jon Bernthal, Florence Pugh, Tramell Tillman, Marisa Tomei, and Mark Ruffalo. In the film, Parker is on his own and dedicated to protecting New York City as the hero Spider-Man. His personal struggles and overworking cause his superpowers to evolve while he faces a new telepathic threat.",
+    "extract_html": "<p><i><b>Spider-Man: Brand New Day</b></i> is a 2026 American superhero film based on the Marvel Comics character Spider-Man. Produced by Columbia Pictures, Marvel Studios, and Pascal Pictures, and distributed by Sony Pictures Releasing, it is the 38th film in the Marvel Cinematic Universe (MCU) and the fourth film in the <span>MCU <i>Spider-Man</i> film series</span> following <i>Spider-Man: No Way Home</i> (2021). The film was directed by Destin Daniel Cretton, written by Chris McKenna and Erik Sommers, and stars Tom Holland as Peter Parker / Spider-Man alongside Zendaya, Sadie Sink, Jacob Batalon, Jon Bernthal, Florence Pugh, Tramell Tillman, Marisa Tomei, and Mark Ruffalo. In the film, Parker is on his own and dedicated to protecting New York City as the hero Spider-Man. His personal struggles and overworking cause his superpowers to evolve while he faces a new telepathic threat.</p>",
+    "normalizedtitle": "Spider-Man: Brand New Day"
+   },
+   {
+    "views": 248699,
+    "rank": 10,
+    "view_history": [
+     {
+      "date": "2026-08-13Z",
+      "views": 20981
+     },
+     {
+      "date": "2026-08-14Z",
+      "views": 35441
+     },
+     {
+      "date": "2026-08-15Z",
+      "views": 35580
+     },
+     {
+      "date": "2026-08-16Z",
+      "views": 47755
+     },
+     {
+      "date": "2026-08-17Z",
+      "views": 248699
+     }
+    ],
+    "type": "standard",
+    "title": "Lanterns_(TV_series)",
+    "displaytitle": "<i>Lanterns</i> (TV series)",
+    "namespace": {
+     "id": 0,
+     "text": ""
+    },
+    "wikibase_item": "Q110556821",
+    "titles": {
+     "canonical": "Lanterns_(TV_series)",
+     "normalized": "Lanterns (TV series)",
+     "display": "<i>Lanterns</i> (TV series)"
+    },
+    "pageid": 63005055,
+    "thumbnail": {
+     "source": "https://upload.wikimedia.org/wikipedia/en/1/1f/Lanterns_%28TV_series%29_logo.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 330,
+     "height": 136
+    },
+    "originalimage": {
+     "source": "https://upload.wikimedia.org/wikipedia/en/1/1f/Lanterns_%28TV_series%29_logo.png?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 330,
+     "height": 136
+    },
+    "lang": "en",
+    "dir": "ltr",
+    "revision": "1370052680",
+    "tid": "a05568fb-9b4b-11f1-a861-08395b5ab460",
+    "timestamp": "2026-08-18T21:27:34Z",
+    "description": "2026 DC Studios television series",
+    "description_source": "local",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Lanterns_(TV_series)",
+      "revisions": "https://en.wikipedia.org/wiki/Lanterns_(TV_series)?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Lanterns_(TV_series)?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Lanterns_(TV_series)"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Lanterns_(TV_series)",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Lanterns_(TV_series)",
+      "edit": "https://en.wikipedia.org/wiki/Lanterns_(TV_series)?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Lanterns_(TV_series)"
+     }
+    },
+    "extract": "Lanterns is an American superhero television series created by Chris Mundy, Damon Lindelof, and Tom King for HBO, based on the DC Comics Green Lantern characters Hal Jordan and John Stewart. It is the third television series in the DC Universe (DCU). It features experienced Lantern Jordan and new recruit Stewart as they investigate a murder on Earth that leads to a wider mystery. The series was produced by DC Studios and Warner Bros. Television with Mundy serving as showrunner.",
+    "extract_html": "<p><i><b>Lanterns</b></i> is an American superhero television series created by Chris Mundy, Damon Lindelof, and Tom King for HBO, based on the DC Comics Green Lantern characters Hal Jordan and John Stewart. It is the third television series in the DC Universe (DCU). It features experienced Lantern Jordan and new recruit Stewart as they investigate a murder on Earth that leads to a wider mystery. The series was produced by DC Studios and Warner Bros. Television with Mundy serving as showrunner.</p>",
+    "normalizedtitle": "Lanterns (TV series)"
+   },
+   {
+    "views": 234644,
+    "rank": 13,
+    "view_history": [
+     {
+      "date": "2026-08-13Z",
+      "views": 5841
+     },
+     {
+      "date": "2026-08-14Z",
+      "views": 6010
+     },
+     {
+      "date": "2026-08-15Z",
+      "views": 6578
+     },
+     {
+      "date": "2026-08-16Z",
+      "views": 7723
+     },
+     {
+      "date": "2026-08-17Z",
+      "views": 234644
+     }
+    ],
+    "type": "standard",
+    "title": "Milo_Ventimiglia",
+    "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Milo Ventimiglia</span></span>",
+    "namespace": {
+     "id": 0,
+     "text": ""
+    },
+    "wikibase_item": "Q83733",
+    "titles": {
+     "canonical": "Milo_Ventimiglia",
+     "normalized": "Milo Ventimiglia",
+     "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Milo Ventimiglia</span></span>"
+    },
+    "pageid": 20596343,
+    "thumbnail": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Milo_Ventimiglia_2019_by_Glenn_Francis.jpg/330px-Milo_Ventimiglia_2019_by_Glenn_Francis.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+     "width": 330,
+     "height": 495
+    },
+    "originalimage": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/c/c3/Milo_Ventimiglia_2019_by_Glenn_Francis.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 3205,
+     "height": 4807
+    },
+    "lang": "en",
+    "dir": "ltr",
+    "revision": "1369863475",
+    "tid": "e1bd1a34-9a60-11f1-a10b-9b7d88c155a8",
+    "timestamp": "2026-08-17T17:27:12Z",
+    "description": "American actor (born 1977)",
+    "description_source": "local",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Milo_Ventimiglia",
+      "revisions": "https://en.wikipedia.org/wiki/Milo_Ventimiglia?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Milo_Ventimiglia?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Milo_Ventimiglia"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Milo_Ventimiglia",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Milo_Ventimiglia",
+      "edit": "https://en.wikipedia.org/wiki/Milo_Ventimiglia?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Milo_Ventimiglia"
+     }
+    },
+    "extract": "Milo Anthony Ventimiglia is an American actor. Making his screen acting debut on The Fresh Prince of Bel-Air in 1995, he portrayed the lead role on the short-lived series Opposite Sex in 2000 before landing his breakthrough role in Gilmore Girls (2001–2007).",
+    "extract_html": "<p><b>Milo Anthony Ventimiglia</b> is an American actor. Making his screen acting debut on <i>The Fresh Prince of Bel-Air</i> in 1995, he portrayed the lead role on the short-lived series <i>Opposite Sex</i> in 2000 before landing his breakthrough role in <i>Gilmore Girls</i> (2001–2007).</p>",
+    "normalizedtitle": "Milo Ventimiglia"
+   },
+   {
+    "views": 224065,
+    "rank": 14,
+    "view_history": [
+     {
+      "date": "2026-08-13Z",
+      "views": 35539
+     },
+     {
+      "date": "2026-08-14Z",
+      "views": 197629
+     },
+     {
+      "date": "2026-08-15Z",
+      "views": 287189
+     },
+     {
+      "date": "2026-08-16Z",
+      "views": 278989
+     },
+     {
+      "date": "2026-08-17Z",
+      "views": 224065
+     }
+    ],
+    "type": "standard",
+    "title": "Awarapan_2",
+    "displaytitle": "<i>Awarapan 2</i>",
+    "namespace": {
+     "id": 0,
+     "text": ""
+    },
+    "wikibase_item": "Q140379862",
+    "titles": {
+     "canonical": "Awarapan_2",
+     "normalized": "Awarapan 2",
+     "display": "<i>Awarapan 2</i>"
+    },
+    "pageid": 81854404,
+    "thumbnail": {
+     "source": "https://upload.wikimedia.org/wikipedia/en/7/79/Awarapan_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 280,
+     "height": 355
+    },
+    "originalimage": {
+     "source": "https://upload.wikimedia.org/wikipedia/en/7/79/Awarapan_2.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 280,
+     "height": 355
+    },
+    "lang": "en",
+    "dir": "ltr",
+    "revision": "1370041707",
+    "tid": "523b67bb-9b41-11f1-95d2-2ff977fb0efa",
+    "timestamp": "2026-08-18T20:13:48Z",
+    "description": "2026 Indian film by Nitin Kakkar",
+    "description_source": "local",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Awarapan_2",
+      "revisions": "https://en.wikipedia.org/wiki/Awarapan_2?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Awarapan_2?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Awarapan_2"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Awarapan_2",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Awarapan_2",
+      "edit": "https://en.wikipedia.org/wiki/Awarapan_2?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Awarapan_2"
+     }
+    },
+    "extract": "Awarapan 2 is a 2026 Indian Hindi-language action thriller film directed by Nitin Kakkar, written by Bilal Siddiqui and Vishesh Bhatt, and produced under his banner Vishesh Films. A sequel to the 2007 film Awarapan, the film stars Emraan Hashmi, Disha Patani and Shabana Azmi.",
+    "extract_html": "<p><i><b>Awarapan 2</b></i> is a 2026 Indian Hindi-language action thriller film directed by Nitin Kakkar, written by Bilal Siddiqui and Vishesh Bhatt, and produced under his banner Vishesh Films. A sequel to the 2007 film <i>Awarapan</i>, the film stars Emraan Hashmi, Disha Patani and Shabana Azmi.</p>",
+    "normalizedtitle": "Awarapan 2"
+   },
+   {
+    "views": 221427,
+    "rank": 15,
+    "view_history": [
+     {
+      "date": "2026-08-13Z",
+      "views": 29536
+     },
+     {
+      "date": "2026-08-14Z",
+      "views": 586742
+     },
+     {
+      "date": "2026-08-15Z",
+      "views": 987162
+     },
+     {
+      "date": "2026-08-16Z",
+      "views": 355195
+     },
+     {
+      "date": "2026-08-17Z",
+      "views": 221427
+     }
+    ],
+    "type": "standard",
+    "title": "Jason_Arday",
+    "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Jason Arday</span></span>",
+    "namespace": {
+     "id": 0,
+     "text": ""
+    },
+    "wikibase_item": "Q107349023",
+    "titles": {
+     "canonical": "Jason_Arday",
+     "normalized": "Jason Arday",
+     "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Jason Arday</span></span>"
+    },
+    "pageid": 66481824,
+    "thumbnail": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Jason_Arday_2024_%28cropped%29.jpg/330px-Jason_Arday_2024_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+     "width": 330,
+     "height": 429
+    },
+    "originalimage": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/0/07/Jason_Arday_2024_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 1132,
+     "height": 1470
+    },
+    "lang": "en",
+    "dir": "ltr",
+    "revision": "1370057387",
+    "tid": "7ef77984-9b51-11f1-b698-54ae10a6102e",
+    "timestamp": "2026-08-18T22:09:35Z",
+    "description": "British academic and author (1985–2026)",
+    "description_source": "local",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Jason_Arday",
+      "revisions": "https://en.wikipedia.org/wiki/Jason_Arday?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Jason_Arday?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Jason_Arday"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Jason_Arday",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Jason_Arday",
+      "edit": "https://en.wikipedia.org/wiki/Jason_Arday?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Jason_Arday"
+     }
+    },
+    "extract": "Jason Atta Kwei Arday was a British academic and author who was a professor of sociology of education at the University of Cambridge from 2023 to 2026. He came to international attention amid accusations of academic misconduct, his subsequent resignation and death, and debates about media conduct.",
+    "extract_html": "<p><b>Jason Atta Kwei Arday</b> was a British academic and author who was a professor of sociology of education at the University of Cambridge from 2023 to 2026. He came to international attention amid accusations of academic misconduct, his subsequent resignation and death, and debates about media conduct.</p>",
+    "normalizedtitle": "Jason Arday"
+   },
+   {
+    "views": 215888,
+    "rank": 16,
+    "view_history": [
+     {
+      "date": "2026-08-13Z",
+      "views": 494
+     },
+     {
+      "date": "2026-08-14Z",
+      "views": 536
+     },
+     {
+      "date": "2026-08-15Z",
+      "views": 498
+     },
+     {
+      "date": "2026-08-16Z",
+      "views": 588
+     },
+     {
+      "date": "2026-08-17Z",
+      "views": 215888
+     }
+    ],
+    "type": "standard",
+    "title": "Cardiomegaly",
+    "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Cardiomegaly</span></span>",
+    "namespace": {
+     "id": 0,
+     "text": ""
+    },
+    "wikibase_item": "Q1729124",
+    "titles": {
+     "canonical": "Cardiomegaly",
+     "normalized": "Cardiomegaly",
+     "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Cardiomegaly</span></span>"
+    },
+    "pageid": 3219051,
+    "thumbnail": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/34/Calcified_Heart.jpg/330px-Calcified_Heart.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+     "width": 330,
+     "height": 311
+    },
+    "originalimage": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/3/34/Calcified_Heart.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 1951,
+     "height": 1836
+    },
+    "lang": "en",
+    "dir": "ltr",
+    "revision": "1369896912",
+    "tid": "425d507e-9a83-11f1-86a9-9559258d0ea3",
+    "timestamp": "2026-08-17T21:33:17Z",
+    "description": "Enlargement of the heart",
+    "description_source": "local",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Cardiomegaly",
+      "revisions": "https://en.wikipedia.org/wiki/Cardiomegaly?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Cardiomegaly?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Cardiomegaly"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Cardiomegaly",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Cardiomegaly",
+      "edit": "https://en.wikipedia.org/wiki/Cardiomegaly?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Cardiomegaly"
+     }
+    },
+    "extract": "Cardiomegaly is a medical condition in which the heart becomes enlarged. It is more commonly referred to simply as \"having an enlarged heart\". It is usually the result of underlying conditions that make the heart work harder, such as obesity, heart valve disease, high blood pressure (hypertension), and coronary artery disease. Cardiomyopathy is also associated with cardiomegaly.",
+    "extract_html": "<p><b>Cardiomegaly</b> is a medical condition in which the heart becomes enlarged. It is more commonly referred to simply as \"having an enlarged heart\". It is usually the result of underlying conditions that make the heart work harder, such as obesity, heart valve disease, high blood pressure (hypertension), and coronary artery disease. Cardiomyopathy is also associated with cardiomegaly.</p>",
+    "normalizedtitle": "Cardiomegaly"
+   },
+   {
+    "views": 210456,
+    "rank": 17,
+    "view_history": [
+     {
+      "date": "2026-08-13Z",
+      "views": 78735
+     },
+     {
+      "date": "2026-08-14Z",
+      "views": 34038
+     },
+     {
+      "date": "2026-08-15Z",
+      "views": 14581
+     },
+     {
+      "date": "2026-08-16Z",
+      "views": 49517
+     },
+     {
+      "date": "2026-08-17Z",
+      "views": 210456
+     }
+    ],
+    "type": "standard",
+    "title": "Google",
+    "displaytitle": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Google</span></span>",
+    "namespace": {
+     "id": 0,
+     "text": ""
+    },
+    "wikibase_item": "Q95",
+    "titles": {
+     "canonical": "Google",
+     "normalized": "Google",
+     "display": "<span lang=\"en\" dir=\"ltr\"><span class=\"mw-page-title-main\">Google</span></span>"
+    },
+    "pageid": 1092923,
+    "thumbnail": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Googleplex_HQ_%28cropped%29.jpg/330px-Googleplex_HQ_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail",
+     "width": 330,
+     "height": 241
+    },
+    "originalimage": {
+     "source": "https://upload.wikimedia.org/wikipedia/commons/3/32/Googleplex_HQ_%28cropped%29.jpg?utm_source=en.wikipedia.org&utm_campaign=api&utm_content=thumbnail_unscaled",
+     "width": 3024,
+     "height": 2212
+    },
+    "lang": "en",
+    "dir": "ltr",
+    "revision": "1370002844",
+    "tid": "5dc46909-9b14-11f1-a1db-a25ca2ebc432",
+    "timestamp": "2026-08-18T14:52:00Z",
+    "description": "American multinational technology company",
+    "description_source": "local",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Google",
+      "revisions": "https://en.wikipedia.org/wiki/Google?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Google?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Google"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Google",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Google",
+      "edit": "https://en.wikipedia.org/wiki/Google?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Google"
+     }
+    },
+    "extract": "Google LLC is an American multinational technology corporation focused on information technology, online advertising, search engine technology, email, cloud computing, software, quantum computing, e-commerce, consumer electronics, and artificial intelligence (AI). It has been referred to as \"the most powerful company in the world\" by the BBC, and is one of the world's most valuable brands. Google's parent company Alphabet Inc. has been described as a Big Tech company.",
+    "extract_html": "<p><b>Google LLC</b> is an American multinational technology corporation focused on information technology, online advertising, search engine technology, email, cloud computing, software, quantum computing, e-commerce, consumer electronics, and artificial intelligence (AI). It has been referred to as \"the most powerful company in the world\" by the BBC, and is one of the world's most valuable brands. Google's parent company Alphabet Inc. has been described as a Big Tech company.</p>",
+    "normalizedtitle": "Google"
+   },
+   {
+    "views": 190824,
+    "rank": 18,
+    "view_history": [
+     {
+      "date": "2026-08-13Z",
+      "views": 4488
+     },
+     {
+      "date": "2026-08-14Z",
+      "views": 4324
+     },
+     {
+      "date": "2026-08-15Z",
+      "views": 4577
+     },
+     {
+      "date": "2026-08-16Z",
+      "views": 5664
+     },
+     {
+      "date": "2026-08-17Z",
+      "views": 190824
+     }
+    ],
+    "type": "standard",
+    "title": "Heroes_(American_TV_series)",
+    "displaytitle": "<i>Heroes</i> (American TV series)",
+    "namespace": {
+     "id": 0,
+     "text": ""
+    },
+    "wikibase_item": "Q83401",
+    "titles": {
+     "canonical": "Heroes_(American_TV_series)",
+     "normalized": "Heroes (American TV series)",
+     "display": "<i>Heroes</i> (American TV series)"
+    },
+    "pageid": 5207311,
+    "lang": "en",
+    "dir": "ltr",
+    "revision": "1369931715",
+    "tid": "2326e939-9aac-11f1-a9f6-f7cedd111811",
+    "timestamp": "2026-08-18T02:25:54Z",
+    "description": "American television series (2006–2010)",
+    "description_source": "local",
+    "content_urls": {
+     "desktop": {
+      "page": "https://en.wikipedia.org/wiki/Heroes_(American_TV_series)",
+      "revisions": "https://en.wikipedia.org/wiki/Heroes_(American_TV_series)?action=history",
+      "edit": "https://en.wikipedia.org/wiki/Heroes_(American_TV_series)?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Heroes_(American_TV_series)"
+     },
+     "mobile": {
+      "page": "https://en.wikipedia.org/wiki/Heroes_(American_TV_series)",
+      "revisions": "https://en.wikipedia.org/wiki/Special:History/Heroes_(American_TV_series)",
+      "edit": "https://en.wikipedia.org/wiki/Heroes_(American_TV_series)?action=edit",
+      "talk": "https://en.wikipedia.org/wiki/Talk:Heroes_(American_TV_series)"
+     }
+    },
+    "extract": "Heroes is an American superhero drama television series created by Tim Kring that aired on NBC for four seasons from September 25, 2006, to February 8, 2010. The series tells the stories of ordinary people who discover that they have superhuman abilities and how these abilities take effect in the characters' lives as they work together to prevent catastrophic futures. The series emulates the aesthetic style and storytelling of American comic books, using multi-episode story arcs that build upon a larger, more encompassing narrative. It was produced by Tailwind Productions in association with Universal Media Studios. It was filmed primarily in Los Angeles, California.",
+    "extract_html": "<p><i><b>Heroes</b></i> is an American superhero drama television series created by Tim Kring that aired on NBC for four seasons from September 25, 2006, to February 8, 2010. The series tells the stories of ordinary people who discover that they have superhuman abilities and how these abilities take effect in the characters' lives as they work together to prevent catastrophic futures. The series emulates the aesthetic style and storytelling of American comic books, using multi-episode story arcs that build upon a larger, more encompassing narrative. It was produced by Tailwind Productions in association with Universal Media Studios. It was filmed primarily in Los Angeles, California.</p>",
+    "normalizedtitle": "Heroes (American TV series)"
+   }
+  ]
+ }
+}

@@ -26,25 +26,28 @@ export const WIKIPEDIA_CONFIG: SourceConfig = {
   ],
 };
 
-/** topicId → category used with generator=categorymembers. */
-const TOPIC_CATEGORIES: Record<string, string> = {
-  space: 'Category:Space',
-  science: 'Category:Science',
-  tech: 'Category:Technology',
-  ai: 'Category:Artificial intelligence',
-  history: 'Category:History',
-  economics: 'Category:Economics',
-  markets: 'Category:Financial markets',
-  finance: 'Category:Personal finance',
-  health: 'Category:Medicine',
-  nutrition: 'Category:Nutrition',
-  longevity: 'Category:Ageing',
-  mindfulness: 'Category:Mindfulness',
+/**
+ * topicId → full-text search terms. CirrusSearch relevance already favors
+ * well-linked, notable articles, and the pageview sort below finishes the
+ * job — a far better pool than raw category members ever gave.
+ */
+const TOPIC_SEARCHES: Record<string, string> = {
+  space: 'space exploration astronomy planets',
+  science: 'scientific discovery biology physics',
+  tech: 'computer technology software internet',
+  ai: 'artificial intelligence machine learning',
+  history: 'ancient history empire civilization',
+  economics: 'economics trade industry companies',
+  markets: 'stock market investment banking',
+  finance: 'personal finance money savings investment',
+  health: 'medicine disease treatment human health',
+  nutrition: 'nutrition food diet vitamins',
+  longevity: 'ageing sleep longevity lifespan',
+  mindfulness: 'meditation psychology mental health',
 };
 
-const API_URL = 'https://en.wikipedia.org/w/api.php';
 const MAX_BODY_CHARS = 480; // ≈ 2–4 sentences
-const MAX_PAGES_PER_REQUEST = 20; // exlimit ceiling for extracts
+const SEARCH_BATCH = 20;
 
 // Curation gates: obscure stubs and list/meta pages don't make interesting cards.
 const MIN_BODY_CHARS = 120;
@@ -103,16 +106,14 @@ export function pagesToCards(response: WikipediaResponse, topicId: string): Card
   return cards.sort((a, b) => (b.popularity ?? 0.5) - (a.popularity ?? 0.5));
 }
 
-function buildQuery(category: string): string {
+function buildQuery(searchTerms: string): string {
   const params: Record<string, string> = {
     action: 'query',
     format: 'json',
     formatversion: '2',
-    generator: 'categorymembers',
-    gcmtitle: category,
-    gcmtype: 'page',
-    // Always fetch a full batch so the popularity sort has a real pool to cut from.
-    gcmlimit: String(MAX_PAGES_PER_REQUEST),
+    generator: 'search',
+    gsrsearch: searchTerms,
+    gsrlimit: String(SEARCH_BATCH),
     prop: 'extracts|pageimages|info|pageviews',
     exintro: '1',
     exlimit: 'max',
@@ -132,38 +133,19 @@ const HEADERS = {
 };
 
 /**
- * Language-aware adapter. Category names differ per wiki, so for non-English
- * languages the English category's langlink is resolved once (cached) and the
- * matching wiki is queried; topics without a localized category fall back to
- * English content rather than going empty.
+ * Language-aware adapter: queries the content language's wiki with the topic's
+ * search terms (English terms match reasonably via cognates and redirects);
+ * when a localized wiki yields too little, English fills the gap.
  */
 export function createWikipediaAdapter(
   getLanguage: () => Promise<string> = () => Promise.resolve('en'),
 ): SourcePort {
-  const localizedCategories = new Map<string, string | null>();
-
-  async function resolveCategory(topicId: string, language: string): Promise<{ lang: string; category: string } | undefined> {
-    const englishCategory = TOPIC_CATEGORIES[topicId];
-    if (!englishCategory) return undefined;
-    if (language === 'en') return { lang: 'en', category: englishCategory };
-
-    const cacheKey = `${language}:${topicId}`;
-    if (!localizedCategories.has(cacheKey)) {
-      try {
-        const response = await fetch(
-          `${API_URL}?action=query&format=json&formatversion=2&prop=langlinks&lllimit=1&lllang=${language}&titles=${encodeURIComponent(englishCategory)}`,
-          { headers: HEADERS },
-        );
-        const json = (await response.json()) as {
-          query?: { pages?: Array<{ langlinks?: Array<{ title?: string }> }> };
-        };
-        localizedCategories.set(cacheKey, json.query?.pages?.[0]?.langlinks?.[0]?.title ?? null);
-      } catch {
-        localizedCategories.set(cacheKey, null);
-      }
-    }
-    const localized = localizedCategories.get(cacheKey);
-    return localized ? { lang: language, category: localized } : { lang: 'en', category: englishCategory };
+  async function search(lang: string, topicId: string, terms: string): Promise<Card[]> {
+    const response = await fetch(`https://${lang}.wikipedia.org/w/api.php?${buildQuery(terms)}`, {
+      headers: HEADERS,
+    });
+    if (!response.ok) throw new Error(`wikipedia: HTTP ${response.status} for ${topicId}`);
+    return pagesToCards((await response.json()) as WikipediaResponse, topicId);
   }
 
   return {
@@ -172,18 +154,14 @@ export function createWikipediaAdapter(
     config: WIKIPEDIA_CONFIG,
 
     async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
-      if (limit <= 0) return [];
-      const resolved = await resolveCategory(topic.id, await getLanguage());
-      if (!resolved) return [];
-      const apiUrl = `https://${resolved.lang}.wikipedia.org/w/api.php`;
-      const response = await fetch(`${apiUrl}?${buildQuery(resolved.category)}`, {
-        headers: HEADERS,
-      });
-      if (!response.ok) {
-        throw new Error(`wikipedia: HTTP ${response.status} for ${topic.id}`);
+      const terms = TOPIC_SEARCHES[topic.id];
+      if (!terms || limit <= 0) return [];
+      const language = await getLanguage();
+      let cards = await search(language, topic.id, terms);
+      if (cards.length < 3 && language !== 'en') {
+        cards = await search('en', topic.id, terms);
       }
-      const json = (await response.json()) as WikipediaResponse;
-      return pagesToCards(json, topic.id).slice(0, limit);
+      return cards.slice(0, limit);
     },
   };
 }

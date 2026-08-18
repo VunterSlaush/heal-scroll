@@ -24,3 +24,11 @@ export { createRedditAdapter, TOPIC_SUBREDDITS, REDDIT_CONFIG } from './reddit/r
 export type { RedditCredentials } from './reddit/reddit.adapter';
 export { createWikipediaAdapter } from './wikipedia/wikipedia.adapter';
 export { createWikipediaOnThisDayAdapter } from './wikipedia-on-this-day/wikipedia-on-this-day.adapter';
+export {
+  createWikipediaFeaturedAdapter,
+  wikipediaFeaturedAdapter,
+  WIKIPEDIA_FEATURED_CONFIG,
+} from './wikipedia-featured/wikipedia-featured.adapter';
+export { createGuardianAdapter, GUARDIAN_CONFIG } from './guardian/guardian.adapter';
+export { devtoAdapter, DEVTO_CONFIG } from './devto/devto.adapter';
+export { nasaImagesAdapter, NASA_IMAGES_CONFIG } from './nasa-images/nasa-images.adapter';
