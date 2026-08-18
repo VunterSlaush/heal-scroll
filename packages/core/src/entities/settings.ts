@@ -1,6 +1,8 @@
 export interface Settings {
   itemsPerSession: number;
   cooldownMinutes: number;
+  /** Distinct topics a session tries to cover (capped by enabled topics/pool). */
+  minTopicsPerSession: number;
   /** Disables multi-card series in sessions (PLAN §2c). */
   preferShortCards: boolean;
   /** Quiet discipline stat, off by default (PLAN §2d). */
@@ -10,6 +12,7 @@ export interface Settings {
 export const DEFAULT_SETTINGS: Settings = {
   itemsPerSession: 7,
   cooldownMinutes: 10,
+  minTopicsPerSession: 4,
   preferShortCards: false,
   disciplineStatEnabled: false,
 };

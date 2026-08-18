@@ -62,6 +62,8 @@ export function hitsToCards(response: HnResponse, topicId: string): Card[] {
       sourceName: 'Hacker News',
       sourceUrl: canonicalUrl(targetUrl),
       hash: hashTitle(hit.title),
+      // ~50 points → 0.49, ~500 → 0.77, ~3000+ → 1
+      popularity: Math.min(1, Math.log10((hit.points ?? 0) + 1) / 3.5),
     };
     if (hit.created_at) card.publishedAt = hit.created_at;
     return [card];

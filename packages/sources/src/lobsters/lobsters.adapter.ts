@@ -49,6 +49,8 @@ export function storiesToCards(stories: LobstersStory[], topicId: string): Card[
       sourceName: 'Lobsters',
       sourceUrl: canonicalUrl(target),
       hash: hashTitle(story.title),
+      // Lobsters scores are small: ~15 → 0.48, ~100 → 0.8
+      popularity: Math.min(1, Math.log10((story.score ?? 0) + 1) / 2.5),
     };
     if (story.created_at) card.publishedAt = story.created_at;
     return [card];

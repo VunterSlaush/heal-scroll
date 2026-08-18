@@ -1,3 +1,4 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import type { Card } from '@heal-scroll/core';
 import { Image } from 'expo-image';
 import { Linking, Pressable, Share, StyleSheet, Text, View } from 'react-native';
@@ -28,30 +29,45 @@ export function CardItem({
   onToggleSave,
   onVote,
 }: CardItemProps) {
+  const iconSize = fullScreen ? 24 : 18;
+  const idleColor = '#666';
+  const activeColor = '#1a1a1a';
+
   const actions = (
     <View style={styles.footer}>
-      <Pressable onPress={() => void Linking.openURL(card.sourceUrl)} hitSlop={8}>
-        <Text style={[styles.source, fullScreen && styles.sourceBig]}>{card.sourceName} ↗</Text>
+      <Pressable onPress={() => void Linking.openURL(card.sourceUrl)} hitSlop={8} style={styles.sourceLink}>
+        <Text style={[styles.source, fullScreen && styles.sourceBig]}>{card.sourceName}</Text>
+        <Ionicons name="open-outline" size={iconSize - 6} color={idleColor} />
       </Pressable>
       <View style={styles.actions}>
         {onVote ? (
           <>
             <Pressable onPress={() => onVote(card, 1)} hitSlop={10}>
-              <Text style={[styles.action, fullScreen && styles.actionBig, vote === 1 && styles.actionActive]}>▲</Text>
+              <Ionicons
+                name={vote === 1 ? 'thumbs-up' : 'thumbs-up-outline'}
+                size={iconSize}
+                color={vote === 1 ? activeColor : idleColor}
+              />
             </Pressable>
             <Pressable onPress={() => onVote(card, -1)} hitSlop={10}>
-              <Text style={[styles.action, fullScreen && styles.actionBig, vote === -1 && styles.actionActive]}>▼</Text>
+              <Ionicons
+                name={vote === -1 ? 'thumbs-down' : 'thumbs-down-outline'}
+                size={iconSize}
+                color={vote === -1 ? activeColor : idleColor}
+              />
             </Pressable>
           </>
         ) : null}
         <Pressable onPress={() => shareCard(card)} hitSlop={10}>
-          <Text style={[styles.action, fullScreen && styles.actionBig]}>Share</Text>
+          <Ionicons name="share-social-outline" size={iconSize} color={idleColor} />
         </Pressable>
         {onToggleSave ? (
           <Pressable onPress={() => onToggleSave(card)} hitSlop={10}>
-            <Text style={[styles.action, fullScreen && styles.actionBig, saved && styles.actionActive]}>
-              {saved ? 'Saved' : 'Save'}
-            </Text>
+            <Ionicons
+              name={saved ? 'bookmark' : 'bookmark-outline'}
+              size={iconSize}
+              color={saved ? activeColor : idleColor}
+            />
           </Pressable>
         ) : null}
       </View>
@@ -127,10 +143,8 @@ const styles = StyleSheet.create({
   revisitTag: { fontSize: 12, color: '#8a6d1a', fontWeight: '600' },
   seriesTag: { fontSize: 12, color: '#666', fontWeight: '600' },
   footer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 4 },
+  sourceLink: { flexDirection: 'row', alignItems: 'center', gap: 4 },
   source: { fontSize: 13, color: '#666' },
   sourceBig: { fontSize: 15 },
-  actions: { flexDirection: 'row', gap: 20, alignItems: 'center' },
-  action: { fontSize: 13, color: '#666' },
-  actionBig: { fontSize: 16 },
-  actionActive: { color: '#1a1a1a', fontWeight: '700' },
+  actions: { flexDirection: 'row', gap: 22, alignItems: 'center' },
 });

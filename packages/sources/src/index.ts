@@ -14,5 +14,8 @@ export {
   wikipediaOnThisDayAdapter,
   WIKIPEDIA_OTD_CONFIG,
 } from './wikipedia-on-this-day/wikipedia-on-this-day.adapter';
-export { rssAdapter, CURATED_FEEDS, RSS_CONFIG } from './rss/rss.adapter';
+export { rssAdapter, createFeedAdapter, CURATED_FEEDS } from './rss/rss.adapter';
+export type { FeedSpec } from './rss/rss.adapter';
+export { newsAdapter, NEWS_FEEDS } from './news/news.adapter';
+export { pubmedAdapter, PUBMED_CONFIG } from './pubmed/pubmed.adapter';
 export { createTwitterAdapter, TWITTER_CONFIG } from './twitter/twitter.adapter';

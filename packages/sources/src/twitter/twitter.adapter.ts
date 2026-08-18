@@ -46,6 +46,7 @@ interface Tweet {
   author_id?: string;
   created_at?: string;
   attachments?: { media_keys?: string[] };
+  public_metrics?: { like_count?: number };
 }
 
 export interface TwitterResponse {
@@ -72,6 +73,8 @@ export function tweetsToCards(response: TwitterResponse, topicId: string): Card[
       sourceName: 'X',
       sourceUrl: `https://x.com/${author.username}/status/${tweet.id}`,
       hash: hashTitle(`${author.username} ${text.slice(0, 80)}`),
+      // ~100 likes → 0.5, ~10k → 1
+      popularity: Math.min(1, Math.log10((tweet.public_metrics?.like_count ?? 0) + 1) / 4),
     };
     if (tweet.created_at) card.publishedAt = tweet.created_at;
     const firstMediaKey = tweet.attachments?.media_keys?.[0];

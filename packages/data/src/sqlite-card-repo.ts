@@ -32,6 +32,7 @@ function cardToRow(card: Card, createdAt: Date): typeof items.$inferInsert {
     seriesId: card.seriesId ?? null,
     seriesIndex: card.seriesIndex ?? null,
     seriesCount: card.seriesCount ?? null,
+    popularity: card.popularity ?? null,
   };
 }
 
@@ -51,6 +52,7 @@ export function rowToCard(row: ItemRow): Card {
   if (row.seriesId) card.seriesId = row.seriesId;
   if (row.seriesIndex !== null) card.seriesIndex = row.seriesIndex;
   if (row.seriesCount !== null) card.seriesCount = row.seriesCount;
+  if (row.popularity !== null) card.popularity = row.popularity;
   return card;
 }
 

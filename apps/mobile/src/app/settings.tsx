@@ -5,6 +5,7 @@ import { settingsRepo, sources, topicRepo, topicSourceRepo } from '@/composition
 
 const SESSION_SIZES = [3, 5, 7, 10, 15];
 const COOLDOWNS = [5, 10, 15, 20, 30, 60];
+const TOPIC_SPREADS = [2, 3, 4, 5, 6];
 
 export default function SettingsScreen() {
   const [settings, setSettings] = useState<Settings | null>(null);
@@ -75,6 +76,22 @@ export default function SettingsScreen() {
             >
               <Text style={[styles.chipLabel, settings.cooldownMinutes === minutes && styles.chipLabelActive]}>
                 {minutes}
+              </Text>
+            </Pressable>
+          ))}
+        </View>
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.rowLabel}>Topics per session (at least)</Text>
+        <View style={styles.chips}>
+          {TOPIC_SPREADS.map((count) => (
+            <Pressable
+              key={count}
+              style={[styles.chip, settings.minTopicsPerSession === count && styles.chipActive]}
+              onPress={() => void update({ minTopicsPerSession: count })}
+            >
+              <Text style={[styles.chipLabel, settings.minTopicsPerSession === count && styles.chipLabelActive]}>
+                {count}
               </Text>
             </Pressable>
           ))}

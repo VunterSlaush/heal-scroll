@@ -15,6 +15,11 @@ export interface Card {
   publishedAt?: string;
   /** Normalized-title hash used for cross-source dedupe. */
   hash: string;
+  /**
+   * Interest prior from the source, 0..1 (Wikipedia pageviews, HN points,
+   * likes…). Undefined means neutral (0.5). A ranking input, not a rating.
+   */
+  popularity?: number;
   /** Set when the card belongs to a multi-card series (PLAN §2c). */
   seriesId?: string;
   /** 1-based position within the series. */

@@ -4,6 +4,8 @@ export interface SelectOptions {
   n: number;
   /** Disables multi-card series; the lead card is used standalone instead. */
   preferShortCards: boolean;
+  /** Distinct topics the session tries to cover before ranking fills the rest. */
+  minTopics?: number;
 }
 
 const MAX_UNITS_PER_SOURCE = 2;
@@ -72,9 +74,25 @@ export function selectSessionCards(ranked: Card[], opts: SelectOptions): Card[] 
     return true;
   };
 
+  // Coverage pass: the best unit of each not-yet-seen topic, until the
+  // session spans minTopics distinct topics (or the pool runs out of them).
+  const taken = new Set<Unit>();
+  if (opts.minTopics && opts.minTopics > 1) {
+    const coveredTopics = new Set<string>();
+    for (const unit of units) {
+      if (coveredTopics.size >= opts.minTopics || remaining <= 0) break;
+      if (coveredTopics.has(unit.topicId)) continue;
+      if (tryTake(unit, true)) {
+        taken.add(unit);
+        coveredTopics.add(unit.topicId);
+      }
+    }
+  }
+
   const leftover: Unit[] = [];
   for (const unit of units) {
     if (remaining <= 0) break;
+    if (taken.has(unit)) continue;
     if (!tryTake(unit, true)) leftover.push(unit);
   }
   for (const unit of leftover) {

@@ -14,7 +14,9 @@ deterministic transformers: raw API payload → `Card[]`. No LLM, no storage.
 | `lobsters` | `lobsters/lobsters.adapter.ts` | tech | hottest.json |
 | `nasa-apod` | `nasa-apod/nasa-apod.adapter.ts` | space | factory takes an API key (DEMO_KEY default); image card first |
 | `wikipedia-otd` | `wikipedia-on-this-day/…` | history | evergreen, chronological, idempotent per date |
-| `rss` | `rss/rss.adapter.ts` | tech, ai | curated feed list; heading/paragraph splitter |
+| `rss` | `rss/rss.adapter.ts` | tech, ai | curated blog feeds via `createFeedAdapter`; heading/paragraph splitter |
+| `news` | `news/news.adapter.ts` | economics, markets, finance, health, nutrition, mindfulness, science, space, tech, ai | BBC + NPR section RSS through the same feed factory |
+| `pubmed` | `pubmed/pubmed.adapter.ts` | science, health, nutrition, longevity, mindfulness | E-utilities (esearch JSON + efetch XML), review articles only; abstracts split like arXiv |
 | `twitter` | `twitter/twitter.adapter.ts` | economics, markets, finance, health, nutrition, longevity, mindfulness | X API v2 recent search; needs a paid Basic-tier bearer token (`createTwitterAdapter(token)`), inactive without one |
 
 Utils: `stripHtml`, `truncateAtSentence`, `canonicalUrl`, `hashTitle`,

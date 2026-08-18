@@ -46,6 +46,11 @@ const API_URL = 'https://en.wikipedia.org/w/api.php';
 const MAX_BODY_CHARS = 480; // ≈ 2–4 sentences
 const MAX_PAGES_PER_REQUEST = 20; // exlimit ceiling for extracts
 
+// Curation gates: obscure stubs and list/meta pages don't make interesting cards.
+const MIN_BODY_CHARS = 120;
+const MIN_MONTHLY_VIEWS = 150;
+const BORING_TITLE = /^(List|Lists|Index|Outline|Glossary|Timeline) of |\(disambiguation\)$/;
+
 interface WikipediaPage {
   pageid: number;
   title: string;
@@ -53,19 +58,30 @@ interface WikipediaPage {
   fullurl?: string;
   touched?: string;
   thumbnail?: { source: string };
+  /** date → views, from prop=pageviews (may hold nulls for missing days). */
+  pageviews?: Record<string, number | null>;
 }
 
 export interface WikipediaResponse {
   query?: { pages?: WikipediaPage[] };
 }
 
+/** log-scale: ~1k views/month → 0.5, ~1M+ → 1. */
+function popularityFromViews(totalViews: number): number {
+  return Math.min(1, Math.log10(totalViews + 1) / 6);
+}
+
 /** Pure transform: recorded API payload → cards. This is what the fixture test covers. */
 export function pagesToCards(response: WikipediaResponse, topicId: string): Card[] {
   const pages = response.query?.pages ?? [];
   return pages.flatMap((page) => {
-    if (!page.extract) return [];
+    if (!page.extract || BORING_TITLE.test(page.title)) return [];
     const body = truncateAtSentence(stripHtml(page.extract), MAX_BODY_CHARS);
-    if (!body) return [];
+    if (body.length < MIN_BODY_CHARS) return [];
+    const totalViews = page.pageviews
+      ? Object.values(page.pageviews).reduce((sum: number, v) => sum + (v ?? 0), 0)
+      : undefined;
+    if (totalViews !== undefined && totalViews < MIN_MONTHLY_VIEWS) return [];
     const card: Card = {
       id: `wikipedia:${page.pageid}`,
       topicId,
@@ -76,6 +92,7 @@ export function pagesToCards(response: WikipediaResponse, topicId: string): Card
       sourceUrl: canonicalUrl(page.fullurl ?? `https://en.wikipedia.org/?curid=${page.pageid}`),
       hash: hashTitle(page.title),
     };
+    if (totalViews !== undefined) card.popularity = popularityFromViews(totalViews);
     if (page.thumbnail?.source) card.imageUrl = page.thumbnail.source;
     if (page.touched) card.publishedAt = page.touched;
     return [card];
@@ -91,12 +108,13 @@ function buildQuery(category: string, limit: number): string {
     gcmtitle: category,
     gcmtype: 'page',
     gcmlimit: String(Math.min(Math.max(limit, 1), MAX_PAGES_PER_REQUEST)),
-    prop: 'extracts|pageimages|info',
+    prop: 'extracts|pageimages|info|pageviews',
     exintro: '1',
     exlimit: 'max',
     piprop: 'thumbnail',
     pithumbsize: '640',
     inprop: 'url',
+    pvipdays: '30',
   };
   return Object.entries(params)
     .map(([key, value]) => `${key}=${encodeURIComponent(value)}`)

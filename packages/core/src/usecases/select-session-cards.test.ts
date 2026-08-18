@@ -58,6 +58,23 @@ describe('selectSessionCards', () => {
     expect(picked.map((c) => c.id)).toEqual(['arxiv:1#1']);
   });
 
+  it('covers minTopics distinct topics even when one topic dominates the ranking', () => {
+    const cards = [
+      ...['a', 'b', 'c', 'd'].map((id, i) => makeCard(id, { topicId: 'space', sourceId: `s${i}` })),
+      makeCard('h', { topicId: 'history', sourceId: 'sh' }),
+      makeCard('f', { topicId: 'finance', sourceId: 'sf' }),
+    ];
+    const picked = selectSessionCards(cards, { n: 5, preferShortCards: false, minTopics: 3 });
+    expect(new Set(picked.map((c) => c.topicId)).size).toBeGreaterThanOrEqual(3);
+    expect(picked).toHaveLength(5);
+  });
+
+  it('coverage degrades gracefully when fewer topics exist than requested', () => {
+    const cards = [makeCard('a', { sourceId: 's1' }), makeCard('b', { sourceId: 's2' })];
+    const picked = selectSessionCards(cards, { n: 2, preferShortCards: false, minTopics: 4 });
+    expect(picked).toHaveLength(2);
+  });
+
   it('uses the earliest remaining card standalone when a series is partial', () => {
     const [, second, third] = series('arxiv:1', 3);
     const picked = selectSessionCards([second!, third!], { n: 3, preferShortCards: false });

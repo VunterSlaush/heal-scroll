@@ -18,6 +18,7 @@ export const items = sqliteTable(
     seriesId: text('series_id'),
     seriesIndex: integer('series_index'),
     seriesCount: integer('series_count'),
+    popularity: real('popularity'),
   },
   (table) => [
     uniqueIndex('items_hash_unique').on(table.hash),

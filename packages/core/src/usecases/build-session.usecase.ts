@@ -88,6 +88,7 @@ export async function buildSession(deps: BuildSessionDeps): Promise<BuildSession
   let selected: SessionItem[] = selectSessionCards(rankCards(pool, context), {
     n,
     preferShortCards: settings.preferShortCards,
+    minTopics: settings.minTopicsPerSession,
   }).map((card) => ({ kind: 'card', card, revisit: false }));
 
   if (selected.length < n && topicIds.length > 0) {

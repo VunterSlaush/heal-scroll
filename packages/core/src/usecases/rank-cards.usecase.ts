@@ -20,6 +20,10 @@ const FRESHNESS_HALF_LIFE_DAYS = 7;
 const EVERGREEN_FRESHNESS = 0.6;
 const MIN_FRESHNESS = 0.05;
 const RECENT_SOURCE_PENALTY = 0.05;
+/** Cards with an image make better full-screen slides. */
+const IMAGE_BOOST = 1.15;
+/** popularity 0 → ×0.6, neutral 0.5 → ×1.0, popularity 1 → ×1.4. */
+const INTEREST_SPREAD = 0.8;
 
 /** Exponential decay by age; undated (evergreen) content gets a fixed mid value. */
 export function freshnessDecay(publishedAt: string | undefined, now: Date): number {
@@ -36,8 +40,10 @@ export function scoreCard(card: Card, ctx: RankContext): number {
   const quality = ctx.sourceQuality[card.sourceId] ?? 1;
   const learned = ctx.sourceWeights[`${card.topicId}/${card.sourceId}`] ?? 1;
   const freshness = freshnessDecay(card.publishedAt, ctx.now);
+  const interest = 1 - INTEREST_SPREAD / 2 + INTEREST_SPREAD * (card.popularity ?? 0.5);
+  const imageBoost = card.imageUrl ? IMAGE_BOOST : 1;
   const penalty = (ctx.recentSourceCounts[card.sourceId] ?? 0) * RECENT_SOURCE_PENALTY;
-  return topicWeight * quality * learned * freshness - penalty;
+  return topicWeight * quality * learned * freshness * interest * imageBoost - penalty;
 }
 
 /** Highest score first; ties broken by id so the order is fully deterministic. */

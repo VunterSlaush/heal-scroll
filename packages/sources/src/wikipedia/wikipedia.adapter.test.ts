@@ -7,11 +7,18 @@ const response = fixture as WikipediaResponse;
 describe('wikipedia adapter — pagesToCards', () => {
   const cards = pagesToCards(response, 'space');
 
-  it('turns every fixture page with an extract into a card', () => {
-    expect(cards).toHaveLength(8);
+  it('keeps only pages that pass the curation gates (views, body length)', () => {
+    // Fixture has 8 pages; the low-traffic stubs (GGSE-4: 19 views/30d,
+    // Dynamical dimensional reduction: 48, Crucids: 58, BOTSAT-1: 142) drop out.
+    expect(cards.map((c) => c.title).sort()).toEqual([
+      'Astranis',
+      'Cycler',
+      'Human presence in space',
+      'Space',
+    ]);
   });
 
-  it('maps the first page completely', () => {
+  it('maps the first page completely, including log-scale popularity', () => {
     const space = cards.find((c) => c.id === 'wikipedia:27667');
     expect(space).toMatchObject({
       topicId: 'space',
@@ -23,6 +30,9 @@ describe('wikipedia adapter — pagesToCards', () => {
       publishedAt: expect.stringMatching(/^\d{4}-\d{2}-\d{2}T/),
       hash: expect.stringMatching(/^[0-9a-f]{8}$/),
     });
+    // 13k views/30d → log10(13100)/6 ≈ 0.69
+    expect(space?.popularity).toBeGreaterThan(0.6);
+    expect(space?.popularity).toBeLessThanOrEqual(1);
     expect(space?.body.startsWith('Space is a three-dimensional continuum')).toBe(true);
   });
 
@@ -30,16 +40,30 @@ describe('wikipedia adapter — pagesToCards', () => {
     for (const card of cards) {
       expect(card.body).not.toMatch(/<[^>]+>/);
       expect(card.body).not.toMatch(/&[a-z]+;/);
-      expect(card.body.length).toBeGreaterThan(0);
+      expect(card.body.length).toBeGreaterThanOrEqual(120);
       expect(card.body.length).toBeLessThanOrEqual(481);
       expect(card.body).toMatch(/[.!?…]$/);
     }
   });
 
-  it('omits imageUrl when the page has no thumbnail', () => {
-    const noThumb = cards.find((c) => c.title === 'GGSE-4');
-    expect(noThumb).toBeDefined();
-    expect(noThumb?.imageUrl).toBeUndefined();
+  it('filters list/meta pages and keeps popularity optional without pageviews', () => {
+    const longExtract = `<p>${'A perfectly interesting sentence about the topic at hand. '.repeat(5)}</p>`;
+    const synthetic = pagesToCards(
+      {
+        query: {
+          pages: [
+            { pageid: 1, title: 'List of space agencies', extract: longExtract },
+            { pageid: 2, title: 'Space (disambiguation)', extract: longExtract },
+            { pageid: 3, title: 'No thumbnail, no views', extract: longExtract },
+          ],
+        },
+      },
+      'space',
+    );
+    expect(synthetic).toHaveLength(1);
+    expect(synthetic[0]!.title).toBe('No thumbnail, no views');
+    expect(synthetic[0]!.imageUrl).toBeUndefined();
+    expect(synthetic[0]!.popularity).toBeUndefined();
   });
 
   it('dedupe hashes are unique across the fixture', () => {

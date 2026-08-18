@@ -45,6 +45,8 @@ export function apodToCards(items: ApodItem[], topicId: string): Card[] {
       sourceName: 'NASA APOD',
       sourceUrl: apodPageUrl(item.date),
       publishedAt: `${item.date}T00:00:00Z`,
+      // Editorially curated by NASA — a fixed high interest prior.
+      popularity: 0.8,
     };
     // Museum/NASA pattern (PLAN §2c): image card first, description card second.
     const bodies =

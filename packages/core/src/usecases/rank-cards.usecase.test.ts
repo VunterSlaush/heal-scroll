@@ -50,6 +50,20 @@ describe('rankCards', () => {
     expect(rankCards([stale, fresh], ctx())[0]?.id).toBe('fresh');
   });
 
+  it('prioritizes cards with images', () => {
+    const withImage = makeCard('img', { imageUrl: 'https://example.org/a.jpg', sourceId: 's1' });
+    const without = makeCard('bare', { sourceId: 's2' });
+    expect(rankCards([without, withImage], ctx())[0]?.id).toBe('img');
+  });
+
+  it('boosts popular cards and treats missing popularity as neutral', () => {
+    const popular = makeCard('pop', { popularity: 1, sourceId: 's1' });
+    const neutral = makeCard('mid', { sourceId: 's2' });
+    const obscure = makeCard('obs', { popularity: 0, sourceId: 's3' });
+    expect(rankCards([obscure, neutral, popular], ctx()).map((c) => c.id)).toEqual(['pop', 'mid', 'obs']);
+    expect(scoreCard(neutral, ctx())).toBeCloseTo(scoreCard(makeCard('x', { sourceId: 's2', popularity: 0.5, hash: 'h' }), ctx()));
+  });
+
   it('is deterministic on ties (by id)', () => {
     const cards = [makeCard('b'), makeCard('a')];
     expect(rankCards(cards, ctx()).map((c) => c.id)).toEqual(['a', 'b']);

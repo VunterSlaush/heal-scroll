@@ -15,6 +15,13 @@
       "when": 1787079504656,
       "tag": "0001_futuristic_puff_adder",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "6",
+      "when": 1787087102131,
+      "tag": "0002_clear_rictor",
+      "breakpoints": true
     }
   ]
 }

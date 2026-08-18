@@ -6,16 +6,16 @@ import { extractFirstImage } from '../utils/extract-first-image';
 import { hashTitle } from '../utils/hash-title';
 import { splitRssContent } from './split-rss-content';
 
-export const RSS_CONFIG: SourceConfig = {
-  userAgent: 'heal-scroll/0.1 (personal project; jesus.mota@monalee.co)',
-  rateLimitPerMinute: 30,
-  ttlHours: 24,
-  quality: 0.7,
-  topicIds: ['tech', 'ai'],
-};
+const USER_AGENT = 'heal-scroll/0.1 (personal project; jesus.mota@monalee.co)';
 
-/** Curated feeds (PLAN §3): per-feed topic mapping, extended over time. */
-export const CURATED_FEEDS: Array<{ url: string; name: string; topicIds: string[] }> = [
+export interface FeedSpec {
+  url: string;
+  name: string;
+  topicIds: string[];
+}
+
+/** Curated blog feeds (PLAN §3): per-feed topic mapping, extended over time. */
+export const CURATED_FEEDS: FeedSpec[] = [
   { url: 'https://blog.codinghorror.com/rss/', name: 'Coding Horror', topicIds: ['tech'] },
   { url: 'https://martinfowler.com/feed.atom', name: 'Martin Fowler', topicIds: ['tech'] },
   { url: 'https://jalammar.github.io/feed.xml', name: 'Jay Alammar', topicIds: ['ai'] },
@@ -33,6 +33,7 @@ interface RssItem {
   guid?: string | { '#text'?: string };
   id?: string;
   'media:content'?: { '@_url'?: string };
+  'media:thumbnail'?: { '@_url'?: string };
 }
 
 interface ParsedFeed {
@@ -84,6 +85,7 @@ export function feedItemsToCards(
   items: RssItem[],
   topicId: string,
   feedName: string,
+  sourceId = 'rss',
 ): Card[] {
   return items.flatMap((item) => {
     const title = textOf(item.title)?.replace(/\s+/g, ' ').trim();
@@ -96,9 +98,9 @@ export function feedItemsToCards(
 
     const sourceUrl = canonicalUrl(link);
     const base: Omit<Card, 'body' | 'hash'> = {
-      id: `rss:${hashTitle(sourceUrl)}`,
+      id: `${sourceId}:${hashTitle(sourceUrl)}`,
       topicId,
-      sourceId: 'rss',
+      sourceId,
       title,
       sourceName: feedName,
       sourceUrl,
@@ -108,35 +110,57 @@ export function feedItemsToCards(
       const date = new Date(publishedAt);
       if (!Number.isNaN(date.getTime())) base.publishedAt = date.toISOString();
     }
-    const image = item['media:content']?.['@_url'] ?? extractFirstImage(html);
+    const image =
+      item['media:content']?.['@_url'] ?? item['media:thumbnail']?.['@_url'] ?? extractFirstImage(html);
     if (image) base.imageUrl = image;
     return makeSeriesCards(base, bodies);
   });
 }
 
-export const rssAdapter: SourcePort = {
+/** Builds a SourcePort over a curated feed list; used for blogs and for news. */
+export function createFeedAdapter(options: {
+  id: string;
+  name: string;
+  quality: number;
+  feeds: FeedSpec[];
+  ttlHours?: number;
+}): SourcePort {
+  const config: SourceConfig = {
+    userAgent: USER_AGENT,
+    rateLimitPerMinute: 30,
+    ttlHours: options.ttlHours ?? 24,
+    quality: options.quality,
+    topicIds: [...new Set(options.feeds.flatMap((feed) => feed.topicIds))],
+  };
+  return {
+    id: options.id,
+    name: options.name,
+    config,
+
+    async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
+      const feeds = options.feeds.filter((feed) => feed.topicIds.includes(topic.id));
+      if (feeds.length === 0 || limit <= 0) return [];
+      const perFeed = Math.ceil(limit / feeds.length);
+      const results = await Promise.allSettled(
+        feeds.map(async (feed) => {
+          const response = await fetch(feed.url, { headers: { 'User-Agent': USER_AGENT } });
+          if (!response.ok) throw new Error(`${options.id}: HTTP ${response.status} for ${feed.url}`);
+          const { feedTitle, items } = parseFeed(await response.text());
+          return feedItemsToCards(items.slice(0, perFeed), topic.id, feedTitle ?? feed.name, options.id);
+        }),
+      );
+      const cards = results.flatMap((r) => (r.status === 'fulfilled' ? r.value : []));
+      if (cards.length === 0 && results.every((r) => r.status === 'rejected')) {
+        throw new Error(`${options.id}: all feeds failed`);
+      }
+      return cards;
+    },
+  };
+}
+
+export const rssAdapter = createFeedAdapter({
   id: 'rss',
   name: 'Curated RSS',
-  config: RSS_CONFIG,
-
-  async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
-    const feeds = CURATED_FEEDS.filter((feed) => feed.topicIds.includes(topic.id));
-    if (feeds.length === 0 || limit <= 0) return [];
-    const perFeed = Math.ceil(limit / feeds.length);
-    const results = await Promise.allSettled(
-      feeds.map(async (feed) => {
-        const response = await fetch(feed.url, {
-          headers: { 'User-Agent': RSS_CONFIG.userAgent },
-        });
-        if (!response.ok) throw new Error(`rss: HTTP ${response.status} for ${feed.url}`);
-        const { feedTitle, items } = parseFeed(await response.text());
-        return feedItemsToCards(items.slice(0, perFeed), topic.id, feedTitle ?? feed.name);
-      }),
-    );
-    const cards = results.flatMap((r) => (r.status === 'fulfilled' ? r.value : []));
-    if (cards.length === 0 && results.every((r) => r.status === 'rejected')) {
-      throw new Error('rss: all feeds failed');
-    }
-    return cards;
-  },
-};
+  quality: 0.7,
+  feeds: CURATED_FEEDS,
+});

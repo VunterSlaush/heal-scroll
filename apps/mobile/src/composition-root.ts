@@ -28,6 +28,8 @@ import {
   createTwitterAdapter,
   hackerNewsAdapter,
   lobstersAdapter,
+  newsAdapter,
+  pubmedAdapter,
   rssAdapter,
   wikipediaAdapter,
   wikipediaOnThisDayAdapter,
@@ -80,6 +82,8 @@ export const sources: SourcePort[] = [
   createNasaApodAdapter(process.env.EXPO_PUBLIC_NASA_API_KEY ?? 'DEMO_KEY'),
   wikipediaOnThisDayAdapter,
   rssAdapter,
+  newsAdapter,
+  pubmedAdapter,
   ...(twitterToken ? [createTwitterAdapter(twitterToken)] : []),
 ];
 
