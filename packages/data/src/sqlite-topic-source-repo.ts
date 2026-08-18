@@ -1,5 +1,5 @@
 import type { TopicSourceRepo, TopicSourceState } from '@heal-scroll/core';
-import { and, eq, inArray, sql } from 'drizzle-orm';
+import { inArray, sql } from 'drizzle-orm';
 import { fetchLog, topicSources } from './schema';
 import type { Database } from './sqlite-card-repo';
 

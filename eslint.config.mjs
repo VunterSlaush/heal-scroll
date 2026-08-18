@@ -13,6 +13,14 @@ export default tseslint.config(
   },
   ...tseslint.configs.recommended,
   {
+    rules: {
+      '@typescript-eslint/no-unused-vars': [
+        'error',
+        { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
+      ],
+    },
+  },
+  {
     // Layer rule: core is pure TS — no React, no Expo, no infrastructure.
     files: ['packages/core/src/**'],
     rules: {

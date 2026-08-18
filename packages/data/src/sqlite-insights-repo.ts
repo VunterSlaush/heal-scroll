@@ -6,7 +6,7 @@ import type {
   TopicReadingStats,
   TopicRecallStats,
 } from '@heal-scroll/core';
-import { and, eq, gt, gte, isNotNull, ne, sql } from 'drizzle-orm';
+import { and, eq, gte, isNotNull, ne, sql } from 'drizzle-orm';
 import { items, recallLog, sessions, userItems } from './schema';
 import type { Database } from './sqlite-card-repo';
 
