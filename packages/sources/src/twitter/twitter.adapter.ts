@@ -11,22 +11,39 @@ export const TWITTER_CONFIG: SourceConfig = {
   userAgent: 'heal-scroll/0.1 (personal project; jesus.mota@monalee.co)',
   rateLimitPerMinute: 4,
   ttlHours: 12,
-  quality: 0.5,
-  topicIds: ['economics', 'markets', 'finance', 'health', 'nutrition', 'longevity', 'mindfulness'],
+  quality: 0.55,
+  topicIds: [
+    'space', 'science', 'tech', 'ai', 'history', 'economics', 'markets',
+    'finance', 'health', 'nutrition', 'longevity', 'mindfulness',
+  ],
 };
 
 const API_URL = 'https://api.x.com/2/tweets/search/recent';
 
-/** topicId → search query; English originals only, no retweets/replies. */
-const TOPIC_QUERIES: Record<string, string> = {
-  economics: '(economics OR macroeconomics)',
-  markets: '("stock market" OR "bond market" OR "interest rates")',
-  finance: '("personal finance" OR investing OR saving)',
-  health: '(medicine OR "public health" OR "clinical trial")',
-  nutrition: '(nutrition OR "food science" OR diet)',
-  longevity: '(longevity OR "sleep science" OR aging)',
-  mindfulness: '(mindfulness OR "mental health" OR meditation)',
+/**
+ * Curated accounts per topic — original posts from known-good authors beat
+ * keyword search for signal. Edit freely; the query is built from `from:`.
+ */
+export const TOPIC_ACCOUNTS: Record<string, string[]> = {
+  space: ['NASA', 'ESA', 'NASAWebb', 'SPACEdotcom'],
+  science: ['nature', 'QuantaMagazine', 'newscientist', 'ScienceMagazine'],
+  tech: ['IEEESpectrum', 'arstechnica', 'verge'],
+  ai: ['OpenAI', 'AnthropicAI', 'GoogleDeepMind', 'huggingface'],
+  history: ['HistoryToday', 'BBCHistoryMag'],
+  economics: ['TheEconomist', 'WSJecon'],
+  markets: ['markets', 'WSJmarkets'],
+  finance: ['morganhousel', 'ramit'],
+  health: ['WHO', 'NIH', 'CDCgov'],
+  nutrition: ['ExamineCom', 'nutrition_org'],
+  longevity: ['PeterAttiaMD', 'sleepdiplomat'],
+  mindfulness: ['Headspace', 'hubermanlab'],
 };
+
+function queryFor(topicId: string): string | undefined {
+  const accounts = TOPIC_ACCOUNTS[topicId];
+  if (!accounts || accounts.length === 0) return undefined;
+  return `(${accounts.map((a) => `from:${a}`).join(' OR ')}) -is:retweet -is:reply`;
+}
 
 interface TweetMedia {
   media_key: string;
@@ -92,9 +109,9 @@ export function createTwitterAdapter(bearerToken?: string): SourcePort {
     config: TWITTER_CONFIG,
 
     async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
-      const topicQuery = TOPIC_QUERIES[topic.id];
+      const topicQuery = queryFor(topic.id);
       if (!bearerToken || !topicQuery || limit <= 0) return [];
-      const query = encodeURIComponent(`${topicQuery} lang:en -is:retweet -is:reply`);
+      const query = encodeURIComponent(topicQuery);
       const params = [
         `query=${query}`,
         `max_results=${Math.min(Math.max(limit, 10), 100)}`, // API minimum is 10

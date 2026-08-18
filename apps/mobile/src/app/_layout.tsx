@@ -3,10 +3,40 @@ import migrations from '@heal-scroll/data/migrations';
 import { useMigrations } from 'drizzle-orm/expo-sqlite/migrator';
 import { Tabs } from 'expo-router';
 import { StatusBar } from 'expo-status-bar';
+import type { ComponentProps } from 'react';
 import { useEffect } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { registerBackgroundRefill } from '@/background/background-refill';
 import { db } from '@/composition-root';
+
+type PressableProps = ComponentProps<typeof Pressable>;
+
+/** Plain Pressable with opacity feedback — no Android ripple circle. */
+function TabButton({ style, ...rest }: PressableProps) {
+  return (
+    <Pressable
+      {...rest}
+      style={({ pressed }) => [style as object, pressed && styles.tabPressed]}
+    />
+  );
+}
+
+/** Maps react-navigation's button props onto a ripple-free Pressable. */
+const renderTabButton: ComponentProps<typeof Tabs>['screenOptions'] = {
+  tabBarActiveTintColor: '#1a1a1a',
+  tabBarButton: ({ children, style, onPress, onLongPress, accessibilityState, accessibilityLabel, testID }) => (
+    <TabButton
+      style={style as PressableProps['style']}
+      onPress={onPress}
+      onLongPress={onLongPress}
+      accessibilityState={accessibilityState}
+      accessibilityLabel={accessibilityLabel}
+      testID={testID}
+    >
+      {children}
+    </TabButton>
+  ),
+};
 
 export default function RootLayout() {
   const { success, error } = useMigrations(db, migrations);
@@ -29,7 +59,7 @@ export default function RootLayout() {
   return (
     <>
       <StatusBar style="auto" />
-      <Tabs screenOptions={{ tabBarActiveTintColor: '#1a1a1a' }}>
+      <Tabs screenOptions={renderTabButton}>
         <Tabs.Screen
           name="index"
           options={{
@@ -67,4 +97,5 @@ export default function RootLayout() {
 const styles = StyleSheet.create({
   center: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24 },
   errorText: { color: '#b00020', textAlign: 'center' },
+  tabPressed: { opacity: 0.55 },
 });

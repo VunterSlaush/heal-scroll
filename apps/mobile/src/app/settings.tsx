@@ -6,6 +6,14 @@ import { settingsRepo, sources, topicRepo, topicSourceRepo } from '@/composition
 const SESSION_SIZES = [3, 5, 7, 10, 15];
 const COOLDOWNS = [5, 10, 15, 20, 30, 60];
 const TOPIC_SPREADS = [2, 3, 4, 5, 6];
+const LANGUAGES: { code: string; label: string }[] = [
+  { code: 'en', label: 'English' },
+  { code: 'es', label: 'Español' },
+  { code: 'fr', label: 'Français' },
+  { code: 'de', label: 'Deutsch' },
+  { code: 'pt', label: 'Português' },
+  { code: 'it', label: 'Italiano' },
+];
 
 export default function SettingsScreen() {
   const [settings, setSettings] = useState<Settings | null>(null);
@@ -77,6 +85,20 @@ export default function SettingsScreen() {
               <Text style={[styles.chipLabel, settings.cooldownMinutes === minutes && styles.chipLabelActive]}>
                 {minutes}
               </Text>
+            </Pressable>
+          ))}
+        </View>
+      </View>
+      <View style={styles.row}>
+        <Text style={styles.rowLabel}>Content language</Text>
+        <View style={styles.chips}>
+          {LANGUAGES.map(({ code, label }) => (
+            <Pressable
+              key={code}
+              style={[styles.chip, settings.language === code && styles.chipActive]}
+              onPress={() => void update({ language: code })}
+            >
+              <Text style={[styles.chipLabel, settings.language === code && styles.chipLabelActive]}>{label}</Text>
             </Pressable>
           ))}
         </View>

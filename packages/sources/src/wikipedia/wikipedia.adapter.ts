@@ -121,25 +121,66 @@ function buildQuery(category: string, limit: number): string {
     .join('&');
 }
 
-export const wikipediaAdapter: SourcePort = {
-  id: 'wikipedia',
-  name: 'Wikipedia',
-  config: WIKIPEDIA_CONFIG,
-
-  async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
-    const category = TOPIC_CATEGORIES[topic.id];
-    if (!category || limit <= 0) return [];
-
-    const response = await fetch(`${API_URL}?${buildQuery(category, limit)}`, {
-      headers: {
-        'User-Agent': WIKIPEDIA_CONFIG.userAgent,
-        'Api-User-Agent': WIKIPEDIA_CONFIG.userAgent,
-      },
-    });
-    if (!response.ok) {
-      throw new Error(`wikipedia: HTTP ${response.status} for ${topic.id}`);
-    }
-    const json = (await response.json()) as WikipediaResponse;
-    return pagesToCards(json, topic.id).slice(0, limit);
-  },
+const HEADERS = {
+  'User-Agent': WIKIPEDIA_CONFIG.userAgent,
+  'Api-User-Agent': WIKIPEDIA_CONFIG.userAgent,
 };
+
+/**
+ * Language-aware adapter. Category names differ per wiki, so for non-English
+ * languages the English category's langlink is resolved once (cached) and the
+ * matching wiki is queried; topics without a localized category fall back to
+ * English content rather than going empty.
+ */
+export function createWikipediaAdapter(
+  getLanguage: () => Promise<string> = () => Promise.resolve('en'),
+): SourcePort {
+  const localizedCategories = new Map<string, string | null>();
+
+  async function resolveCategory(topicId: string, language: string): Promise<{ lang: string; category: string } | undefined> {
+    const englishCategory = TOPIC_CATEGORIES[topicId];
+    if (!englishCategory) return undefined;
+    if (language === 'en') return { lang: 'en', category: englishCategory };
+
+    const cacheKey = `${language}:${topicId}`;
+    if (!localizedCategories.has(cacheKey)) {
+      try {
+        const response = await fetch(
+          `${API_URL}?action=query&format=json&formatversion=2&prop=langlinks&lllimit=1&lllang=${language}&titles=${encodeURIComponent(englishCategory)}`,
+          { headers: HEADERS },
+        );
+        const json = (await response.json()) as {
+          query?: { pages?: Array<{ langlinks?: Array<{ title?: string }> }> };
+        };
+        localizedCategories.set(cacheKey, json.query?.pages?.[0]?.langlinks?.[0]?.title ?? null);
+      } catch {
+        localizedCategories.set(cacheKey, null);
+      }
+    }
+    const localized = localizedCategories.get(cacheKey);
+    return localized ? { lang: language, category: localized } : { lang: 'en', category: englishCategory };
+  }
+
+  return {
+    id: 'wikipedia',
+    name: 'Wikipedia',
+    config: WIKIPEDIA_CONFIG,
+
+    async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
+      if (limit <= 0) return [];
+      const resolved = await resolveCategory(topic.id, await getLanguage());
+      if (!resolved) return [];
+      const apiUrl = `https://${resolved.lang}.wikipedia.org/w/api.php`;
+      const response = await fetch(`${apiUrl}?${buildQuery(resolved.category, limit)}`, {
+        headers: HEADERS,
+      });
+      if (!response.ok) {
+        throw new Error(`wikipedia: HTTP ${response.status} for ${topic.id}`);
+      }
+      const json = (await response.json()) as WikipediaResponse;
+      return pagesToCards(json, topic.id).slice(0, limit);
+    },
+  };
+}
+
+export const wikipediaAdapter: SourcePort = createWikipediaAdapter();

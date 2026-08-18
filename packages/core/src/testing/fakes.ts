@@ -26,7 +26,7 @@ export function makeCard(id: string, overrides: Partial<Card> = {}): Card {
     topicId: 'space',
     sourceId: 'wikipedia',
     title: `Title ${id}`,
-    body: 'Body.',
+    body: `A body for card ${id} that is comfortably long enough to fill a whole screen slide, passing the substance gate with several sentences of plausible interesting content.`,
     sourceName: 'Wikipedia',
     sourceUrl: `https://example.org/${id}`,
     hash: `hash-${id}`,

@@ -1,0 +1,79 @@
+{
+  "__note": "Authored to Reddit's documented listing schema (r/space top.json); recording live was blocked by Reddit's bot gate on the dev network.",
+  "kind": "Listing",
+  "data": {
+    "children": [
+      {
+        "kind": "t3",
+        "data": {
+          "id": "1mtx8ab",
+          "title": "James Webb captures the most detailed image yet of the Carina Nebula's stellar nursery",
+          "selftext": "",
+          "subreddit": "space",
+          "permalink": "/r/space/comments/1mtx8ab/james_webb_captures_the_most_detailed_image_yet/",
+          "created_utc": 1755470000,
+          "ups": 12400,
+          "num_comments": 342,
+          "over_18": false,
+          "stickied": false,
+          "spoiler": false,
+          "url_overridden_by_dest": "https://i.redd.it/carina-nebula-example.jpg",
+          "preview": {
+            "images": [
+              { "source": { "url": "https://preview.redd.it/carina-nebula-example.jpg?width=1080&amp;format=pjpg" } }
+            ]
+          }
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "id": "1mtw2cd",
+          "title": "ELI5: Why do all planets orbit in the same plane?",
+          "selftext": "I was looking at a diagram of the solar system and noticed every planet orbits roughly in the same flat disc. Why did it end up that way instead of orbits at random angles? The answer has to do with the conservation of angular momentum in the original cloud of gas and dust that collapsed to form the Sun and planets billions of years ago.",
+          "subreddit": "space",
+          "permalink": "/r/space/comments/1mtw2cd/eli5_why_do_all_planets_orbit_in_the_same_plane/",
+          "created_utc": 1755460000,
+          "ups": 890,
+          "num_comments": 156,
+          "over_18": false,
+          "stickied": false,
+          "spoiler": false
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "id": "1mtv9ef",
+          "title": "Weekly questions thread",
+          "selftext": "Ask your space questions here.",
+          "subreddit": "space",
+          "permalink": "/r/space/comments/1mtv9ef/weekly_questions_thread/",
+          "created_utc": 1755450000,
+          "ups": 45,
+          "num_comments": 89,
+          "over_18": false,
+          "stickied": true,
+          "spoiler": false
+        }
+      },
+      {
+        "kind": "t3",
+        "data": {
+          "id": "1mtu1gh",
+          "title": "Link post with no image and no text",
+          "selftext": "",
+          "subreddit": "space",
+          "permalink": "/r/space/comments/1mtu1gh/link_post_with_no_image_and_no_text/",
+          "created_utc": 1755440000,
+          "ups": 210,
+          "num_comments": 12,
+          "over_18": false,
+          "stickied": false,
+          "spoiler": false,
+          "url_overridden_by_dest": "https://example.org/article"
+        }
+      }
+    ]
+  }
+}

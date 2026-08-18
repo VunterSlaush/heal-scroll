@@ -39,8 +39,8 @@ describe('createTwitterAdapter', () => {
     expect(await adapter.fetchCards({ id: 'finance', name: 'Personal finance' }, 10)).toEqual([]);
   });
 
-  it('ignores topics it has no query for', async () => {
+  it('ignores topics with no curated accounts', async () => {
     const adapter = createTwitterAdapter('token');
-    expect(await adapter.fetchCards({ id: 'space', name: 'Space' }, 10)).toEqual([]);
+    expect(await adapter.fetchCards({ id: 'gardening', name: 'Gardening' }, 10)).toEqual([]);
   });
 });

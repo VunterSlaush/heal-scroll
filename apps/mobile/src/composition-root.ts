@@ -25,16 +25,18 @@ import {
 import {
   arxivAdapter,
   createNasaApodAdapter,
+  createRedditAdapter,
   createTwitterAdapter,
+  createWikipediaAdapter,
+  createWikipediaOnThisDayAdapter,
   hackerNewsAdapter,
   lobstersAdapter,
   newsAdapter,
   pubmedAdapter,
   rssAdapter,
-  wikipediaAdapter,
-  wikipediaOnThisDayAdapter,
 } from '@heal-scroll/sources';
 import { Image } from 'expo-image';
+import { getLocales } from 'expo-localization';
 import { drizzle } from 'drizzle-orm/expo-sqlite';
 import { openDatabaseSync } from 'expo-sqlite';
 
@@ -68,22 +70,42 @@ export const insightsRepo = new SqliteInsightsRepo(db);
 
 export const clock: Clock = () => new Date();
 
+/** Device language, used to seed the content-language setting on first run. */
+export function deviceLanguage(): string {
+  return getLocales()[0]?.languageCode ?? 'en';
+}
+
+async function getContentLanguage(): Promise<string> {
+  return (await settingsRepo.getSettings()).language;
+}
+
+const wikipediaAdapter = createWikipediaAdapter(getContentLanguage);
+
 /**
  * Set EXPO_PUBLIC_NASA_API_KEY in .env to lift DEMO_KEY's rate limit.
  * X (Twitter) needs a paid Basic-tier token in EXPO_PUBLIC_X_BEARER_TOKEN;
  * without one the adapter is left out entirely.
  */
 const twitterToken = process.env.EXPO_PUBLIC_X_BEARER_TOKEN;
+const redditClientId = process.env.EXPO_PUBLIC_REDDIT_CLIENT_ID;
+const redditClientSecret = process.env.EXPO_PUBLIC_REDDIT_CLIENT_SECRET;
 export const sources: SourcePort[] = [
   wikipediaAdapter,
   arxivAdapter,
   hackerNewsAdapter,
   lobstersAdapter,
   createNasaApodAdapter(process.env.EXPO_PUBLIC_NASA_API_KEY ?? 'DEMO_KEY'),
-  wikipediaOnThisDayAdapter,
+  createWikipediaOnThisDayAdapter(getContentLanguage),
   rssAdapter,
   newsAdapter,
   pubmedAdapter,
+  // Public JSON without credentials (may be bot-gated on some networks —
+  // source health auto-disables it there); OAuth when credentials are set.
+  createRedditAdapter(
+    redditClientId && redditClientSecret
+      ? { clientId: redditClientId, clientSecret: redditClientSecret }
+      : undefined,
+  ),
   ...(twitterToken ? [createTwitterAdapter(twitterToken)] : []),
 ];
 
@@ -126,6 +148,11 @@ export const buildSessionDeps: BuildSessionDeps = {
 
 export async function seedInitialData(): Promise<void> {
   await topicRepo.upsertTopics(TOPICS);
+  // First run: content language follows the phone until the user changes it.
+  const stored = await settingsRepo.getValue('settings');
+  if (!stored || !('language' in (JSON.parse(stored) as Record<string, unknown>))) {
+    await settingsRepo.saveSettings({ language: deviceLanguage() });
+  }
 }
 
 let refillInFlight: Promise<void> | undefined;

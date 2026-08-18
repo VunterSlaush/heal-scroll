@@ -88,6 +88,21 @@ describe('refillBuffer', () => {
     expect(deps.topicSourceRepo.states.find((s) => s.sourceId === 'flaky')?.consecutiveFailures).toBe(1);
   });
 
+  it('filters insubstantial cards before they reach the buffer', async () => {
+    const deps = makeDeps({
+      sources: [
+        fakeSource('thin', ['space'], () =>
+          Promise.resolve([
+            makeCard('short', { body: '12 points and 3 comments.' }),
+            makeCard('fine'),
+          ]),
+        ),
+      ],
+    });
+    const { inserted } = await refillBuffer(deps);
+    expect(inserted).toBe(1);
+  });
+
   it('splits the needed amount across eligible sources', async () => {
     const limits: number[] = [];
     const source = (id: string) =>

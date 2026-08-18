@@ -18,6 +18,7 @@ export type {
   WeeklyStats,
 } from './entities/insights';
 export type { Collection } from './entities/collection';
+export { isSubstantialCard } from './entities/card-quality';
 
 export type { SourcePort } from './ports/source-port';
 export type { CardRepo, RecallWindow } from './ports/card-repo';

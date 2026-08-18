@@ -8,7 +8,7 @@ deterministic transformers: raw API payload → `Card[]`. No LLM, no storage.
 
 | sourceId | file | topics | notes |
 | --- | --- | --- | --- |
-| `wikipedia` | `wikipedia/wikipedia.adapter.ts` | space, science, tech, ai, history | category extracts; also the evergreen tier |
+| `wikipedia` | `wikipedia/wikipedia.adapter.ts` | all 12 topics | category extracts + pageview curation; language-aware via `createWikipediaAdapter(getLanguage)` (langlink-resolved categories, English fallback) |
 | `arxiv` | `arxiv/arxiv.adapter.ts` | space, science, ai | Atom feed; long abstracts → 2-card series |
 | `hn` | `hacker-news/hacker-news.adapter.ts` | tech, ai | Algolia API, one request per fetch |
 | `lobsters` | `lobsters/lobsters.adapter.ts` | tech | hottest.json |
@@ -17,7 +17,8 @@ deterministic transformers: raw API payload → `Card[]`. No LLM, no storage.
 | `rss` | `rss/rss.adapter.ts` | tech, ai | curated blog feeds via `createFeedAdapter`; heading/paragraph splitter |
 | `news` | `news/news.adapter.ts` | economics, markets, finance, health, nutrition, mindfulness, science, space, tech, ai | BBC + NPR section RSS through the same feed factory |
 | `pubmed` | `pubmed/pubmed.adapter.ts` | science, health, nutrition, longevity, mindfulness | E-utilities (esearch JSON + efetch XML), review articles only; abstracts split like arXiv |
-| `twitter` | `twitter/twitter.adapter.ts` | economics, markets, finance, health, nutrition, longevity, mindfulness | X API v2 recent search; needs a paid Basic-tier bearer token (`createTwitterAdapter(token)`), inactive without one |
+| `reddit` | `reddit/reddit.adapter.ts` | all 12 topics | curated subreddits; public JSON (bot-gated on some networks — source health absorbs it) or OAuth via `createRedditAdapter({clientId, clientSecret})` |
+| `twitter` | `twitter/twitter.adapter.ts` | all 12 topics | curated accounts per topic (`TOPIC_ACCOUNTS`) via X API v2 search; needs a paid Basic-tier bearer token, inactive without one |
 
 Utils: `stripHtml`, `truncateAtSentence`, `canonicalUrl`, `hashTitle`,
 `extractFirstImage`, `makeSeriesCards`.

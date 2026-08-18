@@ -1,3 +1,4 @@
+import { isSubstantialCard } from '../entities/card-quality';
 import { isHealthy } from '../entities/topic-source';
 import type { CardRepo } from '../ports/card-repo';
 import type { Clock } from '../ports/clock';
@@ -49,7 +50,7 @@ export async function refillBuffer(deps: RefillBufferDeps): Promise<{ inserted: 
     for (const source of eligible) {
       const at = deps.clock();
       try {
-        const cards = await source.fetchCards(topic, perSource);
+        const cards = (await source.fetchCards(topic, perSource)).filter(isSubstantialCard);
         const added = await deps.cardRepo.upsertCards(cards);
         inserted += added;
         await deps.topicSourceRepo.recordFetchResult({

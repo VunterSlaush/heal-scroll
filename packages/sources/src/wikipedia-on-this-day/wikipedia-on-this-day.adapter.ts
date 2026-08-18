@@ -11,7 +11,8 @@ export const WIKIPEDIA_OTD_CONFIG: SourceConfig = {
   topicIds: ['history'],
 };
 
-const API_BASE = 'https://en.wikipedia.org/api/rest_v1/feed/onthisday/events';
+/** The REST feed is natively multilingual: {lang}.wikipedia.org serves localized events. */
+const apiBase = (language: string) => `https://${language}.wikipedia.org/api/rest_v1/feed/onthisday/events`;
 
 interface OtdPage {
   title?: string;
@@ -59,24 +60,34 @@ export function eventsToCards(response: OtdResponse, topicId: string, monthDay: 
   });
 }
 
-export const wikipediaOnThisDayAdapter: SourcePort = {
-  id: 'wikipedia-otd',
-  name: 'Wikipedia On This Day',
-  config: WIKIPEDIA_OTD_CONFIG,
+export function createWikipediaOnThisDayAdapter(
+  getLanguage: () => Promise<string> = () => Promise.resolve('en'),
+): SourcePort {
+  return {
+    id: 'wikipedia-otd',
+    name: 'Wikipedia On This Day',
+    config: WIKIPEDIA_OTD_CONFIG,
 
-  async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
-    if (!WIKIPEDIA_OTD_CONFIG.topicIds.includes(topic.id) || limit <= 0) return [];
-    const today = new Date();
-    const month = String(today.getMonth() + 1).padStart(2, '0');
-    const day = String(today.getDate()).padStart(2, '0');
-    const response = await fetch(`${API_BASE}/${month}/${day}`, {
-      headers: {
+    async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
+      if (!WIKIPEDIA_OTD_CONFIG.topicIds.includes(topic.id) || limit <= 0) return [];
+      const today = new Date();
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const day = String(today.getDate()).padStart(2, '0');
+      const headers = {
         'User-Agent': WIKIPEDIA_OTD_CONFIG.userAgent,
         'Api-User-Agent': WIKIPEDIA_OTD_CONFIG.userAgent,
-      },
-    });
-    if (!response.ok) throw new Error(`wikipedia-otd: HTTP ${response.status}`);
-    const json = (await response.json()) as OtdResponse;
-    return eventsToCards(json, topic.id, `${month}-${day}`).slice(0, limit);
-  },
-};
+      };
+      const language = await getLanguage();
+      let response = await fetch(`${apiBase(language)}/${month}/${day}`, { headers });
+      if (!response.ok && language !== 'en') {
+        // Not every wiki serves the feed — fall back to English.
+        response = await fetch(`${apiBase('en')}/${month}/${day}`, { headers });
+      }
+      if (!response.ok) throw new Error(`wikipedia-otd: HTTP ${response.status}`);
+      const json = (await response.json()) as OtdResponse;
+      return eventsToCards(json, topic.id, `${month}-${day}`).slice(0, limit);
+    },
+  };
+}
+
+export const wikipediaOnThisDayAdapter: SourcePort = createWikipediaOnThisDayAdapter();
