@@ -20,6 +20,24 @@ export type {
 } from './entities/insights';
 export type { Collection } from './entities/collection';
 export { isSubstantialCard } from './entities/card-quality';
+export { cosineSimilarity, meanVector, normalize } from './entities/vector';
+export type {
+  InteractionEvent,
+  SignalType,
+  TasteCentroid,
+  TasteCentroidKind,
+} from './entities/taste';
+export {
+  COLD_START_MIN_VOTES,
+  decayWeight,
+  DWELL_SIGNAL_MS,
+  dwellToSignal,
+  emaUpdate,
+  FAST_SKIP_MS,
+  SIGNAL_WEIGHTS,
+  TASTE_EMA_ALPHA,
+  TASTE_HALF_LIFE_DAYS,
+} from './entities/taste';
 
 export type { SourcePort } from './ports/source-port';
 export type { CardRepo, RecallWindow } from './ports/card-repo';
@@ -31,6 +49,12 @@ export type { RecallRepo } from './ports/recall-repo';
 export type { CollectionRepo } from './ports/collection-repo';
 export type { InsightsPort } from './ports/insights-port';
 export type { Clock } from './ports/clock';
+export type { Embedder } from './ports/embedder';
+export { NOOP_EMBEDDER_ID } from './ports/embedder';
+export type { OutputValidator, TextGenerator } from './ports/text-generator';
+export type { EmbeddingRepo } from './ports/embedding-repo';
+export type { TasteRepo } from './ports/taste-repo';
+export type { InteractionLogRepo } from './ports/interaction-log-repo';
 
 export { buildSession, WEEKLY_SUMMARY_KEY } from './usecases/build-session.usecase';
 export type { BuildSessionDeps, BuildSessionResult } from './usecases/build-session.usecase';
@@ -56,3 +80,5 @@ export {
 } from './usecases/weekly-summary.usecase';
 export { exportAsJson, exportAsMarkdown } from './usecases/export-data.usecase';
 export type { ExportData } from './usecases/export-data.usecase';
+export { chooseK, kMeans } from './usecases/kmeans';
+export type { KMeansOptions } from './usecases/kmeans';

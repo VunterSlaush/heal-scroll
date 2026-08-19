@@ -1,5 +1,11 @@
 /** In-memory fakes for core ports — test-support only, not exported from the package. */
 import type { Card } from '../entities/card';
+import type { InteractionEvent, SignalType, TasteCentroid, TasteCentroidKind } from '../entities/taste';
+import { normalize, meanVector } from '../entities/vector';
+import type { Embedder } from '../ports/embedder';
+import type { EmbeddingRepo } from '../ports/embedding-repo';
+import type { InteractionLogRepo } from '../ports/interaction-log-repo';
+import type { TasteRepo } from '../ports/taste-repo';
 import type {
   SessionStats,
   SourceSeriesStats,
@@ -260,6 +266,136 @@ export class FakeInsights implements InsightsPort {
   }
   seriesFinished(): Promise<number> {
     return Promise.resolve(this.finishedSeries);
+  }
+}
+
+/**
+ * Deterministic embedder: hashed character trigrams → normalized 8-d vector.
+ * Texts sharing words get high cosine similarity, unrelated texts low.
+ */
+export class FakeEmbedder implements Embedder {
+  readonly id = 'fake';
+  readonly dim = 8;
+
+  embed(texts: string[]): Promise<Float32Array[]> {
+    return Promise.resolve(texts.map((t) => this.vectorFor(t)));
+  }
+
+  vectorFor(text: string): Float32Array {
+    const v = new Float32Array(this.dim);
+    const lower = text.toLowerCase();
+    for (let i = 0; i <= lower.length - 3; i++) {
+      let h = 0;
+      for (let j = i; j < i + 3; j++) h = (h * 31 + lower.charCodeAt(j)) >>> 0;
+      const idx = h % this.dim;
+      v[idx] = (v[idx] ?? 0) + 1;
+    }
+    return normalize(v);
+  }
+}
+
+export class FakeEmbeddingRepo implements EmbeddingRepo {
+  /** Cards visible to `getCardsMissingEmbedding` / `getTopicCentroid`. */
+  cards: Card[] = [];
+  vectors = new Map<string, Float32Array>(); // key: `${model}/${itemId}`
+  recentSeen: Float32Array[] = [];
+
+  setEmbeddings(
+    model: string,
+    entries: ReadonlyArray<{ itemId: string; vector: Float32Array }>,
+  ): Promise<void> {
+    for (const e of entries) this.vectors.set(`${model}/${e.itemId}`, e.vector);
+    return Promise.resolve();
+  }
+  getEmbeddings(model: string, itemIds: string[]): Promise<Map<string, Float32Array>> {
+    const out = new Map<string, Float32Array>();
+    for (const id of itemIds) {
+      const v = this.vectors.get(`${model}/${id}`);
+      if (v) out.set(id, v);
+    }
+    return Promise.resolve(out);
+  }
+  getRecentSeenVectors(_model: string, limit: number): Promise<Float32Array[]> {
+    return Promise.resolve(this.recentSeen.slice(0, limit));
+  }
+  getCardsMissingEmbedding(
+    model: string,
+    limit: number,
+  ): Promise<Array<Pick<Card, 'id' | 'title' | 'body' | 'topicId'>>> {
+    return Promise.resolve(
+      this.cards.filter((c) => !this.vectors.has(`${model}/${c.id}`)).slice(0, limit),
+    );
+  }
+  pruneOtherModels(model: string): Promise<number> {
+    let removed = 0;
+    for (const key of [...this.vectors.keys()]) {
+      if (!key.startsWith(`${model}/`)) {
+        this.vectors.delete(key);
+        removed++;
+      }
+    }
+    return Promise.resolve(removed);
+  }
+  getTopicCentroid(
+    model: string,
+    topicId: string,
+    limit: number,
+  ): Promise<Float32Array | undefined> {
+    const vectors = this.cards
+      .filter((c) => c.topicId === topicId)
+      .map((c) => this.vectors.get(`${model}/${c.id}`))
+      .filter((v): v is Float32Array => v !== undefined)
+      .slice(0, limit);
+    return Promise.resolve(meanVector(vectors));
+  }
+}
+
+export class FakeTasteRepo implements TasteRepo {
+  centroids: TasteCentroid[] = [];
+
+  getCentroids(model: string): Promise<TasteCentroid[]> {
+    return Promise.resolve(this.centroids.filter((c) => c.model === model));
+  }
+  upsertCentroids(centroids: TasteCentroid[]): Promise<void> {
+    for (const next of centroids) {
+      const index = this.centroids.findIndex((c) => c.id === next.id);
+      if (index >= 0) this.centroids[index] = next;
+      else this.centroids.push(next);
+    }
+    return Promise.resolve();
+  }
+  replaceCentroids(
+    model: string,
+    kinds: TasteCentroidKind[],
+    next: TasteCentroid[],
+  ): Promise<void> {
+    this.centroids = this.centroids.filter(
+      (c) => c.model !== model || !kinds.includes(c.kind),
+    );
+    this.centroids.push(...next);
+    return Promise.resolve();
+  }
+  deleteAll(): Promise<void> {
+    this.centroids = [];
+    return Promise.resolve();
+  }
+}
+
+export class FakeInteractionLog implements InteractionLogRepo {
+  events: InteractionEvent[] = [];
+
+  log(events: InteractionEvent[]): Promise<void> {
+    this.events.push(...events);
+    return Promise.resolve();
+  }
+  getEvents(since: Date | undefined, limit?: number): Promise<InteractionEvent[]> {
+    const events = this.events
+      .filter((e) => !since || e.at.getTime() >= since.getTime())
+      .sort((a, b) => a.at.getTime() - b.at.getTime());
+    return Promise.resolve(limit === undefined ? events : events.slice(0, limit));
+  }
+  countByTypes(types: SignalType[]): Promise<number> {
+    return Promise.resolve(this.events.filter((e) => types.includes(e.type)).length);
   }
 }
 

@@ -2,7 +2,9 @@
 
 One adapter per content source, each implementing `SourcePort` from core, plus
 the shared text utils and series splitters every adapter uses. Adapters are
-deterministic transformers: raw API payload → `Card[]`. No LLM, no storage.
+deterministic transformers: raw API payload → `Card[]`. No LLM in transformers,
+no storage — on-device AI lives in `packages/ai` behind core ports and never
+runs inside adapters.
 
 ## Adapters
 

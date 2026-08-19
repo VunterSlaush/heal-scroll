@@ -1,7 +1,8 @@
 # heal-scroll
 
 Anti-doomscroll feed app: a finite, topic-driven feed of short cards, fetched and
-stored entirely on device (Expo / React Native, SQLite, no backend, no LLM).
+stored entirely on device (Expo / React Native, SQLite, no backend, no cloud AI —
+optional on-device models live behind core ports; see AI_ON_DEVICE_PLAN.md).
 Full product/architecture plan: **PLAN.md**. Current state: Milestones 1–5 —
 full-screen paged sessions with lock/cooldown, 16 source adapters, dynamic user
 topics (hashtags/terms; 12 defaults seeded once), content-language selection,
@@ -12,10 +13,11 @@ health, series, recall cards, badges, stats, collections, export.
 
 - `packages/core` — pure TypeScript domain: entities, ports, use-cases. **Zero React/Expo/DB imports.**
 - `packages/sources` — one adapter per content source implementing `SourcePort`, plus shared text utils and series splitters. **Adapters never touch the database.**
+- `packages/ai` — on-device AI capability detection and embedder/generator providers behind core ports. **Depends only on core; only the composition root imports it.**
 - `packages/data` — drizzle schema, SQL migrations, SQLite repos implementing the core ports. Driver-agnostic: expo-sqlite in the app, better-sqlite3 in tests.
 - `apps/mobile` — Expo Router app (SDK 57, New Architecture): Feed/Saved/Stats/Settings tabs. **UI depends on core only**; adapters and the DB driver are wired in exactly one file: `apps/mobile/src/composition-root.ts`.
 
-The first two rules are enforced by ESLint (`eslint.config.mjs`, `no-restricted-imports`).
+The package layer rules are enforced by ESLint (`eslint.config.mjs`, `no-restricted-imports`).
 
 ## Where to start reading
 

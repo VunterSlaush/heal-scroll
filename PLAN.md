@@ -9,7 +9,7 @@ Replace doomscrolling with a finite, topic-driven feed of short, interesting car
 - Card: title, 2–4 sentence body, optional image, source name + link.
 - Card actions: save/bookmark, thumbs up/down (tunes ranking), open source link, share.
 - Screens: Feed, Locked, Saved, Settings (topics, N, cooldown, per-topic source toggles, "prefer short cards").
-- Out of scope for v1: video/audio, cross-device sync, embeddings, user-added feeds, web build.
+- Out of scope for v1: video/audio, cross-device sync, user-added feeds, web build. (On-device AI curation — embeddings + optional local generator — is Milestone 7; see AI_ON_DEVICE_PLAN.md.)
 - Goal: personal side project; correctness and calm UX over growth.
 
 ## 2. Architecture (Expo / React Native, mobile first, no backend)
@@ -32,7 +32,7 @@ Rules: core has zero React/Expo imports. Adapters never touch the DB. UI never c
 
 Storage (SQLite tables): items (normalized cards), series, user_items (seen_at, saved, vote), topics, topic_sources (enabled, weight, health), settings, fetch_log.
 
-Card synthesis: deterministic transformer per source → Card. No LLM. Shared utils: strip HTML, truncate at sentence boundary, pick image (og:image / first `<img>` / API thumbnail), canonical URL + normalized-title hashing for dedupe.
+Card synthesis: deterministic transformer per source → Card. No LLM in synthesis — card title/body/source are never generated (optional on-device AI only re-ranks and decorates; AI_ON_DEVICE_PLAN.md). Shared utils: strip HTML, truncate at sentence boundary, pick image (og:image / first `<img>` / API thumbnail), canonical URL + normalized-title hashing for dedupe.
 
 Fetch strategy (hybrid): background prefetch keeps a per-topic buffer; on session start, if buffer < N do a live top-up in parallel with a timeout; fall back to cache. Every source declares rate limit, User-Agent, TTL, quality score, topic tags.
 
@@ -130,6 +130,7 @@ All computed on device from user_items, series, fetch_log. Presented in a Stats 
 4. Series splitters (Wikipedia, arXiv, RSS) with fixtures; share; image caching; empty/offline states.
 5. Recall cards + topic depth badges + Stats screen + weekly summary card (2d/2e). Collections + export.
 6. v1.1 and v1.2 topic waves. Web build afterwards (CORS may push some sources through a static CDN JSON cron — decide then).
+7. On-device AI curation (AI_ON_DEVICE_PLAN.md) — 7a core ports + `packages/ai` skeleton; 7b embeddings at ingest (schema 0004); 7c taste profile (signals, EMA, k-means, rebuild); 7d semantic ranking behind a Settings toggle; 7e evaluation (`ranking_mode`); 7f native providers + MiniLM download; 7g generator decoration (Android generator flagged).
 
 ## 5. Progressive disclosure for AI agents
 

@@ -1,0 +1,14 @@
+{
+  "description": "Recorded raw native-binding output (number[][]) fed to wrapNativeEmbedder in tests — no network, no model.",
+  "dim": 8,
+  "texts": [
+    "Black holes and event horizons",
+    "Event horizons around black holes",
+    "Sourdough bread hydration ratios"
+  ],
+  "vectors": [
+    [0.9, 0.1, 0.0, 0.2, 0.0, 0.1, 0.0, 0.05],
+    [0.85, 0.15, 0.05, 0.25, 0.0, 0.1, 0.0, 0.0],
+    [0.0, 0.05, 0.9, 0.0, 0.4, 0.0, 0.3, 0.0]
+  ]
+}

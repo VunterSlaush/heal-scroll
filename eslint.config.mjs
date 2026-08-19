@@ -38,6 +38,34 @@ export default tseslint.config(
     },
   },
   {
+    // Layer rule: ai depends only on core; native surfaces are injected bindings.
+    files: ['packages/ai/src/**'],
+    rules: {
+      'no-restricted-imports': [
+        'error',
+        {
+          patterns: [
+            {
+              group: [
+                'react',
+                'react-*',
+                'react-native*',
+                'expo',
+                'expo-*',
+                '@expo/*',
+                'drizzle-orm*',
+                '@heal-scroll/data',
+                '@heal-scroll/sources',
+              ],
+              message:
+                'packages/ai depends only on @heal-scroll/core (+ zod); native bindings are injected from the composition root.',
+            },
+          ],
+        },
+      ],
+    },
+  },
+  {
     // Layer rule: adapters never touch the DB.
     files: ['packages/sources/src/**'],
     rules: {
