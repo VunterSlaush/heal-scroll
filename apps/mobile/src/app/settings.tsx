@@ -1,10 +1,10 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import Slider from '@react-native-community/slider';
-import type { Settings, TopicSourceState, TopicWithState } from '@heal-scroll/core';
+import type { Settings, TopicWithState } from '@heal-scroll/core';
 import { createUserTopic, SESSION_SIZE_LIMITS } from '@heal-scroll/core';
 import { useCallback, useEffect, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Switch, Text, TextInput, View } from 'react-native';
-import { cardRepo, settingsRepo, sources, topicRepo, topicSourceRepo } from '@/composition-root';
+import { cardRepo, settingsRepo, sources, topicRepo } from '@/composition-root';
 
 const COOLDOWNS = [5, 10, 15, 20, 30, 60];
 const LANGUAGES: { code: string; label: string }[] = [
@@ -19,8 +19,6 @@ const LANGUAGES: { code: string; label: string }[] = [
 export default function SettingsScreen() {
   const [settings, setSettings] = useState<Settings | null>(null);
   const [topics, setTopics] = useState<TopicWithState[]>([]);
-  const [sourceStates, setSourceStates] = useState<TopicSourceState[]>([]);
-  const [expandedTopic, setExpandedTopic] = useState<string | null>(null);
   const [sessionSizePreview, setSessionSizePreview] = useState<number | null>(null);
   const [newTopicTerm, setNewTopicTerm] = useState('');
 
@@ -31,7 +29,6 @@ export default function SettingsScreen() {
     ]);
     setSettings(settingsData);
     setTopics(topicList);
-    setSourceStates(await topicSourceRepo.getStates(topicList.map((t) => t.id)));
   }, []);
 
   useEffect(() => {
@@ -63,13 +60,14 @@ export default function SettingsScreen() {
     await load();
   };
 
-  const toggleSource = async (topicId: string, sourceId: string, enabled: boolean) => {
-    await topicSourceRepo.setEnabled(topicId, sourceId, enabled);
-    await load();
+  // A source serves items across topics, so muting a source is global.
+  const toggleSource = async (sourceId: string, enabled: boolean) => {
+    if (!settings) return;
+    const disabledSources = enabled
+      ? settings.disabledSources.filter((id) => id !== sourceId)
+      : [...new Set([...settings.disabledSources, sourceId])];
+    await update({ disabledSources });
   };
-
-  const sourceEnabled = (topicId: string, sourceId: string): boolean =>
-    sourceStates.find((s) => s.topicId === topicId && s.sourceId === sourceId)?.enabled ?? true;
 
   if (!settings) return <View style={styles.screen} />;
 
@@ -160,42 +158,30 @@ export default function SettingsScreen() {
         </Pressable>
       </View>
       {topics.map((topic) => (
-        <View key={topic.id}>
-          <View style={styles.row}>
-            <Pressable
-              style={styles.topicLabelWrap}
-              onPress={() => setExpandedTopic(expandedTopic === topic.id ? null : topic.id)}
-            >
-              <Text style={styles.rowLabel}>{topic.name}</Text>
-              <Text style={styles.expandHint}>{expandedTopic === topic.id ? 'hide sources' : 'sources'}</Text>
+        <View key={topic.id} style={styles.row}>
+          <Text style={[styles.rowLabel, styles.topicLabelWrap]}>{topic.name}</Text>
+          <View style={styles.topicControls}>
+            <Switch value={topic.enabled} onValueChange={() => void toggleTopic(topic)} />
+            <Pressable onPress={() => void removeTopic(topic.id)} hitSlop={10}>
+              <Ionicons name="trash-outline" size={18} color="#b00020" />
             </Pressable>
-            <View style={styles.topicControls}>
-              <Switch value={topic.enabled} onValueChange={() => void toggleTopic(topic)} />
-              <Pressable onPress={() => void removeTopic(topic.id)} hitSlop={10}>
-                <Ionicons name="trash-outline" size={18} color="#b00020" />
-              </Pressable>
-            </View>
           </View>
-          {expandedTopic === topic.id
-            ? sources
-                .filter(
-                  (source) =>
-                    source.config.dynamicTopics || source.config.topicIds.includes(topic.id),
-                )
-                .map((source) => (
-                  <View key={source.id} style={[styles.row, styles.subRow]}>
-                    <Text style={styles.rowLabel}>{source.name}</Text>
-                    <Switch
-                      value={sourceEnabled(topic.id, source.id)}
-                      onValueChange={(value) => void toggleSource(topic.id, source.id, value)}
-                    />
-                  </View>
-                ))
-            : null}
+        </View>
+      ))}
+
+      <Text style={styles.heading}>Sources</Text>
+      {sources.map((source) => (
+        <View key={source.id} style={styles.row}>
+          <Text style={styles.rowLabel}>{source.name}</Text>
+          <Switch
+            value={!settings.disabledSources.includes(source.id)}
+            onValueChange={(value) => void toggleSource(source.id, value)}
+          />
         </View>
       ))}
       <Text style={styles.footnote}>
-        NASA APOD uses DEMO_KEY by default; set EXPO_PUBLIC_NASA_API_KEY for a personal key.
+        Sources apply across every topic. NASA APOD uses DEMO_KEY by default; set
+        EXPO_PUBLIC_NASA_API_KEY for a personal key.
       </Text>
     </ScrollView>
   );
@@ -218,10 +204,8 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     gap: 8,
   },
-  subRow: { marginLeft: 32, backgroundColor: '#fafafa' },
   rowLabel: { fontSize: 14, color: '#1a1a1a' },
-  topicLabelWrap: { flexDirection: 'row', alignItems: 'center', gap: 10, flexShrink: 1 },
-  expandHint: { fontSize: 12, color: '#999' },
+  topicLabelWrap: { flexShrink: 1 },
   chips: { flexDirection: 'row', gap: 6, flexWrap: 'wrap' },
   topicInput: {
     flex: 1,

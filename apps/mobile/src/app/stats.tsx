@@ -2,14 +2,7 @@ import type { Insights, Settings, TopicBadge } from '@heal-scroll/core';
 import { computeInsights, computeTopicBadges } from '@heal-scroll/core';
 import { useCallback, useEffect, useState } from 'react';
 import { Pressable, ScrollView, StyleSheet, Text, View } from 'react-native';
-import {
-  clock,
-  insightsRepo,
-  settingsRepo,
-  sourceNames,
-  topicRepo,
-  topicSourceRepo,
-} from '@/composition-root';
+import { clock, insightsRepo, settingsRepo, sourceNames, topicRepo } from '@/composition-root';
 
 const BADGE_LABELS: Record<string, string> = {
   explorer: 'Explorer',
@@ -43,11 +36,12 @@ export default function StatsScreen() {
     void load();
   }, [load]);
 
+  // Sources serve items across topics, so muting is global (Settings can undo it).
   const muteSource = async (sourceId: string) => {
-    const topics = await topicRepo.getTopics();
-    for (const topic of topics) {
-      await topicSourceRepo.setEnabled(topic.id, sourceId, false);
-    }
+    const current = await settingsRepo.getSettings();
+    await settingsRepo.saveSettings({
+      disabledSources: [...new Set([...current.disabledSources, sourceId])],
+    });
     await load();
   };
 

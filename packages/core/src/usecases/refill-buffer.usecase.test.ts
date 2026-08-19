@@ -128,6 +128,27 @@ describe('refillBuffer', () => {
     expect(served).not.toContain('curated:f1');
   });
 
+  it('skips globally muted sources entirely', async () => {
+    const settingsRepo = new FakeSettingsRepo();
+    settingsRepo.settings.disabledSources = ['muted'];
+    let mutedCalled = false;
+    const deps = makeDeps({
+      settingsRepo,
+      sources: [
+        fakeSource('muted', ['space'], () => {
+          mutedCalled = true;
+          return Promise.resolve([]);
+        }),
+        fakeSource('active', ['space'], () => Promise.resolve([])),
+      ],
+    });
+
+    await refillBuffer(deps);
+
+    expect(mutedCalled).toBe(false);
+    expect(deps.topicSourceRepo.fetchResults.map((r) => r.sourceId)).toEqual(['active']);
+  });
+
   it('splits the needed amount across eligible sources', async () => {
     const limits: number[] = [];
     const source = (id: string) =>

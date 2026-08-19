@@ -44,6 +44,7 @@ describe('SqliteSettingsRepo', () => {
       language: 'en',
       preferShortCards: false,
       disciplineStatEnabled: false,
+      disabledSources: [],
     });
     await repo.saveSettings({ itemsPerSession: 5 });
     await repo.saveSettings({ preferShortCards: true });

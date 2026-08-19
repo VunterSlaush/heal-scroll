@@ -7,6 +7,8 @@ export interface Settings {
   preferShortCards: boolean;
   /** Quiet discipline stat, off by default (PLAN §2d). */
   disciplineStatEnabled: boolean;
+  /** Globally muted source ids — a source serves items across topics, so muting is global. */
+  disabledSources: string[];
 }
 
 export const SESSION_SIZE_LIMITS = { min: 5, max: 30 } as const;
@@ -17,4 +19,5 @@ export const DEFAULT_SETTINGS: Settings = {
   language: 'en',
   preferShortCards: false,
   disciplineStatEnabled: false,
+  disabledSources: [],
 };

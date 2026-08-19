@@ -1,3 +1,4 @@
+import type { Card } from '../entities/card';
 import { isSubstantialCard } from '../entities/card-quality';
 import type { SessionItem } from '../entities/session';
 import type { CardRepo } from '../ports/card-repo';
@@ -60,17 +61,18 @@ export async function buildSession(deps: BuildSessionDeps): Promise<BuildSession
   const topicIds = topics.map((t) => t.id);
   const n = settings.itemsPerSession;
 
-  // The substance gate also runs here so cards cached before it existed never surface.
+  // Substance and muted-source gates run here too, so cards cached before a
+  // gate existed (or before a source was muted) never surface.
+  const servable = (card: Card) =>
+    isSubstantialCard(card) && !settings.disabledSources.includes(card.sourceId);
   let pool =
     topicIds.length > 0 && n > 0
-      ? (await deps.cardRepo.getUnseenCards(topicIds, n * POOL_MULTIPLIER)).filter(isSubstantialCard)
+      ? (await deps.cardRepo.getUnseenCards(topicIds, n * POOL_MULTIPLIER)).filter(servable)
       : [];
   if (pool.length < n && deps.liveTopUp && topicIds.length > 0) {
     try {
       await deps.liveTopUp(topicIds, n - pool.length);
-      pool = (await deps.cardRepo.getUnseenCards(topicIds, n * POOL_MULTIPLIER)).filter(
-        isSubstantialCard,
-      );
+      pool = (await deps.cardRepo.getUnseenCards(topicIds, n * POOL_MULTIPLIER)).filter(servable);
     } catch {
       // Offline: continue with whatever the cache tiers can serve.
     }

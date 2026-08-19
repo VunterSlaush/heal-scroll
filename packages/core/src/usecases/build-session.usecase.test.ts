@@ -118,6 +118,22 @@ describe('buildSession', () => {
     expect(second.items[0]?.kind).toBe('card');
   });
 
+  it('never serves cards from a globally muted source, even cached ones', async () => {
+    const { deps, cardRepo, settingsRepo } = makeDeps();
+    settingsRepo.settings.disabledSources = ['reddit'];
+    await cardRepo.upsertCards([
+      ...Array.from({ length: 10 }, (_, i) => makeCard(`r${i}`, { sourceId: 'reddit' })),
+      ...Array.from({ length: 5 }, (_, i) => makeCard(`w${i}`, { sourceId: 'wikipedia' })),
+    ]);
+
+    const result = await buildSession(deps);
+    if (result.locked) throw new Error('unexpected lock');
+
+    const served = result.items.flatMap((i) => (i.kind === 'card' ? [i.card.sourceId] : []));
+    expect(served.length).toBeGreaterThan(0);
+    expect(served.every((sourceId) => sourceId === 'wikipedia')).toBe(true);
+  });
+
   it('returns an empty session when no topics are enabled', async () => {
     const { deps, topicRepo } = makeDeps();
     await topicRepo.setEnabled('space', false);

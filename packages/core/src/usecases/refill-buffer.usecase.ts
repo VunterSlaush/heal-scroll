@@ -42,6 +42,7 @@ export async function refillBuffer(deps: RefillBufferDeps): Promise<{ inserted: 
 
     const eligible = deps.sources.filter(
       (source) =>
+        !settings.disabledSources.includes(source.id) &&
         (source.config.dynamicTopics || source.config.topicIds.includes(topic.id)) &&
         isHealthy(stateOf(topic.id, source.id)),
     );
