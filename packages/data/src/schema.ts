@@ -41,6 +41,8 @@ export const userItems = sqliteTable('user_items', {
 export const topics = sqliteTable('topics', {
   id: text('id').primaryKey(),
   name: text('name').notNull(),
+  /** Search terms for query-capable sources; user topics carry the raw term. */
+  query: text('query').notNull().default(''),
   enabled: integer('enabled', { mode: 'boolean' }).notNull().default(true),
   /** Learned ranking weight nudged by votes, clamped to [0.2, 3]. */
   weight: real('weight').notNull().default(1),

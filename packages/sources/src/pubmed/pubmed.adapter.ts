@@ -11,6 +11,7 @@ export const PUBMED_CONFIG: SourceConfig = {
   ttlHours: 24 * 7,
   quality: 0.85,
   topicIds: ['science', 'health', 'nutrition', 'longevity', 'mindfulness'],
+  dynamicTopics: true,
 };
 
 const ESEARCH_URL = 'https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi';
@@ -124,7 +125,9 @@ export const pubmedAdapter: SourcePort = {
   config: PUBMED_CONFIG,
 
   async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
-    const term = TOPIC_QUERIES[topic.id];
+    const term =
+      TOPIC_QUERIES[topic.id] ??
+      (topic.query ? `${topic.query} AND hasabstract[text] AND review[pt]` : undefined);
     if (!term || limit <= 0) return [];
     const headers = { 'User-Agent': PUBMED_CONFIG.userAgent };
 

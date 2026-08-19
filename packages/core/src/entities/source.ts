@@ -8,6 +8,8 @@ export interface SourceConfig {
   quality: number;
   /** Topics this source can serve. */
   topicIds: string[];
+  /** True when the source can serve ANY topic via `topic.query` (search-shaped APIs). */
+  dynamicTopics?: boolean;
 }
 
 export interface Source {

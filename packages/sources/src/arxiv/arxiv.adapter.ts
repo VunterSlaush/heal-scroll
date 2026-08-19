@@ -11,6 +11,7 @@ export const ARXIV_CONFIG: SourceConfig = {
   ttlHours: 72,
   quality: 0.9,
   topicIds: ['space', 'science', 'ai'],
+  dynamicTopics: true,
 };
 
 /** topicId → arXiv category for the export API. */
@@ -74,9 +75,10 @@ export const arxivAdapter: SourcePort = {
 
   async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
     const category = TOPIC_CATEGORIES[topic.id];
-    if (!category || limit <= 0) return [];
+    const searchQuery = category ? `cat:${category}` : topic.query ? `all:"${topic.query}"` : undefined;
+    if (!searchQuery || limit <= 0) return [];
     const query = [
-      `search_query=${encodeURIComponent(`cat:${category}`)}`,
+      `search_query=${encodeURIComponent(searchQuery)}`,
       'sortBy=submittedDate',
       'sortOrder=descending',
       `max_results=${Math.min(limit, 25)}`,

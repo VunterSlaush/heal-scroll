@@ -2,7 +2,7 @@ import type { Card, CardRepo, RecallWindow, Topic } from '@heal-scroll/core';
 import { and, desc, eq, gt, gte, inArray, isNull, lt, lte, notInArray, or, sql } from 'drizzle-orm';
 import type { BaseSQLiteDatabase } from 'drizzle-orm/sqlite-core';
 import * as schema from './schema';
-import { items, recallLog, topics, userItems } from './schema';
+import { collectionItems, items, recallLog, topics, userItems } from './schema';
 
 /**
  * Any drizzle SQLite database over our schema: expo-sqlite in the app,
@@ -119,6 +119,17 @@ export class SqliteCardRepo implements CardRepo {
     if (cardIds.length === 0) return [];
     const rows = await this.db.select().from(items).where(inArray(items.id, cardIds));
     return rows.map(rowToCard);
+  }
+
+  async purgeTopicCards(topicId: string): Promise<void> {
+    // Only untouched buffer cards go; anything seen/voted/saved/collected stays.
+    await this.db.delete(items).where(
+      and(
+        eq(items.topicId, topicId),
+        notInArray(items.id, this.db.select({ id: userItems.itemId }).from(userItems)),
+        notInArray(items.id, this.db.select({ id: collectionItems.itemId }).from(collectionItems)),
+      ),
+    );
   }
 
   async setSaved(cardId: string, saved: boolean, at: Date): Promise<void> {

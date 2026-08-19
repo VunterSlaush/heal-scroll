@@ -17,6 +17,8 @@ export interface CardRepo {
   markSeen(cardIds: string[], seenAt: Date): Promise<void>;
   getCards(cardIds: string[]): Promise<Card[]>;
 
+  /** Removes a deleted topic's pure-buffer cards; seen/saved/collected ones survive. */
+  purgeTopicCards(topicId: string): Promise<void>;
   setSaved(cardId: string, saved: boolean, at: Date): Promise<void>;
   setVote(cardId: string, vote: -1 | 0 | 1): Promise<void>;
   getSavedCards(): Promise<Card[]>;

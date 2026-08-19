@@ -1,0 +1,1 @@
+ALTER TABLE `topics` ADD `query` text DEFAULT '' NOT NULL;

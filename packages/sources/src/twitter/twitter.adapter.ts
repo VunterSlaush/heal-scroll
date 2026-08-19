@@ -16,6 +16,7 @@ export const TWITTER_CONFIG: SourceConfig = {
     'space', 'science', 'tech', 'ai', 'history', 'economics', 'markets',
     'finance', 'health', 'nutrition', 'longevity', 'mindfulness',
   ],
+  dynamicTopics: true,
 };
 
 const API_URL = 'https://api.x.com/2/tweets/search/recent';
@@ -39,10 +40,12 @@ export const TOPIC_ACCOUNTS: Record<string, string[]> = {
   mindfulness: ['Headspace', 'hubermanlab'],
 };
 
-function queryFor(topicId: string): string | undefined {
-  const accounts = TOPIC_ACCOUNTS[topicId];
-  if (!accounts || accounts.length === 0) return undefined;
-  return `(${accounts.map((a) => `from:${a}`).join(' OR ')}) -is:retweet -is:reply`;
+function queryFor(topic: Topic): string | undefined {
+  const accounts = TOPIC_ACCOUNTS[topic.id];
+  if (accounts && accounts.length > 0) {
+    return `(${accounts.map((a) => `from:${a}`).join(' OR ')}) -is:retweet -is:reply`;
+  }
+  return topic.query ? `(${topic.query}) lang:en -is:retweet -is:reply` : undefined;
 }
 
 interface TweetMedia {
@@ -109,7 +112,7 @@ export function createTwitterAdapter(bearerToken?: string): SourcePort {
     config: TWITTER_CONFIG,
 
     async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
-      const topicQuery = queryFor(topic.id);
+      const topicQuery = queryFor(topic);
       if (!bearerToken || !topicQuery || limit <= 0) return [];
       const query = encodeURIComponent(topicQuery);
       const params = [

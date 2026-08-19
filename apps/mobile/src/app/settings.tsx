@@ -1,9 +1,10 @@
+import Ionicons from '@expo/vector-icons/Ionicons';
 import Slider from '@react-native-community/slider';
 import type { Settings, TopicSourceState, TopicWithState } from '@heal-scroll/core';
-import { SESSION_SIZE_LIMITS } from '@heal-scroll/core';
+import { createUserTopic, SESSION_SIZE_LIMITS } from '@heal-scroll/core';
 import { useCallback, useEffect, useState } from 'react';
-import { Pressable, ScrollView, StyleSheet, Switch, Text, View } from 'react-native';
-import { settingsRepo, sources, topicRepo, topicSourceRepo } from '@/composition-root';
+import { Pressable, ScrollView, StyleSheet, Switch, Text, TextInput, View } from 'react-native';
+import { cardRepo, settingsRepo, sources, topicRepo, topicSourceRepo } from '@/composition-root';
 
 const COOLDOWNS = [5, 10, 15, 20, 30, 60];
 const LANGUAGES: { code: string; label: string }[] = [
@@ -21,6 +22,7 @@ export default function SettingsScreen() {
   const [sourceStates, setSourceStates] = useState<TopicSourceState[]>([]);
   const [expandedTopic, setExpandedTopic] = useState<string | null>(null);
   const [sessionSizePreview, setSessionSizePreview] = useState<number | null>(null);
+  const [newTopicTerm, setNewTopicTerm] = useState('');
 
   const load = useCallback(async () => {
     const [settingsData, topicList] = await Promise.all([
@@ -44,6 +46,20 @@ export default function SettingsScreen() {
 
   const toggleTopic = async (topic: TopicWithState) => {
     await topicRepo.setEnabled(topic.id, !topic.enabled);
+    await load();
+  };
+
+  const addTopic = async () => {
+    const topic = createUserTopic(newTopicTerm);
+    if (!topic.id) return;
+    await topicRepo.upsertTopics([topic]);
+    setNewTopicTerm('');
+    await load();
+  };
+
+  const removeTopic = async (topicId: string) => {
+    await topicRepo.deleteTopic(topicId);
+    await cardRepo.purgeTopicCards(topicId);
     await load();
   };
 
@@ -125,6 +141,24 @@ export default function SettingsScreen() {
       </View>
 
       <Text style={styles.heading}>Topics</Text>
+      <View style={styles.row}>
+        <TextInput
+          style={styles.topicInput}
+          placeholder="Add a topic or #hashtag…"
+          placeholderTextColor="#999"
+          value={newTopicTerm}
+          onChangeText={setNewTopicTerm}
+          onSubmitEditing={() => void addTopic()}
+          returnKeyType="done"
+        />
+        <Pressable
+          style={[styles.addButton, !newTopicTerm.trim() && styles.addButtonDisabled]}
+          onPress={() => void addTopic()}
+          disabled={!newTopicTerm.trim()}
+        >
+          <Text style={styles.addButtonLabel}>Add</Text>
+        </Pressable>
+      </View>
       {topics.map((topic) => (
         <View key={topic.id}>
           <View style={styles.row}>
@@ -135,11 +169,19 @@ export default function SettingsScreen() {
               <Text style={styles.rowLabel}>{topic.name}</Text>
               <Text style={styles.expandHint}>{expandedTopic === topic.id ? 'hide sources' : 'sources'}</Text>
             </Pressable>
-            <Switch value={topic.enabled} onValueChange={() => void toggleTopic(topic)} />
+            <View style={styles.topicControls}>
+              <Switch value={topic.enabled} onValueChange={() => void toggleTopic(topic)} />
+              <Pressable onPress={() => void removeTopic(topic.id)} hitSlop={10}>
+                <Ionicons name="trash-outline" size={18} color="#b00020" />
+              </Pressable>
+            </View>
           </View>
           {expandedTopic === topic.id
             ? sources
-                .filter((source) => source.config.topicIds.includes(topic.id))
+                .filter(
+                  (source) =>
+                    source.config.dynamicTopics || source.config.topicIds.includes(topic.id),
+                )
                 .map((source) => (
                   <View key={source.id} style={[styles.row, styles.subRow]}>
                     <Text style={styles.rowLabel}>{source.name}</Text>
@@ -181,6 +223,25 @@ const styles = StyleSheet.create({
   topicLabelWrap: { flexDirection: 'row', alignItems: 'center', gap: 10, flexShrink: 1 },
   expandHint: { fontSize: 12, color: '#999' },
   chips: { flexDirection: 'row', gap: 6, flexWrap: 'wrap' },
+  topicInput: {
+    flex: 1,
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    paddingHorizontal: 10,
+    paddingVertical: 8,
+    fontSize: 14,
+    color: '#1a1a1a',
+  },
+  addButton: {
+    paddingHorizontal: 16,
+    paddingVertical: 9,
+    borderRadius: 999,
+    backgroundColor: '#1a1a1a',
+  },
+  addButtonDisabled: { opacity: 0.35 },
+  addButtonLabel: { color: '#fff', fontWeight: '600', fontSize: 13 },
+  topicControls: { flexDirection: 'row', alignItems: 'center', gap: 14 },
   slider: { width: '100%', height: 36 },
   sliderValue: { fontSize: 15, fontWeight: '700', color: '#1a1a1a', fontVariant: ['tabular-nums'] },
   chip: { paddingHorizontal: 12, paddingVertical: 6, borderRadius: 999, borderWidth: 1, borderColor: '#ccc' },

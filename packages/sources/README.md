@@ -28,6 +28,12 @@ deterministic transformers: raw API payload → `Card[]`. No LLM, no storage.
 Utils: `stripHtml`, `truncateAtSentence`, `canonicalUrl`, `hashTitle`,
 `extractFirstImage`, `makeSeriesCards`.
 
+**Dynamic topics:** adapters with `dynamicTopics: true` (wikipedia, guardian,
+hn, arxiv, pubmed, devto, medium, reddit, twitter) serve ANY topic by falling
+back to `topic.query` when their curated map has no entry — Guardian quotes the
+phrase and searches headlines only, Reddit switches to site-wide search, Medium
+and Dev.to slug the term into a tag. Fixed-feed sources ignore unknown topics.
+
 ## Invariants
 
 - **Adapters never touch the database** (ESLint-enforced). They fetch, transform, return.

@@ -19,6 +19,7 @@ export const REDDIT_CONFIG: SourceConfig = {
     'space', 'science', 'tech', 'ai', 'history', 'economics', 'markets',
     'finance', 'health', 'nutrition', 'longevity', 'mindfulness',
   ],
+  dynamicTopics: true,
 };
 
 /** Curated best-of subreddits per topic. */
@@ -127,11 +128,22 @@ export function createRedditAdapter(credentials?: RedditCredentials): SourcePort
 
     async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
       const subreddits = TOPIC_SUBREDDITS[topic.id];
-      if (!subreddits || subreddits.length === 0 || limit <= 0) return [];
+      if ((!subreddits || subreddits.length === 0) && !topic.query) return [];
+      if (limit <= 0) return [];
       const bearer = await getToken();
       const base = bearer ? 'https://oauth.reddit.com' : 'https://www.reddit.com';
       const headers: Record<string, string> = { 'User-Agent': REDDIT_CONFIG.userAgent };
       if (bearer) headers.Authorization = `Bearer ${bearer}`;
+
+      // User topics without curated subreddits use Reddit's site-wide search.
+      if (!subreddits || subreddits.length === 0) {
+        const response = await fetch(
+          `${base}/search${bearer ? '' : '.json'}?q=${encodeURIComponent(topic.query)}&sort=top&t=week&limit=${Math.min(limit, 25)}&raw_json=1`,
+          { headers },
+        );
+        if (!response.ok) throw new Error(`reddit: HTTP ${response.status} for search`);
+        return postsToCards((await response.json()) as RedditListing, topic.id);
+      }
 
       const perSub = Math.ceil(limit / subreddits.length);
       const results = await Promise.allSettled(

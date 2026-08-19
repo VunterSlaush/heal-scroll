@@ -57,11 +57,20 @@ describe('SqliteTopicRepo', () => {
   it('upserts, toggles, and clamps weight adjustments', async () => {
     const repo = new SqliteTopicRepo(db);
     await repo.upsertTopics([
-      { id: 'space', name: 'Space' },
-      { id: 'history', name: 'History' },
+      { id: 'space', name: 'Space', query: 'space astronomy' },
+      { id: 'history', name: 'History', query: 'ancient history' },
     ]);
     await repo.setEnabled('history', false);
     expect((await repo.getEnabledTopics()).map((t) => t.id)).toEqual(['space']);
+    expect((await repo.getTopics()).find((t) => t.id === 'space')?.query).toBe('space astronomy');
+
+    // Re-seeding refreshes the query but never resets user state.
+    await repo.upsertTopics([{ id: 'history', name: 'History', query: 'medieval history' }]);
+    const history = (await repo.getTopics()).find((t) => t.id === 'history');
+    expect(history).toMatchObject({ enabled: false, query: 'medieval history' });
+
+    await repo.deleteTopic('history');
+    expect((await repo.getTopics()).map((t) => t.id)).toEqual(['space']);
 
     for (let i = 0; i < 100; i++) await repo.adjustWeight('space', 0.05);
     expect((await repo.getTopics()).find((t) => t.id === 'space')?.weight).toBeCloseTo(3);

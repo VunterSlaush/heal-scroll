@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import fixture from './__fixtures__/devto-programming.json';
-import { articlesToCards, type DevtoArticle } from './devto.adapter';
+import { articlesToCards, devtoTag, type DevtoArticle } from './devto.adapter';
 
 const articles = fixture as DevtoArticle[];
 
@@ -22,6 +22,12 @@ describe('devto adapter — articlesToCards', () => {
 
   it('cover images ride along for the visual substance gate', () => {
     expect(cards.some((c) => c.imageUrl)).toBe(true);
+  });
+
+  it('slugs user topics into dev.to tag format', () => {
+    expect(devtoTag({ id: 'tech', name: 'Tech', query: '' })).toBe('programming');
+    expect(devtoTag({ id: 'quantum-computing', name: 'Quantum Computing', query: 'Quantum Computing!' })).toBe('quantumcomputing');
+    expect(devtoTag({ id: 'x', name: 'x', query: '###' })).toBeUndefined();
   });
 
   it('skips incomplete payloads', () => {

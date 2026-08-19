@@ -10,6 +10,7 @@ export interface TopicRepo {
   getTopics(): Promise<TopicWithState[]>;
   getEnabledTopics(): Promise<TopicWithState[]>;
   setEnabled(topicId: string, enabled: boolean): Promise<void>;
+  deleteTopic(topicId: string): Promise<void>;
   adjustWeight(topicId: string, delta: number): Promise<void>;
   upsertTopics(topics: Topic[]): Promise<void>;
 }

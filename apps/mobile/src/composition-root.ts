@@ -8,9 +8,8 @@ import type {
   Card,
   Clock,
   SourcePort,
-  Topic,
 } from '@heal-scroll/core';
-import { refillBuffer } from '@heal-scroll/core';
+import { DEFAULT_TOPICS, refillBuffer } from '@heal-scroll/core';
 import {
   schema,
   SqliteCardRepo,
@@ -44,22 +43,6 @@ import { Image } from 'expo-image';
 import { getLocales } from 'expo-localization';
 import { drizzle } from 'drizzle-orm/expo-sqlite';
 import { openDatabaseSync } from 'expo-sqlite';
-
-/** v1 topics plus the health & finance waves (PLAN §3 v1.2). */
-export const TOPICS: Topic[] = [
-  { id: 'space', name: 'Space & astronomy' },
-  { id: 'science', name: 'Science & nature' },
-  { id: 'tech', name: 'Tech & programming' },
-  { id: 'ai', name: 'AI & machine learning' },
-  { id: 'history', name: 'History' },
-  { id: 'economics', name: 'Economics & business' },
-  { id: 'markets', name: 'Markets & macro' },
-  { id: 'finance', name: 'Personal finance & investing' },
-  { id: 'health', name: 'Health & medicine' },
-  { id: 'nutrition', name: 'Nutrition & food science' },
-  { id: 'longevity', name: 'Longevity & sleep' },
-  { id: 'mindfulness', name: 'Mental health & mindfulness' },
-];
 
 const sqlite = openDatabaseSync('heal-scroll.db');
 export const db = drizzle(sqlite, { schema });
@@ -157,7 +140,12 @@ export const buildSessionDeps: BuildSessionDeps = {
 };
 
 export async function seedInitialData(): Promise<void> {
-  await topicRepo.upsertTopics(TOPICS);
+  // Defaults are seeded once so deleted topics stay deleted; the same run
+  // backfills `query` on installs that predate dynamic topics.
+  if (!(await settingsRepo.getValue('topics.seeded'))) {
+    await topicRepo.upsertTopics(DEFAULT_TOPICS);
+    await settingsRepo.setValue('topics.seeded', '1');
+  }
   // First run: content language follows the phone until the user changes it.
   const stored = await settingsRepo.getValue('settings');
   if (!stored || !('language' in (JSON.parse(stored) as Record<string, unknown>))) {

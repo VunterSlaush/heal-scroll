@@ -92,6 +92,13 @@ export class FakeCardRepo implements CardRepo {
   getRecallCandidates(_window: RecallWindow, _now: Date): Promise<Card[]> {
     return Promise.resolve([...this.recallCandidates]);
   }
+
+  purgeTopicCards(topicId: string): Promise<void> {
+    this.cards = this.cards.filter(
+      (c) => c.topicId !== topicId || this.seen.has(c.id) || this.saved.has(c.id),
+    );
+    return Promise.resolve();
+  }
 }
 
 export class FakeSettingsRepo implements SettingsRepo {
@@ -115,7 +122,7 @@ export class FakeSettingsRepo implements SettingsRepo {
 }
 
 export class FakeTopicRepo implements TopicRepo {
-  topics: TopicWithState[] = [{ id: 'space', name: 'Space', enabled: true, weight: 1 }];
+  topics: TopicWithState[] = [{ id: 'space', name: 'Space', query: 'space astronomy', enabled: true, weight: 1 }];
 
   getTopics(): Promise<TopicWithState[]> {
     return Promise.resolve([...this.topics]);
@@ -131,6 +138,10 @@ export class FakeTopicRepo implements TopicRepo {
   adjustWeight(topicId: string, delta: number): Promise<void> {
     const topic = this.topics.find((t) => t.id === topicId);
     if (topic) topic.weight = Math.min(3, Math.max(0.2, topic.weight + delta));
+    return Promise.resolve();
+  }
+  deleteTopic(topicId: string): Promise<void> {
+    this.topics = this.topics.filter((t) => t.id !== topicId);
     return Promise.resolve();
   }
   upsertTopics(topics: Topic[]): Promise<void> {
@@ -256,11 +267,12 @@ export function fakeSource(
   id: string,
   topicIds: string[],
   fetcher: (topic: Topic, limit: number) => Promise<Card[]>,
+  dynamicTopics = false,
 ): SourcePort {
   return {
     id,
     name: id,
-    config: { userAgent: 'test', rateLimitPerMinute: 60, ttlHours: 24, quality: 0.5, topicIds },
+    config: { userAgent: 'test', rateLimitPerMinute: 60, ttlHours: 24, quality: 0.5, topicIds, dynamicTopics },
     fetchCards: fetcher,
   };
 }

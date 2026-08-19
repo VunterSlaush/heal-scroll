@@ -34,8 +34,8 @@ describe('guardian adapter — resultsToCards', () => {
     expect(cards.some((c) => c.imageUrl?.startsWith('https://'))).toBe(true);
   });
 
-  it('ignores topics it has no filters for', async () => {
+  it('serves nothing for topics with neither filters nor a query', async () => {
     const adapter = createGuardianAdapter('test');
-    expect(await adapter.fetchCards({ id: 'gardening', name: 'Gardening' }, 5)).toEqual([]);
+    expect(await adapter.fetchCards({ id: 'gardening', name: 'Gardening', query: '' }, 5)).toEqual([]);
   });
 });

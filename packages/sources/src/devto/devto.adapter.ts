@@ -11,6 +11,7 @@ export const DEVTO_CONFIG: SourceConfig = {
   ttlHours: 24,
   quality: 0.65,
   topicIds: ['tech', 'ai'],
+  dynamicTopics: true,
 };
 
 const TOPIC_TAGS: Record<string, string> = {
@@ -19,6 +20,14 @@ const TOPIC_TAGS: Record<string, string> = {
 };
 
 const API_URL = 'https://dev.to/api/articles';
+
+/** dev.to tags are bare alphanumerics: "Quantum Computing" -> "quantumcomputing". */
+export function devtoTag(topic: Topic): string | undefined {
+  const curated = TOPIC_TAGS[topic.id];
+  if (curated) return curated;
+  const slug = topic.query.toLowerCase().replace(/[^a-z0-9]/g, '');
+  return slug || undefined;
+}
 
 export interface DevtoArticle {
   id?: number;
@@ -59,7 +68,7 @@ export const devtoAdapter: SourcePort = {
   config: DEVTO_CONFIG,
 
   async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
-    const tag = TOPIC_TAGS[topic.id];
+    const tag = devtoTag(topic);
     if (!tag || limit <= 0) return [];
     const response = await fetch(`${API_URL}?tag=${tag}&top=7&per_page=${Math.min(limit, 30)}`, {
       headers: { 'User-Agent': DEVTO_CONFIG.userAgent },

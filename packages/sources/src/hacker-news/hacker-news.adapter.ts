@@ -10,6 +10,7 @@ export const HACKER_NEWS_CONFIG: SourceConfig = {
   ttlHours: 12,
   quality: 0.6,
   topicIds: ['tech', 'ai'],
+  dynamicTopics: true,
 };
 
 /** Algolia search API — one request per fetch, no per-item calls. */
@@ -76,7 +77,11 @@ export const hackerNewsAdapter: SourcePort = {
   config: HACKER_NEWS_CONFIG,
 
   async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
-    const topicQuery = TOPIC_QUERIES[topic.id];
+    const topicQuery =
+      TOPIC_QUERIES[topic.id] ??
+      (topic.query
+        ? "query=" + encodeURIComponent(topic.query) + "&tags=story&numericFilters=" + encodeURIComponent('points>20')
+        : undefined);
     if (!topicQuery || limit <= 0) return [];
     const response = await fetch(`${API_URL}?${topicQuery}&hitsPerPage=${Math.min(limit, 30)}`, {
       headers: { 'User-Agent': HACKER_NEWS_CONFIG.userAgent },

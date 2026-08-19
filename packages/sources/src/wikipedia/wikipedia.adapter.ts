@@ -25,6 +25,7 @@ export const WIKIPEDIA_CONFIG: SourceConfig = {
     'longevity',
     'mindfulness',
   ],
+  dynamicTopics: true,
 };
 
 /**
@@ -154,7 +155,7 @@ export function createWikipediaAdapter(
     config: WIKIPEDIA_CONFIG,
 
     async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
-      const terms = TOPIC_SEARCHES[topic.id];
+      const terms = TOPIC_SEARCHES[topic.id] ?? topic.query;
       if (!terms || limit <= 0) return [];
       const language = await getLanguage();
       let cards = await search(language, topic.id, terms);

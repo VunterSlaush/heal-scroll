@@ -2,17 +2,19 @@ import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { describe, expect, it } from 'vitest';
 import { feedItemsToCards, parseFeed } from '../rss/rss.adapter';
-import { cleanMediumCards, MEDIUM_FEEDS, mediumAdapter } from './medium.adapter';
+import { cleanMediumCards, MEDIUM_TAGS, mediumAdapter, mediumTag } from './medium.adapter';
 
 const xml = readFileSync(fileURLToPath(new URL('./__fixtures__/medium-space.xml', import.meta.url)), 'utf8');
 
 describe('medium adapter', () => {
-  it('covers all topics via tag feeds', () => {
+  it('covers all default topics and slugs user topics into tags', () => {
     expect(mediumAdapter.id).toBe('medium');
-    const covered = new Set(MEDIUM_FEEDS.flatMap((f) => f.topicIds));
+    expect(mediumAdapter.config.dynamicTopics).toBe(true);
     for (const topic of ['space', 'science', 'tech', 'ai', 'history', 'economics', 'markets', 'finance', 'health', 'nutrition', 'longevity', 'mindfulness']) {
-      expect(covered.has(topic)).toBe(true);
+      expect(MEDIUM_TAGS[topic]).toBeTruthy();
     }
+    expect(mediumTag({ id: 'quantum-computing', name: 'Quantum Computing', query: 'Quantum Computing' })).toBe('quantum-computing');
+    expect(mediumTag({ id: 'x', name: 'x', query: '' })).toBeUndefined();
   });
 
   it('keeps only teasers with a real subtitle, boilerplate stripped', () => {

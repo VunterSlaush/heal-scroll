@@ -36,11 +36,11 @@ describe('twitter adapter — tweetsToCards', () => {
 describe('createTwitterAdapter', () => {
   it('returns no cards without a bearer token instead of hitting the network', async () => {
     const adapter = createTwitterAdapter(undefined);
-    expect(await adapter.fetchCards({ id: 'finance', name: 'Personal finance' }, 10)).toEqual([]);
+    expect(await adapter.fetchCards({ id: 'finance', name: 'Personal finance', query: 'finance' }, 10)).toEqual([]);
   });
 
-  it('ignores topics with no curated accounts', async () => {
+  it('ignores topics with neither curated accounts nor a query', async () => {
     const adapter = createTwitterAdapter('token');
-    expect(await adapter.fetchCards({ id: 'gardening', name: 'Gardening' }, 10)).toEqual([]);
+    expect(await adapter.fetchCards({ id: 'gardening', name: 'Gardening', query: '' }, 10)).toEqual([]);
   });
 });

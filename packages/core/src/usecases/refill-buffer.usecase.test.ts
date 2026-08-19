@@ -103,6 +103,31 @@ describe('refillBuffer', () => {
     expect(inserted).toBe(1);
   });
 
+  it('dynamic sources serve user topics their topicIds never mention', async () => {
+    const topicRepo = new FakeTopicRepo();
+    await topicRepo.upsertTopics([{ id: 'f1', name: 'F1', query: 'F1' }]);
+    const served: string[] = [];
+    const deps = makeDeps({
+      topicRepo,
+      sources: [
+        fakeSource('search-shaped', [], (topic) => {
+          served.push(topic.id);
+          return Promise.resolve([]);
+        }, true),
+        fakeSource('curated-only', ['space'], (topic) => {
+          served.push(`curated:${topic.id}`);
+          return Promise.resolve([]);
+        }),
+      ],
+    });
+
+    await refillBuffer(deps);
+
+    expect(served).toContain('f1');
+    expect(served).toContain('space');
+    expect(served).not.toContain('curated:f1');
+  });
+
   it('splits the needed amount across eligible sources', async () => {
     const limits: number[] = [];
     const source = (id: string) =>

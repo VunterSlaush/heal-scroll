@@ -6,7 +6,7 @@ this package depends on nothing.
 
 ## Public API (`src/index.ts`)
 
-- Entities: `Card` (with optional series fields), `Topic`, `Source`, `Settings`,
+- Entities: `Card` (with optional series fields), `Topic` (with `query`; `createUserTopic`, `DEFAULT_TOPICS`), `Source`, `Settings`,
   `SessionItem`/`SessionSummary`, `TopicSourceState`, `TopicBadge`, `Insights`, `Collection`
 - Ports: `SourcePort`, `CardRepo`, `SettingsRepo`, `TopicRepo`, `TopicSourceRepo`,
   `SessionRepo`, `RecallRepo`, `CollectionRepo`, `InsightsPort`, `Clock`

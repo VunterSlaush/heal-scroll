@@ -128,10 +128,36 @@ describe('SqliteCardRepo', () => {
     ]);
   });
 
+  it('purgeTopicCards drops only untouched buffer cards', async () => {
+    const { SqliteCollectionRepo } = await import('./sqlite-collection-repo');
+    const collections = new SqliteCollectionRepo(db);
+    await repo.upsertCards([
+      card('buffer'),
+      card('seen'),
+      card('saved'),
+      card('collected'),
+      card('other-topic', { topicId: 'history' }),
+    ]);
+    await repo.markSeen(['wikipedia:seen'], NOW);
+    await repo.setSaved('wikipedia:saved', true, NOW);
+    const collectionId = await collections.createCollection('Keep', NOW);
+    await collections.addItem(collectionId, 'wikipedia:collected', NOW);
+
+    await repo.purgeTopicCards('space');
+
+    const remaining = (await db.select({ id: schema.items.id }).from(schema.items)).map((r) => r.id).sort();
+    expect(remaining).toEqual([
+      'wikipedia:collected',
+      'wikipedia:other-topic',
+      'wikipedia:saved',
+      'wikipedia:seen',
+    ]);
+  });
+
   it('seedTopics is idempotent', async () => {
-    await seedTopics(db, [{ id: 'space', name: 'Space' }]);
-    await seedTopics(db, [{ id: 'space', name: 'Space' }]);
+    await seedTopics(db, [{ id: 'space', name: 'Space', query: 'space astronomy' }]);
+    await seedTopics(db, [{ id: 'space', name: 'Space', query: 'space astronomy' }]);
     const rows = await db.select().from(schema.topics);
-    expect(rows).toEqual([{ id: 'space', name: 'Space', enabled: true, weight: 1 }]);
+    expect(rows).toEqual([{ id: 'space', name: 'Space', query: 'space astronomy', enabled: true, weight: 1 }]);
   });
 });

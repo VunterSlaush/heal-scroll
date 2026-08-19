@@ -32,6 +32,14 @@ export class SqliteTopicRepo implements TopicRepo {
 
   async upsertTopics(topicList: Topic[]): Promise<void> {
     if (topicList.length === 0) return;
-    await this.db.insert(topics).values(topicList).onConflictDoNothing();
+    // Refresh only the query on conflict; user state (enabled/weight/name) stays.
+    await this.db
+      .insert(topics)
+      .values(topicList)
+      .onConflictDoUpdate({ target: topics.id, set: { query: sql`excluded.query` } });
+  }
+
+  async deleteTopic(topicId: string): Promise<void> {
+    await this.db.delete(topics).where(eq(topics.id, topicId));
   }
 }

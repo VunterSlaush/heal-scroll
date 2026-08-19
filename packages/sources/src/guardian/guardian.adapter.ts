@@ -19,10 +19,11 @@ export const GUARDIAN_CONFIG: SourceConfig = {
     'space', 'science', 'tech', 'ai', 'history', 'economics', 'markets',
     'finance', 'health', 'nutrition', 'longevity', 'mindfulness',
   ],
+  dynamicTopics: true,
 };
 
 /** topicId → section and/or query on the content API. */
-const TOPIC_FILTERS: Record<string, { section?: string; q?: string }> = {
+const TOPIC_FILTERS: Record<string, { section?: string; q?: string; headlineOnly?: boolean }> = {
   space: { section: 'science', q: 'space OR nasa OR astronomy' },
   science: { section: 'science' },
   tech: { section: 'technology' },
@@ -80,7 +81,11 @@ export function createGuardianAdapter(apiKey = 'test'): SourcePort {
     config: GUARDIAN_CONFIG,
 
     async fetchCards(topic: Topic, limit: number): Promise<Card[]> {
-      const filters = TOPIC_FILTERS[topic.id];
+      // User topics search as an exact phrase in the HEADLINE only — full-body
+      // matches drag in every article that merely mentions the term.
+      const filters =
+        TOPIC_FILTERS[topic.id] ??
+        (topic.query ? { q: `"${topic.query}"`, headlineOnly: true } : undefined);
       if (!filters || limit <= 0) return [];
       const params = [
         'order-by=newest',
@@ -88,6 +93,7 @@ export function createGuardianAdapter(apiKey = 'test'): SourcePort {
         `page-size=${Math.min(limit, 20)}`,
         filters.section ? `section=${filters.section}` : '',
         filters.q ? `q=${encodeURIComponent(filters.q)}` : '',
+        filters.headlineOnly ? 'query-fields=headline' : '',
         `api-key=${apiKey}`,
       ]
         .filter(Boolean)
