@@ -14,7 +14,8 @@ import { useSession } from '@/hooks/use-session';
 type Page = SessionItem | { kind: 'end' };
 
 export default function FeedScreen() {
-  const { state, savedIds, votes, reload, endSession, toggleSave, vote, answerRecall } = useSession();
+  const { state, savedIds, votes, topicNames, reload, endSession, toggleSave, vote, answerRecall } =
+    useSession();
   const insets = useSafeAreaInsets();
   const [pageHeight, setPageHeight] = useState(0);
 
@@ -102,6 +103,7 @@ export default function FeedScreen() {
             card={page.card}
             fullScreen
             topInset={insets.top}
+            topicLabel={topicNames[page.card.topicId] ?? page.card.topicId}
             revisit={page.revisit}
             saved={savedIds.has(page.card.id)}
             vote={votes[page.card.id] ?? 0}
@@ -121,7 +123,9 @@ export default function FeedScreen() {
         <FlashList
           data={pages}
           keyExtractor={(page) => (page.kind === 'end' ? 'session-end' : page.kind === 'summary' ? 'weekly-summary' : page.card.id)}
-          renderItem={({ item }) => <View style={{ height: pageHeight }}>{renderPage(item)}</View>}
+          renderItem={({ item }) => (
+            <View style={[styles.page, { height: pageHeight }]}>{renderPage(item)}</View>
+          )}
           pagingEnabled
           showsVerticalScrollIndicator={false}
           onMomentumScrollEnd={handleMomentumEnd}
@@ -133,6 +137,7 @@ export default function FeedScreen() {
 
 const styles = StyleSheet.create({
   screen: { flex: 1, backgroundColor: '#fff' },
+  page: { overflow: 'hidden' },
   center: { flex: 1, alignItems: 'center', justifyContent: 'center', padding: 24, gap: 8, backgroundColor: '#fff' },
   messageTitle: { fontSize: 16, fontWeight: '600', color: '#1a1a1a', textAlign: 'center' },
   messageDetail: { fontSize: 13, color: '#666', textAlign: 'center' },

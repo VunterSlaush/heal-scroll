@@ -23,6 +23,7 @@ export function useSession() {
   const [state, setState] = useState<SessionState>({ phase: 'loading' });
   const [savedIds, setSavedIds] = useState<Set<string>>(new Set());
   const [votes, setVotes] = useState<Record<string, -1 | 0 | 1>>({});
+  const [topicNames, setTopicNames] = useState<Record<string, string>>({});
   const cooldownRef = useRef(10);
 
   const load = useCallback(async () => {
@@ -37,6 +38,8 @@ export function useSession() {
         return;
       }
       const saved = await cardRepo.getSavedCards();
+      const topics = await topicRepo.getTopics();
+      setTopicNames(Object.fromEntries(topics.map((t) => [t.id, t.name])));
       setSavedIds(new Set(saved.map((c) => c.id)));
       setVotes({});
       setState({ phase: 'active', sessionId: result.sessionId, items: result.items });
@@ -93,5 +96,5 @@ export function useSession() {
     await recordRecall(recallRepo, card.id, remembered, clock());
   }, []);
 
-  return { state, savedIds, votes, reload: load, endSession, toggleSave, vote, answerRecall };
+  return { state, savedIds, votes, topicNames, reload: load, endSession, toggleSave, vote, answerRecall };
 }

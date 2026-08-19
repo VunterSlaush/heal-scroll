@@ -28,7 +28,9 @@ export function RecallCard({ card, topInset = 0, onAnswer }: RecallCardProps) {
       <Text style={styles.title}>{card.title}</Text>
       {answered ? (
         <>
-          <Text style={styles.body}>{card.body}</Text>
+          <Text style={styles.body} numberOfLines={10} ellipsizeMode="tail">
+            {card.body}
+          </Text>
           <Text style={styles.feedback}>
             {answered === 'remembered' ? 'Nice — it stuck.' : 'Here it is again.'}
           </Text>

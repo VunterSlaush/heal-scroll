@@ -1,13 +1,18 @@
 import Ionicons from '@expo/vector-icons/Ionicons';
 import type { Card } from '@heal-scroll/core';
 import { Image } from 'expo-image';
+import { useState } from 'react';
 import { Linking, Pressable, Share, StyleSheet, Text, View } from 'react-native';
+
+const BODY_LINE_HEIGHT = 26;
 
 interface CardItemProps {
   card: Card;
   /** Full-screen slide (feed) vs compact row (saved/collections). */
   fullScreen?: boolean;
   topInset?: number;
+  /** Display name of the card's topic, shown as a hashtag chip. */
+  topicLabel?: string;
   revisit?: boolean;
   saved?: boolean;
   vote?: -1 | 0 | 1;
@@ -23,23 +28,36 @@ export function CardItem({
   card,
   fullScreen = false,
   topInset = 0,
+  topicLabel,
   revisit,
   saved,
   vote,
   onToggleSave,
   onVote,
 }: CardItemProps) {
+  // The body gets whatever space is left between title and footer; measuring it
+  // lets the text end on a clean ellipsis instead of bleeding past the page.
+  const [bodyLines, setBodyLines] = useState<number | undefined>(undefined);
+
   const iconSize = fullScreen ? 24 : 18;
   const idleColor = '#666';
   const activeColor = '#1a1a1a';
 
   const actions = (
     <View style={styles.footer}>
-      <Pressable onPress={() => void Linking.openURL(card.sourceUrl)} hitSlop={8} style={styles.sourceLink}>
-        <Text style={[styles.source, fullScreen && styles.sourceBig]}>{card.sourceName}</Text>
-        <Ionicons name="open-outline" size={iconSize - 6} color={idleColor} />
-      </Pressable>
+      {topicLabel ? (
+        <View style={styles.topicChip}>
+          <Text style={styles.topicChipLabel} numberOfLines={1}>
+            #{topicLabel}
+          </Text>
+        </View>
+      ) : (
+        <View />
+      )}
       <View style={styles.actions}>
+        <Pressable onPress={() => void Linking.openURL(card.sourceUrl)} hitSlop={10}>
+          <Ionicons name="open-outline" size={iconSize} color={idleColor} />
+        </Pressable>
         {onVote ? (
           <>
             <Pressable onPress={() => onVote(card, 1)} hitSlop={10}>
@@ -109,8 +127,16 @@ export function CardItem({
       <View style={styles.slideContent}>
         {tags}
         <Text style={styles.slideTitle}>{card.title}</Text>
-        <Text style={styles.slideBody}>{card.body}</Text>
-        <View style={styles.spacer} />
+        <View
+          style={styles.bodyWrap}
+          onLayout={(event) =>
+            setBodyLines(Math.max(2, Math.floor(event.nativeEvent.layout.height / BODY_LINE_HEIGHT)))
+          }
+        >
+          <Text style={styles.slideBody} numberOfLines={bodyLines} ellipsizeMode="tail">
+            {card.body}
+          </Text>
+        </View>
         {actions}
       </View>
     </View>
@@ -119,12 +145,12 @@ export function CardItem({
 
 const styles = StyleSheet.create({
   // Full-screen slide
-  slide: { flex: 1, backgroundColor: '#fff' },
+  slide: { flex: 1, backgroundColor: '#fff', overflow: 'hidden' },
   slideImage: { width: '100%', height: '42%', backgroundColor: '#e8e8e8' },
   slideContent: { flex: 1, paddingHorizontal: 24, paddingTop: 20, paddingBottom: 18, gap: 12 },
   slideTitle: { fontSize: 26, fontWeight: '700', color: '#1a1a1a', lineHeight: 32 },
-  slideBody: { fontSize: 17, lineHeight: 26, color: '#333' },
-  spacer: { flex: 1 },
+  bodyWrap: { flex: 1, overflow: 'hidden' },
+  slideBody: { fontSize: 17, lineHeight: BODY_LINE_HEIGHT, color: '#333' },
   // Compact row (saved list)
   compactCard: {
     backgroundColor: '#fff',
@@ -142,9 +168,14 @@ const styles = StyleSheet.create({
   // Shared
   revisitTag: { fontSize: 12, color: '#8a6d1a', fontWeight: '600' },
   seriesTag: { fontSize: 12, color: '#666', fontWeight: '600' },
-  footer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 4 },
-  sourceLink: { flexDirection: 'row', alignItems: 'center', gap: 4 },
-  source: { fontSize: 13, color: '#666' },
-  sourceBig: { fontSize: 15 },
+  footer: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center', marginTop: 4, gap: 12 },
+  topicChip: {
+    backgroundColor: '#eef1f4',
+    borderRadius: 999,
+    paddingHorizontal: 12,
+    paddingVertical: 5,
+    flexShrink: 1,
+  },
+  topicChipLabel: { fontSize: 13, color: '#44515c', fontWeight: '600' },
   actions: { flexDirection: 'row', gap: 22, alignItems: 'center' },
 });
