@@ -23,6 +23,9 @@ importers:
 
   apps/mobile:
     dependencies:
+      '@heal-scroll/ai':
+        specifier: workspace:*
+        version: link:../../packages/ai
       '@heal-scroll/core':
         specifier: workspace:*
         version: link:../../packages/core

@@ -2,12 +2,14 @@ import type { Card, SessionItem, SessionSummary } from '@heal-scroll/core';
 import { applyVote, buildSession, finishSession, recordRecall } from '@heal-scroll/core';
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
-  buildSessionDeps,
   cardRepo,
   clock,
+  getBuildSessionDeps,
+  initAi,
   recallRepo,
   refillBufferInBackground,
   seedInitialData,
+  sessionRepo,
   topicRepo,
   topicSourceRepo,
 } from '@/composition-root';
@@ -29,10 +31,12 @@ export function useSession() {
   const load = useCallback(async () => {
     try {
       await seedInitialData();
+      await initAi();
       void refillBufferInBackground();
-      const settings = await buildSessionDeps.settingsRepo.getSettings();
+      const deps = getBuildSessionDeps();
+      const settings = await deps.settingsRepo.getSettings();
       cooldownRef.current = settings.cooldownMinutes;
-      const result = await buildSession(buildSessionDeps);
+      const result = await buildSession(deps);
       if (result.locked) {
         setState({ phase: 'locked', unlockAt: clock().getTime() + result.remainingMs });
         return;
@@ -56,7 +60,7 @@ export function useSession() {
   const endSession = useCallback(async () => {
     if (state.phase !== 'active') return;
     const summary = await finishSession(
-      { cardRepo, sessionRepo: buildSessionDeps.sessionRepo, clock },
+      { cardRepo, sessionRepo, clock },
       state.sessionId,
       state.items,
     );

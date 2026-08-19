@@ -3,6 +3,7 @@
   "main": "expo-router/entry",
   "version": "1.0.0",
   "dependencies": {
+    "@heal-scroll/ai": "workspace:*",
     "@heal-scroll/core": "workspace:*",
     "@heal-scroll/data": "workspace:*",
     "@heal-scroll/sources": "workspace:*",

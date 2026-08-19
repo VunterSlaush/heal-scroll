@@ -82,3 +82,11 @@ export { exportAsJson, exportAsMarkdown } from './usecases/export-data.usecase';
 export type { ExportData } from './usecases/export-data.usecase';
 export { chooseK, kMeans } from './usecases/kmeans';
 export type { KMeansOptions } from './usecases/kmeans';
+export {
+  backfillEmbeddings,
+  EMBED_BATCH_SIZE,
+  EMBED_BODY_CHARS,
+  EMBED_MAX_ITEMS_PER_RUN,
+  embeddingText,
+} from './usecases/backfill-embeddings.usecase';
+export type { BackfillEmbeddingsDeps } from './usecases/backfill-embeddings.usecase';

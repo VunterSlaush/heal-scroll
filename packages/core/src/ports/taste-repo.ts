@@ -4,7 +4,7 @@ import type { TasteCentroid, TasteCentroidKind } from '../entities/taste';
 export interface TasteRepo {
   getCentroids(model: string): Promise<TasteCentroid[]>;
   upsertCentroids(centroids: TasteCentroid[]): Promise<void>;
-  /** Atomically replaces all centroids of the given kinds (nightly recompute). */
+  /** Replaces all centroids of the given kinds (nightly recompute); redo-safe — the profile is rebuildable from the log. */
   replaceCentroids(
     model: string,
     kinds: TasteCentroidKind[],

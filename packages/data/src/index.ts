@@ -8,3 +8,8 @@ export { SqliteSessionRepo } from './sqlite-session-repo';
 export { SqliteRecallRepo } from './sqlite-recall-repo';
 export { SqliteCollectionRepo } from './sqlite-collection-repo';
 export { SqliteInsightsRepo } from './sqlite-insights-repo';
+export { SqliteEmbeddingRepo } from './sqlite-embedding-repo';
+export { SqliteTasteRepo } from './sqlite-taste-repo';
+export { SqliteInteractionLogRepo } from './sqlite-interaction-log-repo';
+export { backfillInteractionLogFromUserItems } from './backfill-interaction-log';
+export { decodeVector, encodeVector, toDriverBlob } from './vector-codec';

@@ -1,4 +1,4 @@
-import { index, integer, real, sqliteTable, text, uniqueIndex } from 'drizzle-orm/sqlite-core';
+import { blob, index, integer, real, sqliteTable, text, uniqueIndex } from 'drizzle-orm/sqlite-core';
 
 /** Normalized cards (PLAN §2 storage). Series live as columns here, not a separate table. */
 export const items = sqliteTable(
@@ -97,6 +97,59 @@ export const recallLog = sqliteTable('recall_log', {
     .references(() => items.id),
   shownAt: integer('shown_at', { mode: 'timestamp_ms' }).notNull(),
   remembered: integer('remembered', { mode: 'boolean' }).notNull(),
+});
+
+/**
+ * One embedding per item, tagged with the embedder model whose space it lives
+ * in (AI_ON_DEVICE_PLAN §5). Little-endian Float32Array bytes; a model switch
+ * prunes and re-embeds without touching `items`.
+ */
+export const itemEmbeddings = sqliteTable(
+  'item_embeddings',
+  {
+    itemId: text('item_id')
+      .primaryKey()
+      .references(() => items.id),
+    model: text('model').notNull(),
+    dim: integer('dim').notNull(),
+    vector: blob('vector', { mode: 'buffer' }).notNull(),
+    createdAt: integer('created_at', { mode: 'timestamp_ms' }).notNull(),
+  },
+  (table) => [index('item_embeddings_model_idx').on(table.model)],
+);
+
+/** Append-only taste signals (AI_ON_DEVICE_PLAN §10.6) — the replay source for "Rebuild from history". */
+export const interactionLog = sqliteTable(
+  'interaction_log',
+  {
+    id: integer('id').primaryKey({ autoIncrement: true }),
+    itemId: text('item_id')
+      .notNull()
+      .references(() => items.id),
+    /** core SignalType: save/upvote/downvote/finished_series/opened_link/dwell/fast_skip. */
+    type: text('type').notNull(),
+    /** Extra measurement, e.g. dwell milliseconds. */
+    value: real('value'),
+    at: integer('at', { mode: 'timestamp_ms' }).notNull(),
+  },
+  (table) => [
+    index('interaction_log_at_idx').on(table.at),
+    index('interaction_log_item_idx').on(table.itemId),
+  ],
+);
+
+/** Learned taste vectors: EMA, k-means interests, dislikes, pinned phrases (AI_ON_DEVICE_PLAN §10). */
+export const tasteCentroids = sqliteTable('taste_centroids', {
+  /** 'ema:global' | 'ema:topic:<topicId>' | 'interest:N' | 'dislike:N' | 'pinned:<phrase>'. */
+  id: text('id').primaryKey(),
+  kind: text('kind').notNull(),
+  topicId: text('topic_id'),
+  model: text('model').notNull(),
+  dim: integer('dim').notNull(),
+  vector: blob('vector', { mode: 'buffer' }).notNull(),
+  weight: real('weight').notNull().default(1),
+  label: text('label'),
+  updatedAt: integer('updated_at', { mode: 'timestamp_ms' }).notNull(),
 });
 
 export const collections = sqliteTable('collections', {

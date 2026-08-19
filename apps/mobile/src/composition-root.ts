@@ -9,15 +9,26 @@ import type {
   Clock,
   SourcePort,
 } from '@heal-scroll/core';
-import { DEFAULT_TOPICS, refillBuffer } from '@heal-scroll/core';
 import {
+  backfillEmbeddings,
+  DEFAULT_TOPICS,
+  NOOP_EMBEDDER_ID,
+  refillBuffer,
+} from '@heal-scroll/core';
+import type { AiCapabilities } from '@heal-scroll/ai';
+import { detectAiCapabilities } from '@heal-scroll/ai';
+import {
+  backfillInteractionLogFromUserItems,
   schema,
   SqliteCardRepo,
   SqliteCollectionRepo,
+  SqliteEmbeddingRepo,
   SqliteInsightsRepo,
+  SqliteInteractionLogRepo,
   SqliteRecallRepo,
   SqliteSessionRepo,
   SqliteSettingsRepo,
+  SqliteTasteRepo,
   SqliteTopicRepo,
   SqliteTopicSourceRepo,
 } from '@heal-scroll/data';
@@ -55,8 +66,30 @@ export const sessionRepo = new SqliteSessionRepo(db);
 export const recallRepo = new SqliteRecallRepo(db);
 export const collectionRepo = new SqliteCollectionRepo(db);
 export const insightsRepo = new SqliteInsightsRepo(db);
+export const embeddingRepo = new SqliteEmbeddingRepo(db);
+export const tasteRepo = new SqliteTasteRepo(db);
+export const interactionLogRepo = new SqliteInteractionLogRepo(db);
 
 export const clock: Clock = () => new Date();
+
+/**
+ * AI capabilities (AI_ON_DEVICE_PLAN §2). Starts rules-only; `initAi()` runs
+ * the platform probes at app start and re-runs when they may have changed
+ * (foreground, model download/delete). Native bindings arrive in milestone 7f
+ * — until then detection sees none and every session runs rules-only.
+ */
+let ai: AiCapabilities = detectAiCapabilities({});
+
+export function getAi(): AiCapabilities {
+  return ai;
+}
+
+export async function initAi(): Promise<void> {
+  ai = detectAiCapabilities({});
+  await settingsRepo.setValue('ai.mode.detected', ai.mode);
+  // Stored vectors from a previous provider live in a different space — drop them.
+  if (ai.embedder.id !== NOOP_EMBEDDER_ID) await embeddingRepo.pruneOtherModels(ai.embedder.id);
+}
 
 /** Device language, used to seed the content-language setting on first run. */
 export function deviceLanguage(): string {
@@ -127,17 +160,20 @@ async function liveTopUp(topicIds: string[], needed: number): Promise<void> {
   }
 }
 
-export const buildSessionDeps: BuildSessionDeps = {
-  cardRepo,
-  settingsRepo,
-  sessionRepo,
-  topicRepo,
-  topicSourceRepo,
-  insights: insightsRepo,
-  clock,
-  sourceQuality,
-  liveTopUp,
-};
+/** A function, not a const: the semantic deps depend on `ai`, which resolves after `initAi()`. */
+export function getBuildSessionDeps(): BuildSessionDeps {
+  return {
+    cardRepo,
+    settingsRepo,
+    sessionRepo,
+    topicRepo,
+    topicSourceRepo,
+    insights: insightsRepo,
+    clock,
+    sourceQuality,
+    liveTopUp,
+  };
+}
 
 export async function seedInitialData(): Promise<void> {
   // Defaults are seeded once so deleted topics stay deleted; the same run
@@ -145,6 +181,11 @@ export async function seedInitialData(): Promise<void> {
   if (!(await settingsRepo.getValue('topics.seeded'))) {
     await topicRepo.upsertTopics(DEFAULT_TOPICS);
     await settingsRepo.setValue('topics.seeded', '1');
+  }
+  // Installs that predate the interaction log get their old votes/saves replayed into it once.
+  if (!(await settingsRepo.getValue('ai.log.backfilled'))) {
+    await backfillInteractionLogFromUserItems(db);
+    await settingsRepo.setValue('ai.log.backfilled', '1');
   }
   // First run: content language follows the phone until the user changes it.
   const stored = await settingsRepo.getValue('settings');
@@ -171,6 +212,8 @@ export function refillBufferInBackground(): Promise<void> {
         const fresh = await cardRepo.getUnseenCards(topics.map((t) => t.id), 60);
         await prefetchImages(fresh);
       }
+      // Embed-at-ingest happens in the same free window (no-op while rules-only).
+      await backfillEmbeddings({ embedder: ai.embedder, embeddingRepo });
     })
     .catch(() => undefined)
     .finally(() => {
